@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YIC-p9-u7B">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Find Food Trucks-->
+        <scene sceneID="mur-3s-OWD">
+            <objects>
+                <viewController id="sRR-vq-1VH" customClass="MapViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7lw-WG-32n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Bi-Yc-UO8">
+                                <rect key="frame" x="0.0" y="196" width="414" height="700"/>
+                                <connections>
+                                    <outlet property="delegate" destination="sRR-vq-1VH" id="XjX-LX-GsW"/>
+                                </connections>
+                            </mapView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-fZ-W8r">
+                                <rect key="frame" x="0.0" y="140" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="leading" secondItem="DM0-yY-4UO" secondAttribute="leading" id="RS0-bs-VgL"/>
+                            <constraint firstItem="DM0-yY-4UO" firstAttribute="trailing" secondItem="5Bi-Yc-UO8" secondAttribute="trailing" id="VNI-hs-ZR3"/>
+                            <constraint firstItem="5Bi-Yc-UO8" firstAttribute="top" secondItem="K8k-fZ-W8r" secondAttribute="bottom" id="ZVS-Di-gyT"/>
+                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="top" secondItem="DM0-yY-4UO" secondAttribute="top" id="f55-ol-m1q"/>
+                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="trailing" secondItem="DM0-yY-4UO" secondAttribute="trailing" id="fdQ-UI-H8Z"/>
+                            <constraint firstAttribute="bottom" secondItem="5Bi-Yc-UO8" secondAttribute="bottom" id="isu-aI-3tb"/>
+                            <constraint firstItem="5Bi-Yc-UO8" firstAttribute="leading" secondItem="DM0-yY-4UO" secondAttribute="leading" id="k1K-aJ-DUU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DM0-yY-4UO"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find Food Trucks" id="NAt-a9-CSB"/>
+                    <connections>
+                        <outlet property="foodTruckMapView" destination="5Bi-Yc-UO8" id="rpA-NP-Is9"/>
+                        <outlet property="foodTruckSearchBar" destination="K8k-fZ-W8r" id="sPv-rE-AEK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hV-uH-bVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="955.07246376811599" y="130.58035714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5fh-YV-Bfi">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmY-Bm-usO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIC-p9-u7B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WXB-Vf-l8o">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sRR-vq-1VH" kind="relationship" relationship="rootViewController" id="8gn-zc-SiE"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="44.927536231884062" y="130.58035714285714"/>
+        </scene>
+    </scenes>
+</document>
