@@ -19,6 +19,8 @@
 		0E76F377235AD274004D4306 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F376235AD274004D4306 /* UserController.swift */; };
 		0E76F379235AD27E004D4306 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F378235AD27E004D4306 /* User+Convenience.swift */; };
 		0E76F37D235AD2C9004D4306 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F37C235AD2C9004D4306 /* UserRepresentation.swift */; };
+		0E76F37F235BA677004D4306 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F37E235BA677004D4306 /* Map.storyboard */; };
+		0E76F381235BA835004D4306 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F380235BA835004D4306 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		0E76F376235AD274004D4306 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		0E76F378235AD27E004D4306 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		0E76F37C235AD2C9004D4306 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
+		0E76F37E235BA677004D4306 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		0E76F380235BA835004D4306 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				0E76F374235AB205004D4306 /* FoodTruckViewController.swift */,
+				0E76F380235BA835004D4306 /* MapViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				0E76F35A235A7DA1004D4306 /* Main.storyboard */,
+				0E76F37E235BA677004D4306 /* Map.storyboard */,
 				0E76F35F235A7DA5004D4306 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -202,6 +208,7 @@
 				0E76F361235A7DA5004D4306 /* LaunchScreen.storyboard in Resources */,
 				0E76F35E235A7DA5004D4306 /* Assets.xcassets in Resources */,
 				0E76F35C235A7DA1004D4306 /* Main.storyboard in Resources */,
+				0E76F37F235BA677004D4306 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +222,7 @@
 				0E76F37D235AD2C9004D4306 /* UserRepresentation.swift in Sources */,
 				0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */,
 				0E76F375235AB205004D4306 /* FoodTruckViewController.swift in Sources */,
+				0E76F381235BA835004D4306 /* MapViewController.swift in Sources */,
 				0E76F355235A7DA1004D4306 /* AppDelegate.swift in Sources */,
 				0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */,
 				0E76F379235AD27E004D4306 /* User+Convenience.swift in Sources */,
