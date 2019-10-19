@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		0E76F355235A7DA1004D4306 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F354235A7DA1004D4306 /* AppDelegate.swift */; };
 		0E76F357235A7DA1004D4306 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F356235A7DA1004D4306 /* SceneDelegate.swift */; };
-		0E76F359235A7DA1004D4306 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F358235A7DA1004D4306 /* ViewController.swift */; };
 		0E76F35C235A7DA1004D4306 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F35A235A7DA1004D4306 /* Main.storyboard */; };
 		0E76F35E235A7DA5004D4306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F35D235A7DA5004D4306 /* Assets.xcassets */; };
 		0E76F361235A7DA5004D4306 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F35F235A7DA5004D4306 /* LaunchScreen.storyboard */; };
 		0E76F36A235AAD6D004D4306 /* FoodTruck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F368235AAD6D004D4306 /* FoodTruck.xcdatamodeld */; };
 		0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F36B235AAD92004D4306 /* CoreDataStack.swift */; };
+		0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F371235AB040004D4306 /* UIColor+Extension.swift */; };
+		0E76F375235AB205004D4306 /* FoodTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F374235AB205004D4306 /* FoodTruckViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E76F351235A7DA1004D4306 /* FoodTruck TrackR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FoodTruck TrackR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E76F354235A7DA1004D4306 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E76F356235A7DA1004D4306 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0E76F358235A7DA1004D4306 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0E76F35B235A7DA1004D4306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E76F35D235A7DA5004D4306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E76F360235A7DA5004D4306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E76F362235A7DA5004D4306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E76F369235AAD6D004D4306 /* FoodTruck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodTruck.xcdatamodel; sourceTree = "<group>"; };
 		0E76F36B235AAD92004D4306 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		0E76F371235AB040004D4306 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0E76F374235AB205004D4306 /* FoodTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTruckViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +62,11 @@
 		0E76F353235A7DA1004D4306 /* FoodTruck TrackR */ = {
 			isa = PBXGroup;
 			children = (
+				0E76F36F235AAE52004D4306 /* View Controllers */,
 				0E76F36D235AAE24004D4306 /* CoreData */,
 				0E76F36E235AAE41004D4306 /* Resources */,
 				0E76F370235AAE60004D4306 /* Storyboards */,
-				0E76F36F235AAE52004D4306 /* View Controllers */,
+				0E76F373235AB045004D4306 /* Helpers */,
 			);
 			path = "FoodTruck TrackR";
 			sourceTree = "<group>";
@@ -91,7 +94,7 @@
 		0E76F36F235AAE52004D4306 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0E76F358235A7DA1004D4306 /* ViewController.swift */,
+				0E76F374235AB205004D4306 /* FoodTruckViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -103,6 +106,14 @@
 				0E76F35F235A7DA5004D4306 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0E76F373235AB045004D4306 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0E76F371235AB040004D4306 /* UIColor+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,8 +188,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */,
-				0E76F359235A7DA1004D4306 /* ViewController.swift in Sources */,
+				0E76F375235AB205004D4306 /* FoodTruckViewController.swift in Sources */,
 				0E76F355235A7DA1004D4306 /* AppDelegate.swift in Sources */,
+				0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */,
 				0E76F357235A7DA1004D4306 /* SceneDelegate.swift in Sources */,
 				0E76F36A235AAD6D004D4306 /* FoodTruck.xcdatamodeld in Sources */,
 			);
