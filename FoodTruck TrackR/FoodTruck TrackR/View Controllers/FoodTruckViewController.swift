@@ -19,6 +19,10 @@ class FoodTruckViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .background
         
+        tabBarController?.tabBar.barStyle = .default
+        tabBarController?.tabBar.barTintColor = .background
+        tabBarController?.tabBar.tintColor = .text
+        
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]

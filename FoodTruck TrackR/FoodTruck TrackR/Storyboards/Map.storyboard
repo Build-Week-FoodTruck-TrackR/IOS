@@ -21,7 +21,7 @@
                                     <outlet property="delegate" destination="sRR-vq-1VH" id="XjX-LX-GsW"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-fZ-W8r">
+                            <searchBar contentMode="redraw" placeholder="Search Food Trucks" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-fZ-W8r">
                                 <rect key="frame" x="0.0" y="140" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -48,12 +48,13 @@
             </objects>
             <point key="canvasLocation" x="955.07246376811599" y="130.58035714285714"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Map-->
         <scene sceneID="5fh-YV-Bfi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmY-Bm-usO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIC-p9-u7B" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="tYe-4z-8gL"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WXB-Vf-l8o">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -63,8 +64,12 @@
                         <segue destination="sRR-vq-1VH" kind="relationship" relationship="rootViewController" id="8gn-zc-SiE"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmY-Bm-usO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44.927536231884062" y="130.58035714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map" catalog="system" width="64" height="58"/>
+    </resources>
 </document>
