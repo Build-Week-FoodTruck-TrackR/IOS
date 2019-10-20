@@ -27,7 +27,6 @@ class MapViewController: UIViewController {
         foodTruckSearchBar.showsCancelButton = false
         foodTruckSearchBar.delegate = self
         foodTruckSearchBar.resignFirstResponder()
-        foodTruckSearchBar.returnKeyType = UIReturnKeyType.done
         setupTableView()
     }
     
@@ -48,8 +47,6 @@ class MapViewController: UIViewController {
     private func setupTableView() {
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
-        searchResultsTableView.keyboardDismissMode = .onDrag
-        
         
         searchResultsTableView.isHidden = true
         
@@ -174,7 +171,7 @@ extension MapViewController: UISearchBarDelegate {
     }
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.2) {
             self.searchResultsTableView.isHidden = false
             searchBar.showsCancelButton = true
         }
@@ -186,12 +183,12 @@ extension MapViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBarCancelButtonClicked(searchBar)
-        //Start directions to first result (if there is a result)
+        searchBar.endEditing(false)
+        //Send a fetch request to the back end
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.2) {
             
             self.searchResultsTableView.isHidden = true
             searchBar.showsCancelButton = false
