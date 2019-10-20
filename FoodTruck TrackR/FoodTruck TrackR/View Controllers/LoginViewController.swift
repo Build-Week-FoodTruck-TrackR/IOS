@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .background
         
+        passwordTextField.isSecureTextEntry = true
+        
         loginButton.backgroundColor = .text
         loginButton.setTitleColor(UIColor.background, for: .normal)
         loginButton.layer.cornerRadius = 8

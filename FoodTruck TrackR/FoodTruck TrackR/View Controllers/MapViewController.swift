@@ -16,12 +16,15 @@ class MapViewController: UIViewController {
     @IBOutlet weak var foodTruckMapView: MKMapView!
     
     let locationManager = CLLocationManager()
+    let searchResultsTableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         checkLocationServices()
+        foodTruckSearchBar.delegate = self
+        foodTruckSearchBar.resignFirstResponder()
     }
     
     private func setupViews() {
@@ -36,6 +39,17 @@ class MapViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
+        
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+        searchResultsTableView.delegate = self
+        searchResultsTableView.dataSource = self
+        
+        view.addSubview(searchResultsTableView)
+        
+        
     }
     
     private func setupLocationManager() { // Housekeeping
@@ -59,6 +73,15 @@ class MapViewController: UIViewController {
             locationManager.startUpdatingLocation()
         } else { // Alert user if Location Services are disabled and instruct on how to fix
             let alert = UIAlertController(title: "Location Services Disabled", message: "It looks like location services is disabled. Please enable it in settings.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { _ in
+                if let url = URL(string: "App-Prefs:root=Privacy&path=LOCATION") {
+                    // Open Location Services in settings if disabled
+                    UIApplication.shared.open(url)
+                } else if let url = URL(string: UIApplication.openSettingsURLString) {
+                    // If Location Services url is changed in the future, open settings instead
+                    UIApplication.shared.open(url)
+                }
+            }))
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -110,5 +133,27 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         // Checks the auth status if it was changed
         checkLocationAuthorization()
+    }
+}
+
+extension MapViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell", for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
+        
+        // Set up cell
+        
+        return cell
+    }
+    
+    
+}
+
+extension MapViewController: UISearchBarDelegate {
+    override func resignFirstResponder() -> Bool {
+        return true
     }
 }

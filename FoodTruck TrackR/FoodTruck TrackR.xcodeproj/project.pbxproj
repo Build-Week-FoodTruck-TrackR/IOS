@@ -15,7 +15,6 @@
 		0E76F36A235AAD6D004D4306 /* FoodTruck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F368235AAD6D004D4306 /* FoodTruck.xcdatamodeld */; };
 		0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F36B235AAD92004D4306 /* CoreDataStack.swift */; };
 		0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F371235AB040004D4306 /* UIColor+Extension.swift */; };
-		0E76F375235AB205004D4306 /* FoodTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F374235AB205004D4306 /* FoodTruckViewController.swift */; };
 		0E76F377235AD274004D4306 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F376235AD274004D4306 /* UserController.swift */; };
 		0E76F379235AD27E004D4306 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F378235AD27E004D4306 /* User+Convenience.swift */; };
 		0E76F37D235AD2C9004D4306 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F37C235AD2C9004D4306 /* UserRepresentation.swift */; };
@@ -23,6 +22,8 @@
 		0E76F381235BA835004D4306 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F380235BA835004D4306 /* MapViewController.swift */; };
 		0E76F383235C0211004D4306 /* LoginAndSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F382235C0211004D4306 /* LoginAndSignup.storyboard */; };
 		0E76F385235C07A7004D4306 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F384235C07A7004D4306 /* LoginViewController.swift */; };
+		0E76F387235C26E8004D4306 /* FoodTruckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */; };
+		0E76F38C235C2B52004D4306 /* FoodTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F38B235C2B52004D4306 /* FoodTruckViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +37,6 @@
 		0E76F369235AAD6D004D4306 /* FoodTruck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodTruck.xcdatamodel; sourceTree = "<group>"; };
 		0E76F36B235AAD92004D4306 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		0E76F371235AB040004D4306 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		0E76F374235AB205004D4306 /* FoodTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTruckViewController.swift; sourceTree = "<group>"; };
 		0E76F376235AD274004D4306 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		0E76F378235AD27E004D4306 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		0E76F37C235AD2C9004D4306 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
@@ -44,6 +44,8 @@
 		0E76F380235BA835004D4306 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0E76F382235C0211004D4306 /* LoginAndSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndSignup.storyboard; sourceTree = "<group>"; };
 		0E76F384235C07A7004D4306 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTruckTableViewCell.swift; sourceTree = "<group>"; };
+		0E76F38B235C2B52004D4306 /* FoodTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTruckViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				0E76F36F235AAE52004D4306 /* View Controllers */,
+				0E76F388235C26F5004D4306 /* Views */,
 				0E76F37A235AD283004D4306 /* Models */,
 				0E76F37B235AD28B004D4306 /* Model Controllers */,
 				0E76F36D235AAE24004D4306 /* CoreData */,
@@ -110,7 +113,7 @@
 		0E76F36F235AAE52004D4306 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0E76F374235AB205004D4306 /* FoodTruckViewController.swift */,
+				0E76F38B235C2B52004D4306 /* FoodTruckViewController.swift */,
 				0E76F380235BA835004D4306 /* MapViewController.swift */,
 				0E76F384235C07A7004D4306 /* LoginViewController.swift */,
 			);
@@ -151,6 +154,14 @@
 				0E76F376235AD274004D4306 /* UserController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		0E76F388235C26F5004D4306 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,15 +239,16 @@
 			files = (
 				0E76F37D235AD2C9004D4306 /* UserRepresentation.swift in Sources */,
 				0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */,
-				0E76F375235AB205004D4306 /* FoodTruckViewController.swift in Sources */,
 				0E76F381235BA835004D4306 /* MapViewController.swift in Sources */,
 				0E76F355235A7DA1004D4306 /* AppDelegate.swift in Sources */,
 				0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */,
 				0E76F379235AD27E004D4306 /* User+Convenience.swift in Sources */,
 				0E76F377235AD274004D4306 /* UserController.swift in Sources */,
 				0E76F357235A7DA1004D4306 /* SceneDelegate.swift in Sources */,
+				0E76F38C235C2B52004D4306 /* FoodTruckViewController.swift in Sources */,
 				0E76F36A235AAD6D004D4306 /* FoodTruck.xcdatamodeld in Sources */,
 				0E76F385235C07A7004D4306 /* LoginViewController.swift in Sources */,
+				0E76F387235C26E8004D4306 /* FoodTruckTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

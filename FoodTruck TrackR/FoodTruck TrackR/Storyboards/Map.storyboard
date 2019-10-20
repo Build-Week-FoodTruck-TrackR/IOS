@@ -42,11 +42,97 @@
                     <connections>
                         <outlet property="foodTruckMapView" destination="5Bi-Yc-UO8" id="rpA-NP-Is9"/>
                         <outlet property="foodTruckSearchBar" destination="K8k-fZ-W8r" id="sPv-rE-AEK"/>
+                        <segue destination="Peq-0Q-cGr" kind="popoverPresentation" identifier="UnusedSegue" popoverAnchorView="5Bi-Yc-UO8" id="Ebi-Ow-E0i">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hV-uH-bVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="955.07246376811599" y="130.58035714285714"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1a0-1e-l4p">
+            <objects>
+                <viewController id="Peq-0Q-cGr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nsx-aH-8k1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pwR-cJ-4Na">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodTruckCell" rowHeight="100" id="cXA-LS-fuj" customClass="FoodTruckTableViewCell" customModule="FoodTruck_TrackR" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cXA-LS-fuj" id="FrK-qw-9KF">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qq9-Tl-E3z">
+                                                    <rect key="frame" x="20" y="12.5" width="208.5" height="75"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FoodTruck_Square" translatesAutoresizingMaskIntoConstraints="NO" id="qE3-AC-mct">
+                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="75" id="GIV-Wq-1Ac"/>
+                                                                <constraint firstAttribute="width" secondItem="qE3-AC-mct" secondAttribute="height" multiplier="1:1" id="VZC-jW-Qay"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bGP-Yg-s6g">
+                                                            <rect key="frame" x="83" y="0.0" width="125.5" height="75"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKo-82-zPT">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="125.5" height="34.5"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab0-yy-82f">
+                                                                    <rect key="frame" x="0.0" y="42.5" width="125.5" height="32.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR4-LE-RYK">
+                                                    <rect key="frame" x="282.5" y="19.5" width="111.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nR4-LE-RYK" secondAttribute="trailing" id="MuF-Gd-Enb"/>
+                                                <constraint firstItem="Qq9-Tl-E3z" firstAttribute="centerY" secondItem="FrK-qw-9KF" secondAttribute="centerY" id="cGK-FE-Bva"/>
+                                                <constraint firstItem="nR4-LE-RYK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qq9-Tl-E3z" secondAttribute="trailing" constant="8" id="cac-5v-ogv"/>
+                                                <constraint firstItem="nR4-LE-RYK" firstAttribute="centerY" secondItem="kKo-82-zPT" secondAttribute="centerY" id="kFA-Xf-jev"/>
+                                                <constraint firstItem="Qq9-Tl-E3z" firstAttribute="leading" secondItem="FrK-qw-9KF" secondAttribute="leadingMargin" id="kSD-HB-gvl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pwR-cJ-4Na" firstAttribute="top" secondItem="E0P-OH-O5b" secondAttribute="top" id="CD0-kD-p1A"/>
+                            <constraint firstItem="E0P-OH-O5b" firstAttribute="trailing" secondItem="pwR-cJ-4Na" secondAttribute="trailing" id="HEm-M6-BSu"/>
+                            <constraint firstItem="pwR-cJ-4Na" firstAttribute="leading" secondItem="E0P-OH-O5b" secondAttribute="leading" id="Y7f-fI-1gw"/>
+                            <constraint firstItem="E0P-OH-O5b" firstAttribute="bottom" secondItem="pwR-cJ-4Na" secondAttribute="bottom" id="YVb-I5-hnE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E0P-OH-O5b"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="700"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9N-Cl-naf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1752" y="197"/>
         </scene>
         <!--Map-->
         <scene sceneID="5fh-YV-Bfi">
@@ -70,6 +156,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="FoodTruck_Square" width="3072" height="3073"/>
         <image name="map" catalog="system" width="64" height="58"/>
     </resources>
 </document>
