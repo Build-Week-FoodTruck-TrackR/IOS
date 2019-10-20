@@ -17,7 +17,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="FoodTruck TrackR" id="ber-9R-3Xh"/>
+                    <navigationItem key="navigationItem" title="FoodTruck TrackR" id="ber-9R-3Xh">
+                        <barButtonItem key="rightBarButtonItem" title="Modal" id="b4n-rd-Zq7">
+                            <connections>
+                                <segue destination="ETW-Qs-4ae" kind="presentation" identifier="LoginModalSegue" id="thL-ag-OSu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,6 +76,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Mu-5u-Xjg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1958" y="611"/>
+        </scene>
+        <!--LoginAndSignup-->
+        <scene sceneID="mNv-HX-jwF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginAndSignup" id="ETW-Qs-4ae" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bYA-Vw-gcn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2869" y="611"/>
         </scene>
     </scenes>
     <resources>
