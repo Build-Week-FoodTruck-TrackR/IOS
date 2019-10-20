@@ -72,9 +72,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="gKg-33-Lts"/>
                     <connections>
-                        <outlet property="LoginSegmentedControl" destination="dSC-gc-9H9" id="xX2-pg-cjM"/>
                         <outlet property="emailTextField" destination="chB-n1-Krm" id="J8T-mx-4Fp"/>
                         <outlet property="loginButton" destination="ghx-Q5-5yx" id="flM-XU-IHg"/>
+                        <outlet property="loginSegmentedControl" destination="dSC-gc-9H9" id="xX2-pg-cjM"/>
                         <outlet property="passwordTextField" destination="u0W-Dh-UkQ" id="rv2-Fw-5jh"/>
                         <outlet property="usernameTextField" destination="i1C-nv-gMi" id="H0j-S5-oSB"/>
                     </connections>

@@ -23,8 +23,12 @@ class MapViewController: UIViewController {
 
         setupViews()
         checkLocationServices()
+        
+        foodTruckSearchBar.showsCancelButton = false
         foodTruckSearchBar.delegate = self
         foodTruckSearchBar.resignFirstResponder()
+        foodTruckSearchBar.returnKeyType = UIReturnKeyType.done
+        setupTableView()
     }
     
     private func setupViews() {
@@ -39,17 +43,23 @@ class MapViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
-        
-        setupTableView()
     }
     
     private func setupTableView() {
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
+        searchResultsTableView.keyboardDismissMode = .onDrag
+        
+        
+        searchResultsTableView.isHidden = true
         
         view.addSubview(searchResultsTableView)
+        searchResultsTableView.translatesAutoresizingMaskIntoConstraints = false
         
-        
+        searchResultsTableView.topAnchor.constraint(equalTo: foodTruckSearchBar.bottomAnchor).isActive = true
+        searchResultsTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        searchResultsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        searchResultsTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
     private func setupLocationManager() { // Housekeeping
@@ -156,4 +166,40 @@ extension MapViewController: UISearchBarDelegate {
     override func resignFirstResponder() -> Bool {
         return true
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            _ = searchBarShouldEndEditing(searchBar)
+        }
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        UIView.animate(withDuration: 0.5) {
+            self.searchResultsTableView.isHidden = false
+            searchBar.showsCancelButton = true
+        }
+        return true
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBarCancelButtonClicked(searchBar)
+        //Start directions to first result (if there is a result)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        UIView.animate(withDuration: 0.5) {
+            
+            self.searchResultsTableView.isHidden = true
+            searchBar.showsCancelButton = false
+        }
+        
+        searchBar.text = ""
+        
+        self.view.endEditing(true)
+    }
+    
 }

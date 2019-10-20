@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var LoginSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var loginSegmentedControl: UISegmentedControl!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,6 +27,8 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .background
         
         passwordTextField.isSecureTextEntry = true
+        
+        loginSegmentedControl.backgroundColor = .text
         
         loginButton.backgroundColor = .text
         loginButton.setTitleColor(UIColor.background, for: .normal)
@@ -56,7 +58,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func segControlAction(_ sender: UISegmentedControl) {
-        switch LoginSegmentedControl.selectedSegmentIndex {
+        switch loginSegmentedControl.selectedSegmentIndex {
         case 0:
             UIView.animate(withDuration: 0.5) {
                 self.loginButton.setTitle("Log In", for: .normal)
