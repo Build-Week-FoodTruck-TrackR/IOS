@@ -9,7 +9,13 @@
 import UIKit
 
 class FoodTruckTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var foodTruckImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var distanceAwayLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +26,9 @@ class FoodTruckTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func toggleFavorite(_ sender: UIButton) {
+        
+    }
+    
 }

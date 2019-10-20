@@ -71,7 +71,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qq9-Tl-E3z">
-                                                    <rect key="frame" x="20" y="12.5" width="208.5" height="75"/>
+                                                    <rect key="frame" x="20" y="12.5" width="189" height="75"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FoodTruck_Square" translatesAutoresizingMaskIntoConstraints="NO" id="qE3-AC-mct">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
@@ -81,17 +81,17 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bGP-Yg-s6g">
-                                                            <rect key="frame" x="83" y="0.0" width="125.5" height="75"/>
+                                                            <rect key="frame" x="83" y="0.0" width="106" height="75"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKo-82-zPT">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="125.5" height="34.5"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="106" height="34"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab0-yy-82f">
-                                                                    <rect key="frame" x="0.0" y="42.5" width="125.5" height="32.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <rect key="frame" x="0.0" y="42" width="106" height="33"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -100,13 +100,22 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR4-LE-RYK">
-                                                    <rect key="frame" x="282.5" y="19.5" width="111.5" height="20.5"/>
+                                                    <rect key="frame" x="282.5" y="19" width="111.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGw-gW-mvj">
+                                                    <rect key="frame" x="371.5" y="60" width="22.5" height="22"/>
+                                                    <state key="normal" image="star" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="toggleFavorite:" destination="cXA-LS-fuj" eventType="touchUpInside" id="7N0-LZ-6Vk"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="xGw-gW-mvj" firstAttribute="centerY" secondItem="ab0-yy-82f" secondAttribute="centerY" id="B1r-3m-LwF"/>
+                                                <constraint firstItem="xGw-gW-mvj" firstAttribute="trailing" secondItem="FrK-qw-9KF" secondAttribute="trailingMargin" id="Hry-ev-2dt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="nR4-LE-RYK" secondAttribute="trailing" id="MuF-Gd-Enb"/>
                                                 <constraint firstItem="Qq9-Tl-E3z" firstAttribute="centerY" secondItem="FrK-qw-9KF" secondAttribute="centerY" id="cGK-FE-Bva"/>
                                                 <constraint firstItem="nR4-LE-RYK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qq9-Tl-E3z" secondAttribute="trailing" constant="8" id="cac-5v-ogv"/>
@@ -114,6 +123,13 @@
                                                 <constraint firstItem="Qq9-Tl-E3z" firstAttribute="leading" secondItem="FrK-qw-9KF" secondAttribute="leadingMargin" id="kSD-HB-gvl"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="ab0-yy-82f" id="Sjl-Ab-qo1"/>
+                                            <outlet property="distanceAwayLabel" destination="nR4-LE-RYK" id="FEZ-xx-Pbe"/>
+                                            <outlet property="favoriteButton" destination="xGw-gW-mvj" id="6Xq-Yt-1VV"/>
+                                            <outlet property="foodTruckImageView" destination="qE3-AC-mct" id="SZe-im-ycZ"/>
+                                            <outlet property="nameLabel" destination="kKo-82-zPT" id="wLo-XL-Wcm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -158,5 +174,6 @@
     <resources>
         <image name="FoodTruck_Square" width="3072" height="3073"/>
         <image name="map" catalog="system" width="64" height="58"/>
+        <image name="star" catalog="system" width="64" height="58"/>
     </resources>
 </document>
