@@ -23,7 +23,7 @@
 		0E76F383235C0211004D4306 /* LoginAndSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F382235C0211004D4306 /* LoginAndSignup.storyboard */; };
 		0E76F385235C07A7004D4306 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F384235C07A7004D4306 /* LoginViewController.swift */; };
 		0E76F387235C26E8004D4306 /* FoodTruckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */; };
-		0E76F38C235C2B52004D4306 /* FoodTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F38B235C2B52004D4306 /* FoodTruckViewController.swift */; };
+		0E76F38C235C2B52004D4306 /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F38B235C2B52004D4306 /* AccountsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 		0E76F382235C0211004D4306 /* LoginAndSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndSignup.storyboard; sourceTree = "<group>"; };
 		0E76F384235C07A7004D4306 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTruckTableViewCell.swift; sourceTree = "<group>"; };
-		0E76F38B235C2B52004D4306 /* FoodTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTruckViewController.swift; sourceTree = "<group>"; };
+		0E76F38B235C2B52004D4306 /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 		0E76F36F235AAE52004D4306 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0E76F38B235C2B52004D4306 /* FoodTruckViewController.swift */,
+				0E76F38B235C2B52004D4306 /* AccountsVC.swift */,
 				0E76F380235BA835004D4306 /* MapViewController.swift */,
 				0E76F384235C07A7004D4306 /* LoginViewController.swift */,
 			);
@@ -245,7 +245,7 @@
 				0E76F379235AD27E004D4306 /* User+Convenience.swift in Sources */,
 				0E76F377235AD274004D4306 /* UserController.swift in Sources */,
 				0E76F357235A7DA1004D4306 /* SceneDelegate.swift in Sources */,
-				0E76F38C235C2B52004D4306 /* FoodTruckViewController.swift in Sources */,
+				0E76F38C235C2B52004D4306 /* AccountsVC.swift in Sources */,
 				0E76F36A235AAD6D004D4306 /* FoodTruck.xcdatamodeld in Sources */,
 				0E76F385235C07A7004D4306 /* LoginViewController.swift in Sources */,
 				0E76F387235C26E8004D4306 /* FoodTruckTableViewCell.swift in Sources */,
