@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FoodTruckViewController: UIViewController {
+class AccountsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

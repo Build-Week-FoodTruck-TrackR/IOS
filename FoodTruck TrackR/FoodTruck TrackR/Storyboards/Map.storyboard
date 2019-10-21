@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YIC-p9-u7B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YIC-p9-u7B">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -106,7 +106,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGw-gW-mvj">
-                                                    <rect key="frame" x="371.5" y="59.5" width="22.5" height="22"/>
+                                                    <rect key="frame" x="372" y="59.5" width="22" height="22"/>
                                                     <state key="normal" image="star" catalog="system"/>
                                                     <connections>
                                                         <action selector="toggleFavorite:" destination="cXA-LS-fuj" eventType="touchUpInside" id="7N0-LZ-6Vk"/>
@@ -172,8 +172,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FoodTruck_Square" width="3072" height="3073"/>
-        <image name="map" catalog="system" width="64" height="58"/>
+        <image name="FoodTruck_Square" width="3071" height="3073"/>
+        <image name="map" catalog="system" width="64" height="56"/>
         <image name="star" catalog="system" width="64" height="58"/>
     </resources>
 </document>
