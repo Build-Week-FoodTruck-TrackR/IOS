@@ -10,12 +10,12 @@ import Foundation
 import CoreData
 
 extension Vendor {
-    convenience init(username: String, password: String, email: String, trucksOwned: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(username: String, password: String, email: String, trucksOwned: [Truck], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
         self.username = username
         self.password = password
         self.email = email
-		self.trucksOwned = trucksOwned
+        self.trucksOwned = NSOrderedSet(object: trucksOwned)
     }
 }
