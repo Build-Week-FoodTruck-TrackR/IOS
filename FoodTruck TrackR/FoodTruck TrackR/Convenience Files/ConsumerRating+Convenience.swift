@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension ConsumerRating {
-    convenience init(consumerRating: Int, comments: String ,context: NSManagedObjectContext = CoreDataStack.shared.mainContext) { // These are just some variables I assume will be in the actual model. Feel free to change, add, or delete how ever you like
+    convenience init(consumerRating: Int, comments: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
         self.consumerRating = Int16(consumerRating)

@@ -10,11 +10,12 @@ import Foundation
 import CoreData
 
 extension Vendor {
-    convenience init(username: String, password: String, trucksOwned: String ,context: NSManagedObjectContext = CoreDataStack.shared.mainContext) { // These are just some variables I assume will be in the actual model. Feel free to change, add, or delete how ever you like
+    convenience init(username: String, password: String, email: String, trucksOwned: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
         self.username = username
         self.password = password
+        self.email = email
 		self.trucksOwned = trucksOwned
     }
 }
