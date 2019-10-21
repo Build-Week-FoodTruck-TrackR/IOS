@@ -38,7 +38,7 @@ Temporary Items
 ## Build generated
 build/
 DerivedData/
-
+*xcworkspace/xcuserdata/*
 ## Various settings
 *.pbxuser
 !default.pbxuser

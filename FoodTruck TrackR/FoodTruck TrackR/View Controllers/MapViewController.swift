@@ -18,6 +18,8 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     let searchResultsTableView = UITableView()
     
+    var directionsArray: [MKDirections] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,10 +29,11 @@ class MapViewController: UIViewController {
         foodTruckSearchBar.showsCancelButton = false
         foodTruckSearchBar.delegate = self
         foodTruckSearchBar.resignFirstResponder()
+        
         setupTableView()
     }
     
-    private func setupViews() {
+    private func setupViews() { // Make everything pretty
         view.backgroundColor = .background
         
         foodTruckSearchBar.barTintColor = .background
@@ -44,7 +47,7 @@ class MapViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
     }
     
-    private func setupTableView() {
+    private func setupTableView() { // Set up table view constaints and make it hidden
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         
@@ -71,6 +74,61 @@ class MapViewController: UIViewController {
         } else {
             NSLog("User appears to not have connection.")
         }
+    }
+    
+    private func getDirections(to destination: CLLocationCoordinate2D) {
+        guard let location = locationManager.location?.coordinate else {
+            let alert = UIAlertController(title: "", message: "Network error. Please check your connection", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+
+            let inFuture = DispatchTime.now() + 3
+            DispatchQueue.main.asyncAfter(deadline: inFuture) {
+              alert.dismiss(animated: true, completion: nil)
+            }
+            return
+        }
+        
+        let startingLocation = MKPlacemark(coordinate: location)
+        let destinationLocation = MKPlacemark(coordinate: destination)
+        
+        let request = createRequest(start: startingLocation, end: destinationLocation)
+        let directions = MKDirections(request: request)
+        resetMap(withNew: directions)
+        
+        directions.calculate { [unowned self] (response, error) in
+            if let error = error {
+                NSLog("An error occured when getting directions: \(error)")
+            }
+            
+            guard let response = response else {
+                NSLog("Did not receive response when getting directions!")
+                return
+            }
+            
+            for route in response.routes {
+                self.foodTruckMapView.addOverlay(route.polyline)
+                self.foodTruckMapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+            }
+        }
+    }
+    
+    private func createRequest(start: MKPlacemark, end: MKPlacemark) -> MKDirections.Request {
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: start)
+        request.destination = MKMapItem(placemark: end)
+        request.transportType = .automobile
+        request.requestsAlternateRoutes = true
+        
+        return request
+    }
+    
+    private func resetMap(withNew directions: MKDirections) {
+        foodTruckMapView.removeOverlays(foodTruckMapView.overlays)
+        for i in 0..<directionsArray.count {
+            directionsArray[i].cancel()
+            directionsArray.remove(at: i)
+        }
+        directionsArray.append(directions)
     }
     
     private func checkLocationServices() { // Check to make sure Location Services are active
@@ -143,6 +201,15 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 }
 
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .green
+        
+        return renderer
+    }
+}
+
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
@@ -155,7 +222,6 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
     
 }
 
