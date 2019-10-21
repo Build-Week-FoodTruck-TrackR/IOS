@@ -61,7 +61,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Don't have an account yet? Sign up here!"/>
                                 <connections>
-                                    <segue destination="8Wa-UK-TTE" kind="show" id="VCn-IN-umQ"/>
+                                    <segue destination="8Wa-UK-TTE" kind="show" identifier="ShowSignUpSegue" id="VCn-IN-umQ"/>
                                 </connections>
                             </button>
                         </subviews>

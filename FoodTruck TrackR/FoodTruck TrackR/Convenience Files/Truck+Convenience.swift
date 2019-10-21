@@ -10,10 +10,10 @@ import Foundation
 import CoreData	
 
 extension Truck {
-	convenience init(customerAvgRating: Int, location: Location, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(customerAvgRating: Int, location: Location, imageOfTruck: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
-
+        self.imageOfTruck = imageOfTruck
 		self.customerAvgRating = Int16(customerAvgRating)
         self.location = location
     }
