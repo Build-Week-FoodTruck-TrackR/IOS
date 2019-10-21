@@ -124,10 +124,10 @@ class MapViewController: UIViewController {
     
     private func resetMap(withNew directions: MKDirections) {
         foodTruckMapView.removeOverlays(foodTruckMapView.overlays)
-        for route in directionsArray {
-            route.cancel()
+        for i in 0..<directionsArray.count {
+            directionsArray[i].cancel()
+            directionsArray.remove(at: i)
         }
-        directionsArray = []
         directionsArray.append(directions)
     }
     
