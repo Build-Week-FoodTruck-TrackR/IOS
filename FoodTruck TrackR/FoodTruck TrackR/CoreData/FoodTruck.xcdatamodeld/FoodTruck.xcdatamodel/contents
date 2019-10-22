@@ -31,7 +31,7 @@
         <relationship name="menuItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MenuItem" inverseName="itemPhotos" inverseEntity="MenuItem"/>
     </entity>
     <entity name="Truck" representedClassName="Truck" syncable="YES" codeGenerationType="class">
-        <attribute name="customerAvgRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="customerAvgRating" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="imageOfTruck" optional="YES" attributeType="String"/>
         <relationship name="consumer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consumer" inverseName="favoriteTrucks" inverseEntity="Consumer"/>
         <relationship name="customerRating" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ConsumerRating" inverseName="rating" inverseEntity="ConsumerRating"/>

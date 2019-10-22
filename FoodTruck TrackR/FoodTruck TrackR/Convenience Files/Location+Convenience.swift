@@ -16,4 +16,8 @@ extension Location {
         self.longitude = longitude
         self.latitude = latitude
     }
+    
+    convenience init(location: LocationRepresentaion) {
+        self.init(longitude: location.longitute, latitude: location.latitude)
+    }
 }
