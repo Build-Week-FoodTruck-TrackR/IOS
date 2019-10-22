@@ -9,8 +9,8 @@
 import Foundation
 import CoreData 
 
-extension MenuItems {
-	convenience init(itemName: String, itemDescription: String, itemPhotos: [MenuPhotos], itemPrice: Double, consumerRating: [ConsumerRating] ,context: NSManagedObjectContext = CoreDataStack.shared.mainContext) { // These are just some variables I assume will be in the actual model. Feel free to change, add, or delete how ever you like
+extension MenuItem {
+	convenience init(itemName: String, itemDescription: String, itemPhotos: [MenuPhoto], itemPrice: Double, consumerRating: [ConsumerRating], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
         self.itemName = itemName

@@ -1,47 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G103" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Consumer" representedClassName="Consumer" syncable="YES" codeGenerationType="class">
         <attribute name="currentLocation" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="favoriteTrucks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Truck"/>
+        <relationship name="favoriteTrucks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Truck" inverseName="consumer" inverseEntity="Truck"/>
     </entity>
     <entity name="ConsumerRating" representedClassName="ConsumerRating" syncable="YES" codeGenerationType="class">
         <attribute name="comments" optional="YES" attributeType="String"/>
         <attribute name="consumerRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="menuItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MenuItem" inverseName="consumerRating" inverseEntity="MenuItem"/>
+        <relationship name="rating" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Truck" inverseName="customerRating" inverseEntity="Truck"/>
     </entity>
     <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Truck" inverseName="location" inverseEntity="Truck"/>
     </entity>
-    <entity name="MenuItems" representedClassName="MenuItems" syncable="YES" codeGenerationType="class">
+    <entity name="MenuItem" representedClassName="MenuItem" syncable="YES" codeGenerationType="class">
         <attribute name="customerAvgRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="itemDescription" optional="YES" attributeType="String"/>
         <attribute name="itemName" optional="YES" attributeType="String"/>
         <attribute name="itemPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="consumerRating" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ConsumerRating"/>
-        <relationship name="itemPhotos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MenuPhotos"/>
+        <relationship name="consumerRating" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ConsumerRating" inverseName="menuItem" inverseEntity="ConsumerRating"/>
+        <relationship name="itemPhotos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MenuPhoto" inverseName="menuItems" inverseEntity="MenuPhoto"/>
     </entity>
-    <entity name="MenuPhotos" representedClassName="MenuPhotos" syncable="YES" codeGenerationType="class">
+    <entity name="MenuPhoto" representedClassName="MenuPhoto" syncable="YES" codeGenerationType="class">
         <attribute name="photoURL" optional="YES" attributeType="String"/>
+        <relationship name="menuItems" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MenuItem" inverseName="itemPhotos" inverseEntity="MenuItem"/>
     </entity>
     <entity name="Truck" representedClassName="Truck" syncable="YES" codeGenerationType="class">
-        <attribute name="customerAvgRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="customerRating" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ConsumerRating"/>
-        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location"/>
+        <attribute name="customerAvgRating" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageOfTruck" optional="YES" attributeType="String"/>
+        <relationship name="consumer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consumer" inverseName="favoriteTrucks" inverseEntity="Consumer"/>
+        <relationship name="customerRating" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ConsumerRating" inverseName="rating" inverseEntity="ConsumerRating"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="location" inverseEntity="Location"/>
+        <relationship name="vendor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vendor" inverseName="trucksOwned" inverseEntity="Vendor"/>
     </entity>
     <entity name="Vendor" representedClassName="Vendor" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
-        <attribute name="trucksOwned" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="trucksOwned" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Truck" inverseName="vendor" inverseEntity="Truck"/>
     </entity>
     <elements>
-        <element name="Consumer" positionX="-45" positionY="0" width="128" height="103"/>
-        <element name="Vendor" positionX="-45" positionY="27" width="128" height="88"/>
-        <element name="Truck" positionX="-36" positionY="45" width="128" height="88"/>
-        <element name="ConsumerRating" positionX="-18" positionY="54" width="128" height="73"/>
-        <element name="MenuItems" positionX="0" positionY="81" width="128" height="133"/>
-        <element name="Location" positionX="18" positionY="90" width="128" height="73"/>
-        <element name="MenuPhotos" positionX="36" positionY="135" width="128" height="58"/>
+        <element name="Consumer" positionX="-45" positionY="0" width="128" height="118"/>
+        <element name="ConsumerRating" positionX="-18" positionY="54" width="128" height="103"/>
+        <element name="Location" positionX="18" positionY="90" width="128" height="88"/>
+        <element name="MenuItem" positionX="0" positionY="81" width="128" height="133"/>
+        <element name="MenuPhoto" positionX="36" positionY="135" width="128" height="73"/>
+        <element name="Truck" positionX="-36" positionY="45" width="128" height="133"/>
+        <element name="Vendor" positionX="-45" positionY="27" width="128" height="103"/>
     </elements>
 </model>
