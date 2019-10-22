@@ -82,8 +82,9 @@
                                     <outlet property="AvgCustomerRatingLabel" destination="ke3-kI-56a" id="4Lr-Ic-OKu"/>
                                     <outlet property="cusineTypeLabel" destination="0fO-1g-8YT" id="Nd8-ZW-t0W"/>
                                     <outlet property="customerRatingLabel" destination="5dP-14-PXg" id="fsv-6i-YAL"/>
-                                    <outlet property="imageView" destination="SP8-AW-Azb" id="RMg-yp-3VF"/>
+                                    <outlet property="truckImageView" destination="SP8-AW-Azb" id="lLW-jq-qgO"/>
                                     <outlet property="truckName" destination="LlC-Hy-fMi" id="XmU-7m-h9K"/>
+                                    <outlet property="truckNameLabel" destination="LlC-Hy-fMi" id="ogy-H1-j4n"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -146,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="3226" y="974"/>
         </scene>
-        <!--Item-->
+        <!--Account-->
         <scene sceneID="JCJ-j0-fii">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LTN-Fw-7Ed" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Fd2-ta-zue"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="Fd2-ta-zue"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="0hg-zB-imo">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -168,5 +169,6 @@
     </scenes>
     <resources>
         <image name="map" catalog="system" width="64" height="56"/>
+        <image name="person" catalog="system" width="64" height="58"/>
     </resources>
 </document>

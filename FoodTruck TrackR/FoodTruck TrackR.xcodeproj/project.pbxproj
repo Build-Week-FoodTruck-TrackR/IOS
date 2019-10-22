@@ -39,6 +39,7 @@
 		DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D1235F942400599244 /* ConsumerController.swift */; };
 		DDBD82D4235F943800599244 /* VendorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D3235F943800599244 /* VendorController.swift */; };
 		DDBD82D6235FB74E00599244 /* VendorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */; };
+		DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D7235FC68B00599244 /* SearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		DDBD82D1235F942400599244 /* ConsumerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerController.swift; sourceTree = "<group>"; };
 		DDBD82D3235F943800599244 /* VendorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorController.swift; sourceTree = "<group>"; };
 		DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTableViewCell.swift; sourceTree = "<group>"; };
+		DDBD82D7235FC68B00599244 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				DDBD82CF235F941000599244 /* TruckController.swift */,
 				DDBD82D1235F942400599244 /* ConsumerController.swift */,
 				DDBD82D3235F943800599244 /* VendorController.swift */,
+				DDBD82D7235FC68B00599244 /* SearchController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				0EAC1940235E669C00CD9345 /* Location+Convenience.swift in Sources */,
 				DDBD82CE235F730800599244 /* MainTableViewController.swift in Sources */,
 				0E76F37D235AD2C9004D4306 /* ConsumerRepresentation.swift in Sources */,
+				DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */,
 				DDBD82D4235F943800599244 /* VendorController.swift in Sources */,
 				DD2875BE235E52910096E0E1 /* Truck+Convenience.swift in Sources */,
 				0EAC1944235E6E5F00CD9345 /* LocationRepresentation.swift in Sources */,
