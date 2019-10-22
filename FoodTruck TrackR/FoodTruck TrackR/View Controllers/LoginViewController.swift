@@ -15,7 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    var isLogin: Bool = false
+    var isVendor: Bool = false
+    let userController = UserController.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,39 +41,33 @@ class LoginViewController: UIViewController {
     }
     
     private func logIn() {
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    private func signUp() {
-        
-        dismiss(animated: true, completion: nil)
+//        guard let username = usernameTextField.text,
+//              let password = passwordTextField.text else { return }
+//        if isVendor {
+//            userController.logIn(user: VendorLogin(username: username, password: password) { error in
+//                if error == nil {
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+//            })
+//        } else {
+//            userController.logIn(user: ConsumerLogin(username: username, password: password) { error in
+//                if error == nil {
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+//            })
+//        }
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        if isLogin {
-            logIn()
-        } else {
-            signUp()
-        }
+        logIn()
     }
     
     @IBAction func segControlAction(_ sender: UISegmentedControl) {
         switch loginSegmentedControl.selectedSegmentIndex {
         case 0:
-            UIView.animate(withDuration: 0.5) {
-                self.loginButton.setTitle("Log In", for: .normal)
-                self.title = "Log In"
-                self.emailTextField.isHidden = true
-            }
-            isLogin = true
+            isVendor = false
         case 1:
-            UIView.animate(withDuration: 0.5) {
-                self.loginButton.setTitle("Sign Up", for: .normal)
-                self.title = "Sign Up"
-                self.emailTextField.isHidden = false
-            }
-            isLogin = false
+            isVendor = true
         default:
             break
         }
