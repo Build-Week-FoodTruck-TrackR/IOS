@@ -45,12 +45,6 @@
         <relationship name="trucksOwned" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Truck" inverseName="vendor" inverseEntity="Truck"/>
     </entity>
     <elements>
-        <element name="Consumer" positionX="-45" positionY="0" width="128" height="118"/>
-        <element name="ConsumerRating" positionX="-18" positionY="54" width="128" height="103"/>
-        <element name="Location" positionX="18" positionY="90" width="128" height="88"/>
-        <element name="MenuItem" positionX="0" positionY="81" width="128" height="133"/>
-        <element name="MenuPhoto" positionX="36" positionY="135" width="128" height="73"/>
-        <element name="Truck" positionX="-36" positionY="45" width="128" height="133"/>
-        <element name="Vendor" positionX="-45" positionY="27" width="128" height="103"/>
+        <element name="User" positionX="-45" positionY="0" width="128" height="88"/>
     </elements>
 </model>
