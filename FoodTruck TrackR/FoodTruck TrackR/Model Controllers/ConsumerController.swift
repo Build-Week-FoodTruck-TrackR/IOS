@@ -118,31 +118,19 @@ class ConsumerController {
 				NSLog("Response status code is not 200. Status code: \(response.statusCode)")
 			}
 			
-			if let error = error {
-				NSLog("Error verifying user: \(error)")
-				completion(.otherError(error))
-				return
-			}
-			
-			guard let data = data else {
-				NSLog("No data returned from data task")
-				completion(.noData)
-				return
-			}
-			
 			let jsonDecoder = JSONDecoder()
 			do {
-				let result = try jsonDecoder.decode(ConsumerRepresentation.self, from: data)
+				let result = try jsonDecoder.decode(ReturnedLoginConsumer.self, from: data)
 				self.token = result.password
 				self.user = user
 				// TODO: Create new Background thread
-				let context = CoreDataStack.shared.mainContext
+//				let context = CoreDataStack.shared.mainContext
 				
-				context.performAndWait {
-					_ = Consumer(user: result)
-				}
-				
-				self.saveToPersistentStore()
+//				context.performAndWait {
+//					_ = Consumer(user: result) // TODO: create CoreData object from representation
+//				}
+//
+//				self.saveToPersistentStore()
 				if self.token != nil {
 					completion(nil)
 				}
