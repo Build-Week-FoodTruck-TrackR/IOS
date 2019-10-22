@@ -36,7 +36,7 @@ class SignUpViewController: UIViewController {
 				}
 			}
 		} else if (vendorSwitch.isOn) {
-			vendorController.register(user: VendorSignup(username: username, password: password, email: email)) { error /Users/percyngan/Developer/Lambda/IOS9/IOS10/BW2/IOS/FoodTruck TrackR/FoodTruck TrackR/CoreData/CoreDataStack.swiftin
+			vendorController.register(user: VendorSignup(username: username, password: password, email: email)) { error in
 				if error == nil {
 					DispatchQueue.main.async {
 						self.dismiss(animated: true, completion: nil)
