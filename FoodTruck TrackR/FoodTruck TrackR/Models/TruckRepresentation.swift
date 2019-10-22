@@ -13,4 +13,5 @@ struct TruckRepresentation: Codable {
     var imageOfTruck: String
     var customerRatings: [CustomerRatingsRepresentaion]
     var customerRatingAvg: Double
+	var truckName: String
 }
