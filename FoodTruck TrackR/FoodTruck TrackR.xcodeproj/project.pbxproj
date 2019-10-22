@@ -15,7 +15,6 @@
 		0E76F36A235AAD6D004D4306 /* FoodTruck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F368235AAD6D004D4306 /* FoodTruck.xcdatamodeld */; };
 		0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F36B235AAD92004D4306 /* CoreDataStack.swift */; };
 		0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F371235AB040004D4306 /* UIColor+Extension.swift */; };
-		0E76F377235AD274004D4306 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F376235AD274004D4306 /* UserController.swift */; };
 		0E76F379235AD27E004D4306 /* Consumer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F378235AD27E004D4306 /* Consumer+Convenience.swift */; };
 		0E76F37D235AD2C9004D4306 /* ConsumerRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F37C235AD2C9004D4306 /* ConsumerRepresentation.swift */; };
 		0E76F37F235BA677004D4306 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F37E235BA677004D4306 /* Map.storyboard */; };
@@ -52,7 +51,6 @@
 		0E76F369235AAD6D004D4306 /* FoodTruck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FoodTruck.xcdatamodel; sourceTree = "<group>"; };
 		0E76F36B235AAD92004D4306 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		0E76F371235AB040004D4306 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		0E76F376235AD274004D4306 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		0E76F378235AD27E004D4306 /* Consumer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Consumer+Convenience.swift"; sourceTree = "<group>"; };
 		0E76F37C235AD2C9004D4306 /* ConsumerRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerRepresentation.swift; sourceTree = "<group>"; };
 		0E76F37E235BA677004D4306 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 		0E76F37B235AD28B004D4306 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0E76F376235AD274004D4306 /* UserController.swift */,
 				DDBD82CF235F941000599244 /* TruckController.swift */,
 				DDBD82D1235F942400599244 /* ConsumerController.swift */,
 				DDBD82D3235F943800599244 /* VendorController.swift */,
@@ -308,9 +305,7 @@
 				DD2875C2235E52D20096E0E1 /* ConsumerRating+Convenience.swift in Sources */,
 				0EAC193E235E664D00CD9345 /* MenuPhoto+Convenience.swift in Sources */,
 				0EAC1942235E6DB800CD9345 /* VendorRepresentation.swift in Sources */,
-				0E76F377235AD274004D4306 /* UserController.swift in Sources */,
 				0E76F357235A7DA1004D4306 /* SceneDelegate.swift in Sources */,
-				0E76F38C235C2B52004D4306 /* AccountsVC.swift in Sources */,
 				0EAC1970235F8FB400CD9345 /* SignUpViewController.swift in Sources */,
 				0E76F36A235AAD6D004D4306 /* FoodTruck.xcdatamodeld in Sources */,
 				0E76F385235C07A7004D4306 /* LoginViewController.swift in Sources */,
