@@ -10,6 +10,12 @@ import UIKit
 
 class VendorTableViewCell: UITableViewCell {
 
+	@IBOutlet weak var imageView: UIImageView!
+	@IBOutlet weak var truckNameLabel: UILabel!
+	@IBOutlet weak var cusineTypeLabel: UILabel!
+	@IBOutlet weak var customerRatingLabel: UILabel!
+	@IBOutlet weak var AvgCustomerRatingLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
