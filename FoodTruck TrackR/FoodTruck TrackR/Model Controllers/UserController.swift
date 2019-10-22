@@ -19,7 +19,3 @@ class UserController {
     
 }
 
-class BigDaady {
-    
-    
-}

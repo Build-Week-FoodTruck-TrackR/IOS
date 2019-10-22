@@ -1,66 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DRj-pS-M8F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DRj-pS-M8F">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--FoodTruck TrackR-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Accounts Table View Controller-->
+        <scene sceneID="FKz-eZ-5eg">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FoodTruckViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="m5w-77-14F" customClass="AccountsTableViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iVN-NA-Ydw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="FoodTruck TrackR" id="ber-9R-3Xh">
-                        <barButtonItem key="rightBarButtonItem" title="Modal" id="b4n-rd-Zq7">
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jic-Lg-AFV">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jic-Lg-AFV" id="96W-at-btY">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="m5w-77-14F" id="7Ta-qn-w1e"/>
+                            <outlet property="delegate" destination="m5w-77-14F" id="hKE-bc-Gza"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="CaQ-Et-38h"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="htp-yG-WLu">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="5JX-e1-EEg">
                             <connections>
-                                <segue destination="ETW-Qs-4ae" kind="presentation" identifier="LoginModalSegue" id="thL-ag-OSu"/>
+                                <segue destination="ETW-Qs-4ae" kind="presentation" identifier="LoginModalSegue" id="B7Q-DU-SaH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Em0-7C-1Tl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2446" y="974"/>
-        </scene>
-        <!--Account-->
-        <scene sceneID="tLP-GN-7LM">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nYB-8V-ZSG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" largeContentSizeImage="person" id="jIC-MY-3eC"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ZJH-rt-xya">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ybb-sO-FhM"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8WJ-Dl-VY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1536" y="974"/>
+            <point key="canvasLocation" x="2471" y="974"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wVQ-vY-cJF">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="DRj-pS-M8F" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bQ1-kX-eTs"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rfg-K3-jcf">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="nYB-8V-ZSG" kind="relationship" relationship="viewControllers" id="1uF-Y2-7En"/>
                         <segue destination="Czf-xt-9ie" kind="relationship" relationship="viewControllers" id="ZR8-xY-ydn"/>
+                        <segue destination="LTN-Fw-7Ed" kind="relationship" relationship="viewControllers" id="0l7-N5-t9C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDL-tk-fOJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -83,7 +81,26 @@
                 <viewControllerPlaceholder storyboardName="LoginAndSignup" id="ETW-Qs-4ae" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYA-Vw-gcn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="1458"/>
+            <point key="canvasLocation" x="3226" y="974"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="JCJ-j0-fii">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LTN-Fw-7Ed" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Fd2-ta-zue"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="0hg-zB-imo">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="m5w-77-14F" kind="relationship" relationship="rootViewController" id="5O4-k6-JQD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FbU-Ta-1wE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1649" y="974"/>
         </scene>
     </scenes>
     <resources>
