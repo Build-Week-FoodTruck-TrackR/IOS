@@ -15,7 +15,7 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-let baseURL = URL(string: "https://foodtruck-2271c.firebaseio.com/")!
+let baseURL = URL(string: "https://food-truck-finder-rj.herokuapp.com/")!
 
 class UserController {
     var user: Any?
