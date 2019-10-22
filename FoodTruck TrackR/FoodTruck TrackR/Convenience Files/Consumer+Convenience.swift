@@ -19,4 +19,13 @@ extension Consumer {
         self.email = email
 		self.favoriteTrucks = favoriteTrucksSet
     }
+    
+    convenience init(user: ConsumerRepresentation) {
+        var trucks: [Truck] = []
+        for truck in user.favoriteTrucks {
+            trucks.append(Truck(truck: truck))
+        }
+        
+        self.init(username: user.username, password: user.password, email: user.email, favoriteTrucks: trucks)
+    }
 }

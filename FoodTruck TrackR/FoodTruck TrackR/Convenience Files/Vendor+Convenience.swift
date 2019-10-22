@@ -18,4 +18,13 @@ extension Vendor {
         self.email = email
         self.trucksOwned = NSOrderedSet(object: trucksOwned)
     }
+    
+    convenience init(user: VendorRepresentation) {
+        var trucks: [Truck] = []
+        for truck in user.ownedTrucks {
+            trucks.append(Truck(truck: truck))
+        }
+        
+        self.init(username: user.username, password: user.password, email: user.email, trucksOwned: trucks)
+    }
 }
