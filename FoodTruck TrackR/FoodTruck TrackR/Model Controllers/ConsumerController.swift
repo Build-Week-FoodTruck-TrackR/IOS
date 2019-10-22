@@ -28,6 +28,7 @@ enum NetworkError: Error {
 let baseURL = URL(string: "https://food-truck-finder-rj.herokuapp.com/")!
 
 class ConsumerController {
+	
 	var user: Any?
 	var token: String?
 	
@@ -83,9 +84,7 @@ class ConsumerController {
 	}
 	
 	func logIn(user: ConsumerLogin, completion: @escaping(NetworkError?) -> Void) {
-		
-		
-		
+
 		let requestURL = baseURL.appendingPathComponent(user.username)
 		
 		var urlComponents = URLComponents(url: requestURL, resolvingAgainstBaseURL: true)
