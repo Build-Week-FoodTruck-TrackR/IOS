@@ -56,9 +56,8 @@
                                     <action selector="loginTapped:" destination="60I-QE-HL6" eventType="touchUpInside" id="xhi-m8-psl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSw-ao-cLz">
-                                <rect key="frame" x="67" y="820" width="281" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSw-ao-cLz">
+                                <rect key="frame" x="66.5" y="796" width="281" height="30"/>
                                 <state key="normal" title="Don't have an account yet? Sign up here!"/>
                                 <connections>
                                     <segue destination="8Wa-UK-TTE" kind="show" identifier="ShowSignUpSegue" id="VCn-IN-umQ"/>
@@ -68,8 +67,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ghx-Q5-5yx" firstAttribute="centerX" secondItem="4jL-tu-bkw" secondAttribute="centerX" id="9PE-LP-Ncl"/>
+                            <constraint firstItem="dSw-ao-cLz" firstAttribute="centerX" secondItem="4jL-tu-bkw" secondAttribute="centerX" id="BoS-Ad-7Dy"/>
                             <constraint firstItem="xxu-vp-d6S" firstAttribute="leading" secondItem="U2I-ic-liN" secondAttribute="leading" constant="20" id="DEE-SZ-tEg"/>
                             <constraint firstItem="ghx-Q5-5yx" firstAttribute="top" secondItem="xxu-vp-d6S" secondAttribute="bottom" constant="60" id="DpT-FV-4Vu"/>
+                            <constraint firstItem="U2I-ic-liN" firstAttribute="bottom" secondItem="dSw-ao-cLz" secondAttribute="bottom" constant="36" id="ETm-il-v61"/>
                             <constraint firstItem="U2I-ic-liN" firstAttribute="trailing" secondItem="xxu-vp-d6S" secondAttribute="trailing" constant="20" id="Z41-NW-rA3"/>
                             <constraint firstItem="xxu-vp-d6S" firstAttribute="top" secondItem="dSC-gc-9H9" secondAttribute="bottom" constant="38" id="dg3-Z9-Qnv"/>
                             <constraint firstItem="dSC-gc-9H9" firstAttribute="top" secondItem="U2I-ic-liN" secondAttribute="top" constant="20" id="doV-UG-wHX"/>
@@ -94,7 +95,7 @@
         <!--Sign Up-->
         <scene sceneID="G7A-AU-O8z">
             <objects>
-                <viewController id="8Wa-UK-TTE" sceneMemberID="viewController">
+                <viewController id="8Wa-UK-TTE" customClass="SignUpViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6S-C8-SvE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +127,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfc-3M-bBm">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zfc-3M-bBm">
                                                 <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                             </switch>
                                         </subviews>
@@ -142,6 +143,7 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="loginTapped:" destination="60I-QE-HL6" eventType="touchUpInside" id="WYv-gQ-NEZ"/>
+                                    <action selector="signUpTapped:" destination="8Wa-UK-TTE" eventType="touchUpInside" id="mn4-So-5Fj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -156,6 +158,12 @@
                         <viewLayoutGuide key="safeArea" id="Q8k-zS-bxG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="wg5-5U-SbW"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="86b-c8-KsY" id="j2Q-QA-yH5"/>
+                        <outlet property="passwordTextField" destination="F0I-nQ-6lk" id="a0P-hQ-7EF"/>
+                        <outlet property="usernameTextField" destination="IZS-H5-epb" id="n0x-D9-J1d"/>
+                        <outlet property="vendorSwitch" destination="Zfc-3M-bBm" id="tdm-nD-q6l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0lK-Lk-wGm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

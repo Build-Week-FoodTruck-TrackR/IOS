@@ -15,17 +15,28 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
+enum NetworkError: Error {
+    case encodingError
+    case badResponse
+    case otherError(Error)
+    case noData
+    case badDecode
+    case noAuth
+    case invalidInput
+}
+
 let baseURL = URL(string: "https://food-truck-finder-rj.herokuapp.com/")!
 
 class UserController {
     var user: Any?
-    
     var token: String?
     
     static let shared = UserController()
     
-    func signUpVendor(user: VendorSignup, completion: @escaping() -> Void) {
-        let requestURL = baseURL.appendingPathComponent(user.username)
+    func register(user: VendorSignup, completion: @escaping(NetworkError?) -> Void) {
+        let requestURL = baseURL
+                        .appendingPathComponent("api")
+                        .appendingPathComponent("register")
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -35,7 +46,7 @@ class UserController {
             request.httpBody = try jsonEncoder.encode(user)
         } catch {
             print("Error encoding user: \(error)")
-            completion()
+            completion(.encodingError)
             return
         }
         
@@ -43,22 +54,38 @@ class UserController {
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
                 print(response.statusCode)
-                completion()
+                completion(.badResponse)
                 return
             }
             
             if let error = error {
                 NSLog("Error signing up: \(error)")
-                completion()
+                completion(.otherError(error))
                 return
             }
             
-            completion()
+            guard let data = data else {
+                completion(.noData)
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(ReturnedVendor.self, from: data)
+                self.token = result.token
+            } catch {
+                NSLog("Could not decode object: \(error)")
+                completion(.badDecode)
+            }
+            
+            completion(nil)
         }.resume()
     }
     
-    func signUpVendor(user: ConsumerSignup, completion: @escaping() -> Void) {
-        let requestURL = baseURL.appendingPathComponent(user.username)
+    func register(user: ConsumerSignup, completion: @escaping(NetworkError?) -> Void) {
+        let requestURL = baseURL
+                        .appendingPathComponent("api")
+                        .appendingPathComponent("register")
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -68,7 +95,7 @@ class UserController {
             request.httpBody = try jsonEncoder.encode(user)
         } catch {
             print("Error encoding user: \(error)")
-            completion()
+            completion(.encodingError)
             return
         }
         
@@ -76,22 +103,34 @@ class UserController {
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
                 print(response.statusCode)
-                completion()
+                completion(.badResponse)
                 return
             }
             
             if let error = error {
                 NSLog("Error signing up: \(error)")
-                completion()
+                completion(.otherError(error))
                 return
             }
             
-            completion()
+            guard let data = data else {
+                completion(.noData)
+                return
+            }
+            
+            do {
+                let result = try JSONDecoder().decode(ReturnedConsumer.self, from: data)
+                self.token = result.token
+            } catch {
+                NSLog("Could not decode object: \(error)")
+                completion(.badDecode)
+            }
+            
+            completion(nil)
         }.resume()
     }
     
-    
-    func logIn(user: Any, completion: @escaping() -> Void) {
+    func logIn(user: Any, completion: @escaping(NetworkError?) -> Void) {
         
         if let user = user as? VendorLogin {
             let requestURL = baseURL.appendingPathComponent(user.username)
@@ -103,7 +142,7 @@ class UserController {
             urlComponents?.queryItems = [grantTypeQuery, usernameQuery, passwordQuery]
             
             guard let url = urlComponents?.url else {
-                completion()
+                completion(.invalidInput)
                 return
             }
             var request = URLRequest(url: url)
@@ -129,13 +168,13 @@ class UserController {
                 
                 if let error = error {
                     NSLog("Error verifying user: \(error)")
-                    completion()
+                    completion(.otherError(error))
                     return
                 }
                 
                 guard let data = data else {
                     NSLog("No data returned from data task")
-                    completion()
+                    completion(.noData)
                     return
                 }
                 
@@ -153,11 +192,11 @@ class UserController {
                     
                     self.saveToPersistentStore()
                     if self.token != nil {
-                        completion()
+                        completion(nil)
                     }
                 } catch {
                     NSLog("Error decoding data/token: \(error)")
-                    completion()
+                    completion(.badDecode)
                     return
                 }
             }.resume()
@@ -171,7 +210,7 @@ class UserController {
             urlComponents?.queryItems = [grantTypeQuery, usernameQuery, passwordQuery]
             
             guard let url = urlComponents?.url else {
-                completion()
+                completion(.invalidInput)
                 return
             }
             var request = URLRequest(url: url)
@@ -197,13 +236,13 @@ class UserController {
                 
                 if let error = error {
                     NSLog("Error verifying user: \(error)")
-                    completion()
+                    completion(.otherError(error))
                     return
                 }
                 
                 guard let data = data else {
                     NSLog("No data returned from data task")
-                    completion()
+                    completion(.noData)
                     return
                 }
                 
@@ -221,11 +260,11 @@ class UserController {
                     
                     self.saveToPersistentStore()
                     if self.token != nil {
-                        completion()
+                        completion(nil)
                     }
                 } catch {
                     NSLog("Error decoding data/token: \(error)")
-                    completion()
+                    completion(.badDecode)
                     return
                 }
             }.resume()
