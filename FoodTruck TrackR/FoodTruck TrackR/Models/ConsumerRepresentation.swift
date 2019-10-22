@@ -16,6 +16,16 @@ struct ConsumerRepresentation: Codable {
     var favoriteTrucks: [TruckRepresentation]
 }
 
+struct ReturnedConsumer: Codable {
+    var user: ReturnedUser
+    var token: String?
+}
+
+struct ReturnedUser: Codable {
+    var username: String
+    var id: Int
+}
+
 struct ConsumerLogin: Codable { // To log in the user only needs to input a username and password
     var username: String
     var password: String

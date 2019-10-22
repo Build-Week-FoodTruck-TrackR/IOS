@@ -13,6 +13,12 @@ struct VendorRepresentation: Codable {
     var password: String
     var email: String
     var ownedTrucks: [TruckRepresentation]
+    var token: String?
+}
+
+struct ReturnedVendor: Codable {
+    var user: ReturnedUser
+    var token: String?
 }
 
 struct VendorLogin: Codable {
