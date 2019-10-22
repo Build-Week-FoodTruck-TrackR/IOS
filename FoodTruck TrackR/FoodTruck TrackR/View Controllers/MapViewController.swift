@@ -134,7 +134,9 @@ class MapViewController: UIViewController {
     private func checkLocationServices() { // Check to make sure Location Services are active
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
-            checkLocationAuthorization()
+            if (checkLocationAuthorization()) {
+                centerViewOnUser()
+            }
             locationManager.startUpdatingLocation()
         } else { // Alert user if Location Services are disabled and instruct on how to fix
             let alert = UIAlertController(title: "Location Services Disabled", message: "It looks like location services is disabled. Please enable it in settings.", preferredStyle: .alert)
@@ -152,11 +154,11 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func checkLocationAuthorization() { // Check to see if user has authorized location tracking in app
+    @discardableResult private func checkLocationAuthorization() -> Bool { // Check to see if user has authorized location tracking in app
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways, .authorizedWhenInUse: // "Allow"
             foodTruckMapView.showsUserLocation = true // Only show location if user has allowed location tracking
-            centerViewOnUser()
+            return true
         case .denied: // "Don't Allow"
             let alert = UIAlertController(title: "Location Permissions Disabled", message: "It looks like location permission are disabled. Please enable them in settings.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -171,6 +173,7 @@ class MapViewController: UIViewController {
             NSLog("Location services/permission status unknown. Please update to latest version of the app!")
             break
         }
+        return false
     }
     
 

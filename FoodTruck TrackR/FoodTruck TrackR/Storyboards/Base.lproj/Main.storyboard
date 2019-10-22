@@ -104,6 +104,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="map" catalog="system" width="64" height="56"/>
+        <image name="map" catalog="system" width="64" height="58"/>
+        <image name="person" catalog="system" width="64" height="60"/>
     </resources>
 </document>
