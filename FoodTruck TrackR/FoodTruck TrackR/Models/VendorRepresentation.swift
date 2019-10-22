@@ -16,6 +16,13 @@ struct VendorRepresentation: Codable {
     var token: String?
 }
 
+struct ReturnedLoginVendor: Codable {
+    var username: String
+    var password: String
+    var email: String
+    var id: Int
+}
+
 struct ReturnedVendor: Codable {
     var user: ReturnedUser
     var token: String?

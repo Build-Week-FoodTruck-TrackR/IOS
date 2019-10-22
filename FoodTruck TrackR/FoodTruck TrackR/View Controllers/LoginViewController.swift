@@ -42,23 +42,33 @@ class LoginViewController: UIViewController {
 		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
 	}
 
-//	@IBAction func loginTapped(_ sender: UIButton) {
-//		guard let username = usernameTextField.text,
-//			let password = passwordTextField.text else { return }
-//		if isVendor {
-//			vendorController.logIn(user: VendorLogin(username: username, password: password) { error in
-//				if error == nil {
-//					self.dismiss(animated: true, completion: nil)
-//				}
-//			})
-//		} else {
-//			consumerController.logIn(user: ConsumerLogin(username: username, password: password) { error in
-//				if error == nil {
-//					self.dismiss(animated: true, completion: nil)
-//				}
-//			})
-//		}
-//	}
+	@IBAction func loginTapped(_ sender: UIButton) {
+		guard let username = usernameTextField.text,
+			let password = passwordTextField.text else { return }
+		if isVendor {
+            vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
+                if let error = error {
+                    NSLog("Error returned when trying to log in: \(error)")
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+		} else {
+            consumerController.logIn(user: ConsumerLogin(username: username, password: password)) { error in
+                if let error = error {
+                    NSLog("Error returned when trying to log in: \(error)")
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+		}
+	}
 
 	@IBAction func segControlAction(_ sender: UISegmentedControl) {
 		switch loginSegmentedControl.selectedSegmentIndex {

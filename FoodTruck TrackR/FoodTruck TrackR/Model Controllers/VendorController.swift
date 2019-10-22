@@ -63,38 +63,28 @@ class VendorController {
 	}
 
 	func logIn(user: VendorLogin, completion: @escaping(NetworkError?) -> Void) {
+		let requestURL = baseURL
+                        .appendingPathComponent("api")
+                        .appendingPathComponent("login")
 
-		let requestURL = baseURL.appendingPathComponent(user.username)
-
-		var urlComponents = URLComponents(url: requestURL, resolvingAgainstBaseURL: true)
-		let grantTypeQuery = URLQueryItem(name: "grant_type", value: "password")
-		let usernameQuery = URLQueryItem(name: "username", value: "\(user.username)")
-		let passwordQuery = URLQueryItem(name: "password", value: "\(user.password)")
-		urlComponents?.queryItems = [grantTypeQuery, usernameQuery, passwordQuery]
-
-		guard let url = urlComponents?.url else {
-			completion(.invalidInput)
-			return
-		}
-		var request = URLRequest(url: url)
+		var request = URLRequest(url: requestURL)
 		request.httpMethod = HTTPMethod.post.rawValue
-		request.setValue("basic bGFtYmRhLWNsaWVudDpsYW1iZGEtc2VjcmV0", forHTTPHeaderField: "Authorization")
-		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-		// request.httpBody = componentString?.data(using: .utf8)
-
-		let jsonEncoder = JSONEncoder()
-		do {
-			let userData = try jsonEncoder.encode(user)
-			request.httpBody = userData
-		} catch {
-			NSLog("Error encoding userData: \(error)")
-		}
+        do {
+            request.httpBody = try JSONEncoder().encode(user)
+        } catch {
+            NSLog("Error encoding userData: \(error)")
+            completion(.encodingError)
+            return
+        }
 
 		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			if let response = response as? HTTPURLResponse,
-				response.statusCode != 200 {
-				NSLog("Response status code is not 200. Status code: \(response.statusCode)")
+				response.statusCode != 201 && response.statusCode != 200 {
+				NSLog("Response status code is not 200 or 201. Status code: \(response.statusCode)")
+                completion(.badResponse)
+                return
 			}
 
 			if let error = error {
@@ -111,17 +101,17 @@ class VendorController {
 
 			let jsonDecoder = JSONDecoder()
 			do {
-				let result = try jsonDecoder.decode(VendorRepresentation.self, from: data)
+				let result = try jsonDecoder.decode(ReturnedLoginVendor.self, from: data)
 				self.token = result.password
 				self.user = user
 				// TODO: Create new Background thread
-				let context = CoreDataStack.shared.mainContext
+//  				let context = CoreDataStack.shared.mainContext
 
-				context.performAndWait {
-					_ = Vendor(user: result)
-				}
-
-				self.saveToPersistentStore()
+//				context.performAndWait {
+//                   _ = Vendor(user: result) // TODO: create CoreData object from representation
+//				}
+//
+//				self.saveToPersistentStore()
 				if self.token != nil {
 					completion(nil)
 				}
