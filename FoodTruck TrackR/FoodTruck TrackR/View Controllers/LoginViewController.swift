@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var loginButton: UIButton!
-	var isVendor: Bool = false
+	static var isVendor: Bool = false
 
 	let vendorController = VendorController.shared
 	let consumerController = ConsumerController.shared
@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
 	@IBAction func loginTapped(_ sender: UIButton) {
 		guard let username = usernameTextField.text,
 			let password = passwordTextField.text else { return }
-		if isVendor {
+        if LoginViewController.isVendor {
             vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
                 if let error: NetworkError = error {
                     NSLog("Error returned when trying to log in: \(error)")
@@ -86,9 +86,9 @@ class LoginViewController: UIViewController {
 	@IBAction func segControlAction(_ sender: UISegmentedControl) {
 		switch loginSegmentedControl.selectedSegmentIndex {
 		case 0:
-			isVendor = false
+            LoginViewController.isVendor = false
 		case 1:
-			isVendor = true
+            LoginViewController.isVendor = true
 		default:
 			break
 		}

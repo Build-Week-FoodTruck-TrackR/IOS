@@ -140,9 +140,9 @@ class ConsumerController {
         }.resume()
     }
     
-    func updateLocation(longitute: Double, latitude: Double) {
-        let location = LocationRepresentaion(longitute: longitute, latitude: latitude)
-        
+    func updateLocation(for consumer: Consumer, longitude: Double, latitude: Double) {
+        let location = Location(longitude: longitude, latitude: latitude)
+        consumer.currentLocation = location
     }
     
     func addFavoriteTruck(truck: TruckRepresentation) {
