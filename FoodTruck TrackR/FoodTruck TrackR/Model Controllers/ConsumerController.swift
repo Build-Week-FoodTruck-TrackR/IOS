@@ -38,7 +38,7 @@ class ConsumerController {
         let userID = UUID()
         let requestURL = baseURL
                         .appendingPathComponent("Consumer")
-                        .appendingPathComponent(userID)
+            .appendingPathComponent(userID.uuidString)
 
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
