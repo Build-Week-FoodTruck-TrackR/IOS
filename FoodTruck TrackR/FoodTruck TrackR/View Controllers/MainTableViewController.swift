@@ -36,6 +36,8 @@ class MainTableViewController: UITableViewController {
 
 			self.clearsSelectionOnViewWillAppear = false
 			self.navigationItem.rightBarButtonItem = self.editButtonItem
+            
+            checkForBearerToken()
 		}
 
 		override func didReceiveMemoryWarning() {
@@ -44,6 +46,12 @@ class MainTableViewController: UITableViewController {
 
 
 	// MARK: - Table view data source
+    
+    private func checkForBearerToken() {
+        if vendorController.token == nil {
+            performSegue(withIdentifier: "LoginModalSegue", sender: self)
+        }
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 

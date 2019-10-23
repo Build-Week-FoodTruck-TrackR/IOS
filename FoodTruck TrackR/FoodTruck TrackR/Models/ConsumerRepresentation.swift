@@ -14,6 +14,7 @@ struct ConsumerRepresentation: Codable {
     var email: String
     var currentLocation: LocationRepresentaion
     var favoriteTrucks: [TruckRepresentation]
+    var identifier: UUID
 }
 
 struct ReturnedLoginConsumer: Codable {
