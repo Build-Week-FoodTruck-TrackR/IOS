@@ -51,8 +51,8 @@ class VendorController {
 			}
 
 			do {
-				let result = try JSONDecoder().decode(ReturnedVendor.self, from: data)
-				self.token = result.token
+			//	let result = try JSONDecoder().decode(ReturnedVendor.self, from: data)
+				
 			} catch {
 				NSLog("Could not decode object: \(error)")
 				completion(.badDecode)
