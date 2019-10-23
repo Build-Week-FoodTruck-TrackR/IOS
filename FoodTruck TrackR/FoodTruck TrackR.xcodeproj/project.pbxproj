@@ -38,6 +38,7 @@
 		DD2875BE235E52910096E0E1 /* Truck+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875BD235E52910096E0E1 /* Truck+Convenience.swift */; };
 		DD2875C0235E52B20096E0E1 /* MenuItem+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */; };
 		DD2875C2235E52D20096E0E1 /* ConsumerRating+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */; };
+		DDAA50312360968D00A4F6EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAA50302360968D00A4F6EE /* GoogleService-Info.plist */; };
 		DDBD82CE235F730800599244 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CD235F730700599244 /* MainTableViewController.swift */; };
 		DDBD82D0235F941000599244 /* TruckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CF235F941000599244 /* TruckController.swift */; };
 		DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D1235F942400599244 /* ConsumerController.swift */; };
@@ -109,6 +110,8 @@
 		DD2875BD235E52910096E0E1 /* Truck+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Truck+Convenience.swift"; sourceTree = "<group>"; };
 		DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItem+Convenience.swift"; sourceTree = "<group>"; };
 		DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumerRating+Convenience.swift"; sourceTree = "<group>"; };
+		DDAA50302360968D00A4F6EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DDAA50322360969500A4F6EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDBD82CD235F730700599244 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		DDBD82CF235F941000599244 /* TruckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckController.swift; sourceTree = "<group>"; };
 		DDBD82D1235F942400599244 /* ConsumerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerController.swift; sourceTree = "<group>"; };
@@ -171,6 +174,7 @@
 		0E76F353235A7DA1004D4306 /* FoodTruck TrackR */ = {
 			isa = PBXGroup;
 			children = (
+				DDAA50302360968D00A4F6EE /* GoogleService-Info.plist */,
 				0E76F36F235AAE52004D4306 /* View Controllers */,
 				0E76F388235C26F5004D4306 /* Views */,
 				DD2875C3235E52DE0096E0E1 /* Convenience Files */,
@@ -196,6 +200,7 @@
 		0E76F36E235AAE41004D4306 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DDAA50322360969500A4F6EE /* GoogleService-Info.plist */,
 				0E76F354235A7DA1004D4306 /* AppDelegate.swift */,
 				0E76F356235A7DA1004D4306 /* SceneDelegate.swift */,
 				0E76F35D235A7DA5004D4306 /* Assets.xcassets */,
@@ -295,7 +300,6 @@
 				F169B797BECC605CE867AF97 /* Pods-FoodTruck TrackRTests.debug.xcconfig */,
 				78F353A803C310CA3B0E05C4 /* Pods-FoodTruck TrackRTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -334,6 +338,7 @@
 				0E76F34D235A7DA1004D4306 /* Sources */,
 				0E76F34E235A7DA1004D4306 /* Frameworks */,
 				0E76F34F235A7DA1004D4306 /* Resources */,
+				8407B41D02314DE3CD217BA8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -371,6 +376,7 @@
 				0EC430A4235FF36200A984A2 /* Sources */,
 				0EC430A5235FF36200A984A2 /* Frameworks */,
 				0EC430A6235FF36200A984A2 /* Resources */,
+				58ACD03741E0317BD549D161 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -435,6 +441,7 @@
 				0E76F35C235A7DA1004D4306 /* Main.storyboard in Resources */,
 				0E76F37F235BA677004D4306 /* Map.storyboard in Resources */,
 				0E76F383235C0211004D4306 /* LoginAndSignup.storyboard in Resources */,
+				DDAA50312360968D00A4F6EE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +504,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58ACD03741E0317BD549D161 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodTruck TrackR-FoodTruck TrackRUITests/Pods-FoodTruck TrackR-FoodTruck TrackRUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodTruck TrackR-FoodTruck TrackRUITests/Pods-FoodTruck TrackR-FoodTruck TrackRUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodTruck TrackR-FoodTruck TrackRUITests/Pods-FoodTruck TrackR-FoodTruck TrackRUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8407B41D02314DE3CD217BA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodTruck TrackR/Pods-FoodTruck TrackR-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodTruck TrackR/Pods-FoodTruck TrackR-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodTruck TrackR/Pods-FoodTruck TrackR-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FB8E6662E40D2ED38214BF22 /* [CP] Check Pods Manifest.lock */ = {
