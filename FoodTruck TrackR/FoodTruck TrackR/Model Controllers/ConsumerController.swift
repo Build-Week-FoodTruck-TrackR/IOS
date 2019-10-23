@@ -74,12 +74,13 @@ class ConsumerController {
 
             do {
                 let result = try JSONDecoder().decode(ConsumerRepresentation.self, from: data)
+                self.user = result
+                self.token = result.password
+                completion(nil)
             } catch {
                 NSLog("Could not decode object: \(error)")
                 completion(.badDecode)
             }
-
-            completion(nil)
         }.resume()
     }
 
@@ -115,32 +116,27 @@ class ConsumerController {
                 completion(.noData)
                 return
             }
-
+            
             let jsonDecoder = JSONDecoder()
-         
-           do {
-                           let result = try jsonDecoder.decode(ConsumerRepresentation.self, from: data)
-                           self.user = result
-                           print("I did it!")
-                           // TODO: Create new Background thread
-           //                let context = CoreDataStack.shared.mainContext
-
-           //                context.performAndWait {
-           //                    _ = Consumer(user: result) // TODO: create CoreData object from representation
-           //                }
-           //
-           //                self.saveToPersistentStore()
-                       } catch {
-                           do {
-                               let result = try jsonDecoder.decode(ConsumerLoginRepresenataion.self, from: data)
-                               self.user = result
-                               print("It's working")
-                           } catch {
-                               NSLog("Error decoding data/token: \(error)")
-                               completion(.badDecode)
-                               return
-                           }
-                       }
+            
+            do {
+                let result = try jsonDecoder.decode(ConsumerRepresentation.self, from: data)
+                self.user = result
+                self.token = result.password
+                completion(nil)
+                // TODO: Create new Background thread
+//                let context = CoreDataStack.shared.mainContext
+//
+//                context.performAndWait {
+//                    _ = Consumer(user: result) // TODO: create CoreData object from representation
+//                }
+//
+//                self.saveToPersistentStore()
+            } catch {
+                NSLog("Error decoding data/token: \(error)")
+                completion(.badDecode)
+                return
+            }
         }.resume()
     }
 
