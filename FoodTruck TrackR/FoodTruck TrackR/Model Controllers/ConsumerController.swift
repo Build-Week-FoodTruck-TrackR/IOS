@@ -36,16 +36,17 @@ class ConsumerController {
 
     func register(user: ConsumerSignup, completion: @escaping(NetworkError?) -> Void) {
         let requestURL = baseURL
-            .appendingPathComponent("api")
-            .appendingPathComponent("register")
-
+                        .appendingPathComponent("Consumer")
+                        .appendingPathComponent(user.username)
+                        .appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let jsonEncoder = JSONEncoder()
         do {
-            request.httpBody = try jsonEncoder.encode(user)
+            let consumerRep = ConsumerRepresentation(username: user.username, password: user.password, email: user.email, currentLocation: LocationRepresentaion(longitute: 0, latitude: 0), favoriteTrucks: [], identifier: UUID())
+            request.httpBody = try jsonEncoder.encode(consumerRep)
         } catch {
             print("Error encoding user: \(error)")
             completion(.encodingError)
@@ -72,45 +73,29 @@ class ConsumerController {
             }
 
             do {
-                let result = try JSONDecoder().decode(ReturnedConsumer.self, from: data)
-                self.token = result.token
+                let result = try JSONDecoder().decode(ConsumerRepresentation.self, from: data)
+                self.user = result
+                self.token = result.password
+                completion(nil)
             } catch {
                 NSLog("Could not decode object: \(error)")
                 completion(.badDecode)
             }
-
-            completion(nil)
         }.resume()
     }
 
     func logIn(user: ConsumerLogin, completion: @escaping(NetworkError?) -> Void) {
 
-        let requestURL = baseURL.appendingPathComponent(user.username)
+        let requestURL = baseURL.appendingPathComponent("Consumer")
+                                .appendingPathComponent(user.username)
+                                .appendingPathExtension("json")
+                                    
 
-        var urlComponents = URLComponents(url: requestURL, resolvingAgainstBaseURL: true)
-        let grantTypeQuery = URLQueryItem(name: "grant_type", value: "password")
-        let usernameQuery = URLQueryItem(name: "username", value: "\(user.username)")
-        let passwordQuery = URLQueryItem(name: "password", value: "\(user.password)")
-        urlComponents?.queryItems = [grantTypeQuery, usernameQuery, passwordQuery]
-
-        guard let url = urlComponents?.url else {
-            completion(.invalidInput)
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("basic bGFtYmRhLWNsaWVudDpsYW1iZGEtc2VjcmV0", forHTTPHeaderField: "Authorization")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         // request.httpBody = componentString?.data(using: .utf8)
-
-        let jsonEncoder = JSONEncoder()
-        do {
-            let userData = try jsonEncoder.encode(user)
-            request.httpBody = userData
-        } catch {
-            NSLog("Error encoding userData: \(error)")
-        }
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
@@ -131,23 +116,22 @@ class ConsumerController {
                 completion(.noData)
                 return
             }
-
+            
             let jsonDecoder = JSONDecoder()
+            
             do {
-                let result = try jsonDecoder.decode(ReturnedLoginConsumer.self, from: data)
+                let result = try jsonDecoder.decode(ConsumerRepresentation.self, from: data)
+                self.user = result
                 self.token = result.password
-                self.user = user
+                completion(nil)
                 // TODO: Create new Background thread
 //                let context = CoreDataStack.shared.mainContext
-
+//
 //                context.performAndWait {
 //                    _ = Consumer(user: result) // TODO: create CoreData object from representation
 //                }
 //
 //                self.saveToPersistentStore()
-                if self.token != nil {
-                    completion(nil)
-                }
             } catch {
                 NSLog("Error decoding data/token: \(error)")
                 completion(.badDecode)
