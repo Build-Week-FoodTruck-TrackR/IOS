@@ -10,9 +10,11 @@ import Foundation
 import CoreData
 
 extension Location {
-    convenience init(longitude: Double, latitude: Double, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(longitude: Double,
+                     latitude: Double,
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
-        
+
         self.longitude = longitude
         self.latitude = latitude
     }

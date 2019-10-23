@@ -18,11 +18,11 @@ class FoodTruckTableViewCell: UITableViewCell {
     
     var distanceAway: Double?
     
-    @IBOutlet weak var foodTruckImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var distanceAwayLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet private weak var foodTruckImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var distanceAwayLabel: UILabel!
+    @IBOutlet private weak var favoriteButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
