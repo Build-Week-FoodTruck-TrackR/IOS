@@ -28,6 +28,7 @@ enum NetworkError: Error {
 let baseURL = URL(string: "https://food-truck-finder-rj.herokuapp.com/")!
 
 class ConsumerController {
+	
 	var user: Any?
 	var token: String?
 	
@@ -83,41 +84,39 @@ class ConsumerController {
 	}
 	
 	func logIn(user: ConsumerLogin, completion: @escaping(NetworkError?) -> Void) {
-        let requestURL = baseURL
-                        .appendingPathComponent("api")
-                        .appendingPathComponent("login")
 
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
-            request.httpBody = try JSONEncoder().encode(user)
-        } catch {
-            NSLog("Error encoding userData: \(error)")
-            completion(.encodingError)
-            return
-        }
-
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 201 && response.statusCode != 200 {
-                NSLog("Response status code is not 200 or 201. Status code: \(response.statusCode)")
-                completion(.badResponse)
-                return
-            }
-
-            if let error = error {
-                NSLog("Error verifying user: \(error)")
-                completion(.otherError(error))
-                return
-            }
-
-            guard let data = data else {
-                NSLog("No data returned from data task")
-                completion(.noData)
-                return
-            }
+		let requestURL = baseURL.appendingPathComponent(user.username)
+		
+		var urlComponents = URLComponents(url: requestURL, resolvingAgainstBaseURL: true)
+		let grantTypeQuery = URLQueryItem(name: "grant_type", value: "password")
+		let usernameQuery = URLQueryItem(name: "username", value: "\(user.username)")
+		let passwordQuery = URLQueryItem(name: "password", value: "\(user.password)")
+		urlComponents?.queryItems = [grantTypeQuery, usernameQuery, passwordQuery]
+		
+		guard let url = urlComponents?.url else {
+			completion(.invalidInput)
+			return
+		}
+		var request = URLRequest(url: url)
+		request.httpMethod = HTTPMethod.post.rawValue
+		request.setValue("basic bGFtYmRhLWNsaWVudDpsYW1iZGEtc2VjcmV0", forHTTPHeaderField: "Authorization")
+		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+		
+		// request.httpBody = componentString?.data(using: .utf8)
+		
+		let jsonEncoder = JSONEncoder()
+		do {
+			let userData = try jsonEncoder.encode(user)
+			request.httpBody = userData
+		} catch {
+			NSLog("Error encoding userData: \(error)")
+		}
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			if let response = response as? HTTPURLResponse,
+				response.statusCode != 200 {
+				NSLog("Response status code is not 200. Status code: \(response.statusCode)")
+			}
 			
 			let jsonDecoder = JSONDecoder()
 			do {

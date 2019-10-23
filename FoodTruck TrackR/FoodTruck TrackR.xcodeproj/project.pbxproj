@@ -34,10 +34,12 @@
 		DD2875BE235E52910096E0E1 /* Truck+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875BD235E52910096E0E1 /* Truck+Convenience.swift */; };
 		DD2875C0235E52B20096E0E1 /* MenuItem+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */; };
 		DD2875C2235E52D20096E0E1 /* ConsumerRating+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */; };
-		DDBD82CE235F730800599244 /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CD235F730700599244 /* AccountsTableViewController.swift */; };
+		DDBD82CE235F730800599244 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CD235F730700599244 /* MainTableViewController.swift */; };
 		DDBD82D0235F941000599244 /* TruckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CF235F941000599244 /* TruckController.swift */; };
 		DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D1235F942400599244 /* ConsumerController.swift */; };
 		DDBD82D4235F943800599244 /* VendorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D3235F943800599244 /* VendorController.swift */; };
+		DDBD82D6235FB74E00599244 /* VendorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */; };
+		DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D7235FC68B00599244 /* SearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,10 +72,12 @@
 		DD2875BD235E52910096E0E1 /* Truck+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Truck+Convenience.swift"; sourceTree = "<group>"; };
 		DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItem+Convenience.swift"; sourceTree = "<group>"; };
 		DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumerRating+Convenience.swift"; sourceTree = "<group>"; };
-		DDBD82CD235F730700599244 /* AccountsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
+		DDBD82CD235F730700599244 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		DDBD82CF235F941000599244 /* TruckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckController.swift; sourceTree = "<group>"; };
 		DDBD82D1235F942400599244 /* ConsumerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerController.swift; sourceTree = "<group>"; };
 		DDBD82D3235F943800599244 /* VendorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorController.swift; sourceTree = "<group>"; };
+		DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTableViewCell.swift; sourceTree = "<group>"; };
+		DDBD82D7235FC68B00599244 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				0E76F380235BA835004D4306 /* MapViewController.swift */,
-				DDBD82CD235F730700599244 /* AccountsTableViewController.swift */,
 				0E76F384235C07A7004D4306 /* LoginViewController.swift */,
+				DDBD82CD235F730700599244 /* MainTableViewController.swift */,
 				0EAC196F235F8FB400CD9345 /* SignUpViewController.swift */,
 			);
 			path = "View Controllers";
@@ -188,6 +192,7 @@
 				DDBD82CF235F941000599244 /* TruckController.swift */,
 				DDBD82D1235F942400599244 /* ConsumerController.swift */,
 				DDBD82D3235F943800599244 /* VendorController.swift */,
+				DDBD82D7235FC68B00599244 /* SearchController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */,
+				DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,8 +294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EAC1940235E669C00CD9345 /* Location+Convenience.swift in Sources */,
-				DDBD82CE235F730800599244 /* AccountsTableViewController.swift in Sources */,
+				DDBD82CE235F730800599244 /* MainTableViewController.swift in Sources */,
 				0E76F37D235AD2C9004D4306 /* ConsumerRepresentation.swift in Sources */,
+				DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */,
 				DDBD82D4235F943800599244 /* VendorController.swift in Sources */,
 				DD2875BE235E52910096E0E1 /* Truck+Convenience.swift in Sources */,
 				0EAC1944235E6E5F00CD9345 /* LocationRepresentation.swift in Sources */,
@@ -311,6 +318,7 @@
 				0E76F385235C07A7004D4306 /* LoginViewController.swift in Sources */,
 				0E76F387235C26E8004D4306 /* FoodTruckTableViewCell.swift in Sources */,
 				DDBD82D0235F941000599244 /* TruckController.swift in Sources */,
+				DDBD82D6235FB74E00599244 /* VendorTableViewCell.swift in Sources */,
 				0EAC1946235E6E8D00CD9345 /* TruckRepresentation.swift in Sources */,
 				DD2875C0235E52B20096E0E1 /* MenuItem+Convenience.swift in Sources */,
 			);

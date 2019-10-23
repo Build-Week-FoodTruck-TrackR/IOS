@@ -6,22 +6,86 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Accounts Table View Controller-->
+        <!--Main Table View Controller-->
         <scene sceneID="FKz-eZ-5eg">
             <objects>
-                <tableViewController id="m5w-77-14F" customClass="AccountsTableViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="m5w-77-14F" customClass="MainTableViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iVN-NA-Ydw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jic-Lg-AFV">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TruckCell" rowHeight="100" id="jic-Lg-AFV" customClass="VendorTableViewCell" customModule="FoodTruck_TrackR" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jic-Lg-AFV" id="96W-at-btY">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="hub-4D-Wvy">
+                                            <rect key="frame" x="0.0" y="0.0" width="426" height="60"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SP8-AW-Azb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="SP8-AW-Azb" secondAttribute="height" multiplier="1:1" id="aLR-pd-qwu"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AmG-ua-RO3">
+                                                    <rect key="frame" x="122" y="0.0" width="89.5" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="truckName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlC-Hy-fMi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="89.5" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cuisineType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fO-1g-8YT">
+                                                            <rect key="frame" x="0.0" y="30" width="89.5" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sPC-Yg-Qbh">
+                                                    <rect key="frame" x="273.5" y="0.0" width="152.5" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="customerRating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dP-14-PXg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="121" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AvgCustomerRating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ke3-kI-56a">
+                                                            <rect key="frame" x="0.0" y="30" width="152.5" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="AmG-ua-RO3" secondAttribute="bottom" id="0Pj-OE-nut"/>
+                                                <constraint firstItem="AmG-ua-RO3" firstAttribute="leading" secondItem="SP8-AW-Azb" secondAttribute="trailing" constant="8" id="0uC-g4-wuP"/>
+                                                <constraint firstAttribute="bottom" secondItem="sPC-Yg-Qbh" secondAttribute="bottom" id="H5U-uS-Trg"/>
+                                                <constraint firstItem="sPC-Yg-Qbh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AmG-ua-RO3" secondAttribute="trailing" constant="8" id="Rg2-aQ-gUe"/>
+                                                <constraint firstItem="AmG-ua-RO3" firstAttribute="top" secondItem="hub-4D-Wvy" secondAttribute="top" id="RpU-0s-Fda"/>
+                                                <constraint firstAttribute="trailing" secondItem="sPC-Yg-Qbh" secondAttribute="trailing" id="baJ-di-4MP"/>
+                                                <constraint firstItem="sPC-Yg-Qbh" firstAttribute="top" secondItem="hub-4D-Wvy" secondAttribute="top" id="eJe-sX-Nwc"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="AvgCustomerRatingLabel" destination="ke3-kI-56a" id="4Lr-Ic-OKu"/>
+                                    <outlet property="cusineTypeLabel" destination="0fO-1g-8YT" id="Nd8-ZW-t0W"/>
+                                    <outlet property="customerRatingLabel" destination="5dP-14-PXg" id="fsv-6i-YAL"/>
+                                    <outlet property="truckImageView" destination="SP8-AW-Azb" id="lLW-jq-qgO"/>
+                                    <outlet property="truckName" destination="LlC-Hy-fMi" id="XmU-7m-h9K"/>
+                                    <outlet property="truckNameLabel" destination="LlC-Hy-fMi" id="ogy-H1-j4n"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -83,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="3226" y="974"/>
         </scene>
-        <!--Item-->
+        <!--Account-->
         <scene sceneID="JCJ-j0-fii">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LTN-Fw-7Ed" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Fd2-ta-zue"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="Fd2-ta-zue"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="0hg-zB-imo">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -104,7 +168,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="map" catalog="system" width="64" height="58"/>
-        <image name="person" catalog="system" width="64" height="60"/>
+        <image name="map" catalog="system" width="64" height="56"/>
+        <image name="person" catalog="system" width="64" height="58"/>
     </resources>
 </document>
