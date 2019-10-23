@@ -53,7 +53,12 @@ class TruckController {
         
         guard let location = truck.location, let imageOfTruck = truck.imageOfTruck, let name = truck.truckName, let id = truck.identifier else { return }
         
-        let truckRep = TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude, latitude: location.latitude), imageOfTruck: imageOfTruck, customerAvgRating: truck.customerAvgRating, truckName: name, identifier: id)
+        let truckRep = TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude,
+                                                                           latitude: location.latitude),
+                                           imageOfTruck: imageOfTruck,
+                                           customerAvgRating: truck.customerAvgRating,
+                                           truckName: name,
+                                           identifier: id)
         
         do {
             request.httpBody = try JSONEncoder().encode(truckRep)
@@ -63,7 +68,7 @@ class TruckController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("Error PUTting truck to server: \(error)")
                 completion(error)
@@ -86,7 +91,7 @@ class TruckController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = "DELETE"
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("Error deleting truck from server: \(error)")
                 completion(error)
@@ -97,11 +102,11 @@ class TruckController {
         }.resume()
     }
     
-    func fetchTrucksFromServer(completion: @escaping (([TruckRepresentation]?, Error?) -> Void) = { _,_ in }) {
+    func fetchTrucksFromServer(completion: @escaping (([TruckRepresentation]?, Error?) -> Void) = { _, _ in }) {
         
         let requestURL = baseURL.appendingPathExtension("json")
         
-        URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: requestURL) { data, _, error in
             
             if let error = error {
                 NSLog("Error fetching entries from server: \(error)")
@@ -116,7 +121,7 @@ class TruckController {
             }
 
             do {
-                let truckReps = try JSONDecoder().decode([String: TruckRepresentation].self, from: data).map({$0.value})
+                let truckReps = try JSONDecoder().decode([String: TruckRepresentation].self, from: data).map({ $0.value })
                 completion(truckReps, nil)
             } catch {
                 NSLog("Error decoding JSON data: \(error)")
@@ -127,8 +132,10 @@ class TruckController {
     }
     
     func refreshTrucksFromServer() {
-        fetchTrucksFromServer { (representations, error) in
-            if error != nil { return }
+        fetchTrucksFromServer { representations, error in
+            if error != nil {
+                return
+            }
             guard let representations = representations else { return }
             let moc = CoreDataStack.shared.container.newBackgroundContext()
             self.updateTrucks(with: representations, in: moc)
@@ -182,7 +189,10 @@ class TruckController {
         fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier.uuidString)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "identifier", ascending: true)]
         
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "identifier", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                             managedObjectContext: CoreDataStack.shared.mainContext,
+                                             sectionNameKeyPath: "identifier",
+                                             cacheName: nil)
         
         do {
             try frc.performFetch()

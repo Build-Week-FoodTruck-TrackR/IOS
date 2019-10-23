@@ -45,15 +45,16 @@ class ConsumerController {
 
         let jsonEncoder = JSONEncoder()
         do {
-            let consumerRep = ConsumerRepresentation(username: user.username, password: user.password, email: user.email, currentLocation: LocationRepresentaion(longitute: 0, latitude: 0), favoriteTrucks: [], identifier: UUID())
+            let consumerRep = ConsumerRepresentation(username: user.username,
+                                                     password: user.password,
+                                                     email: user.email,
+                                                     currentLocation: LocationRepresentaion(longitute: 0, latitude: 0),
+                                                     favoriteTrucks: [],
+                                                     identifier: UUID())
             request.httpBody = try jsonEncoder.encode(consumerRep)
-        } catch {
-            print("Error encoding user: \(error)")
-            completion(.encodingError)
-            return
-        }
+        } catch { print("Error encoding user: \(error)"); completion(.encodingError); return }
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
                 print(response.statusCode)
@@ -97,7 +98,7 @@ class ConsumerController {
 
         // request.httpBody = componentString?.data(using: .utf8)
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 && response.statusCode != 200 {
                 NSLog("Response status code is not 200 or 201. Status code: \(response.statusCode)")
@@ -158,8 +159,6 @@ class ConsumerController {
         }
     }
 }
-
-
 
 //let baseURL = URL(string: "https://food-truck-finder-rj.herokuapp.com/")!
 //

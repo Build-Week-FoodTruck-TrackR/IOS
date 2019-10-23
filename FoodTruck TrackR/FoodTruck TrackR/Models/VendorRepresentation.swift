@@ -53,7 +53,7 @@ class VendorRepresentation: Codable, Equatable {
         self.identifier = id
     }
     
-    static func ==(lhs: VendorRepresentation, rhs: VendorRepresentation) -> Bool {
+    static func == (lhs: VendorRepresentation, rhs: VendorRepresentation) -> Bool {
         return lhs.username == rhs.username &&
             lhs.password == rhs.password &&
             lhs.email == rhs.email &&

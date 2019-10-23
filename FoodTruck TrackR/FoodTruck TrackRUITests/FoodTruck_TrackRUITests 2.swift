@@ -11,7 +11,7 @@ import XCTest
 class FoodTruck_TrackRUITests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -20,7 +20,6 @@ class FoodTruck_TrackRUITests: XCTestCase {
     }
 
     func testExample() {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 

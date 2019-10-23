@@ -10,7 +10,12 @@ import Foundation
 import CoreData
 
 extension Vendor {
-    convenience init(username: String, password: String, email: String, trucksOwned: [Truck], identifier: UUID = UUID(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(username: String,
+                     password: String,
+                     email: String,
+                     trucksOwned: [Truck],
+                     identifier: UUID = UUID(),
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
         self.username = username
