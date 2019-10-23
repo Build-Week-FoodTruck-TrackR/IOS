@@ -35,9 +35,10 @@ class ConsumerController {
     static let shared = ConsumerController()
 
     func register(user: ConsumerSignup, completion: @escaping(NetworkError?) -> Void) {
+        let userID = UUID()
         let requestURL = baseURL
-            .appendingPathComponent("api")
-            .appendingPathComponent("register")
+                        .appendingPathComponent("Consumer")
+                        .appendingPathComponent(userID)
 
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
