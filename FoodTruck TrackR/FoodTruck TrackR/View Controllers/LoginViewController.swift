@@ -47,8 +47,14 @@ class LoginViewController: UIViewController {
 			let password = passwordTextField.text else { return }
 		if isVendor {
             vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
-                if let error = error {
+                if let error: NetworkError = error {
                     NSLog("Error returned when trying to log in: \(error)")
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
                     return
                 } else {
                     DispatchQueue.main.async {
@@ -58,8 +64,15 @@ class LoginViewController: UIViewController {
             }
 		} else {
             consumerController.logIn(user: ConsumerLogin(username: username, password: password)) { error in
-                if let error = error {
+                if let error: NetworkError = error {
                     NSLog("Error returned when trying to log in: \(error)")
+                    
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
                     return
                 } else {
                     DispatchQueue.main.async {
