@@ -24,16 +24,6 @@ struct ReturnedLoginConsumer: Codable {
     var id: Int
 }
 
-struct ReturnedConsumer: Codable {
-    var user: ReturnedUser
-    var token: String?
-}
-
-struct ReturnedUser: Codable {
-    var username: String
-    var id: Int
-}
-
 struct ConsumerLogin: Codable { // To log in the user only needs to input a username and password
     var username: String
     var password: String
@@ -43,4 +33,11 @@ struct ConsumerSignup: Codable { // To sign up the user needs to put in a userna
     var username: String
     var password: String
     var email: String
+}
+struct ConsumerLoginRepresenataion: Codable {
+    var username: String
+    var password: String
+    var email: String
+    var currentLocation: LocationRepresentaion
+    var identifier: UUID
 }

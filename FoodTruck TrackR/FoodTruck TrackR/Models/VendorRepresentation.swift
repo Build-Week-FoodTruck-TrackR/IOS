@@ -23,10 +23,7 @@ struct ReturnedLoginVendor: Codable {
     var id: Int
 }
 
-struct ReturnedVendor: Codable {
-    var user: ReturnedUser
-    var token: String?
-}
+
 
 struct VendorLogin: Codable {
     var username: String
