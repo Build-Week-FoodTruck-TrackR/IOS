@@ -113,11 +113,25 @@ class ConsumerController {
 		}
 		
 		URLSession.shared.dataTask(with: request) { (data, response, error) in
-			if let response = response as? HTTPURLResponse,
-				response.statusCode != 200 {
-				NSLog("Response status code is not 200. Status code: \(response.statusCode)")
-			}
-			
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 201 && response.statusCode != 200 {
+                NSLog("Response status code is not 200 or 201. Status code: \(response.statusCode)")
+                completion(.badResponse)
+                return
+            }
+
+            if let error = error {
+                NSLog("Error verifying user: \(error)")
+                completion(.otherError(error))
+                return
+            }
+
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                completion(.noData)
+                return
+            }
+                
 			let jsonDecoder = JSONDecoder()
 			do {
 				let result = try jsonDecoder.decode(ReturnedLoginConsumer.self, from: data)
