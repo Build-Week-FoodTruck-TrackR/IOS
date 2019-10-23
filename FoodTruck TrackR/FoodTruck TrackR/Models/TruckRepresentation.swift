@@ -11,7 +11,7 @@ import Foundation
 struct TruckRepresentation: Codable {
     var location: LocationRepresentaion
     var imageOfTruck: String
-    var customerRatings: [CustomerRatingsRepresentaion]
-    var customerRatingAvg: Double
+    var customerAvgRating: Double
 	var truckName: String
+    var identifier: UUID
 }

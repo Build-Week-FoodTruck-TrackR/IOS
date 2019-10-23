@@ -20,7 +20,7 @@ extension Truck {
         self.identifier = identifier
     }
     
-    convenience init(truck: TruckRepresentation) {
-		self.init(truckName: truck.truckName, customerAvgRating: truck.customerRatingAvg, location: Location(location: truck.location), imageOfTruck: truck.imageOfTruck)
+    convenience init(truck: TruckRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        self.init(truckName: truck.truckName, customerAvgRating: truck.customerAvgRating, location: Location(location: truck.location), imageOfTruck: truck.imageOfTruck, context: context)
     }
 }

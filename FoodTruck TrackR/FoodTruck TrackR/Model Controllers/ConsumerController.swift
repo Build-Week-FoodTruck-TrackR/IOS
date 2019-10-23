@@ -139,6 +139,15 @@ class ConsumerController {
             }
         }.resume()
     }
+    
+    func updateLocation(longitute: Double, latitude: Double) {
+        let location = LocationRepresentaion(longitute: longitute, latitude: latitude)
+        
+    }
+    
+    func addFavoriteTruck(truck: TruckRepresentation) {
+        
+    }
 
 
     func saveToPersistentStore() {
