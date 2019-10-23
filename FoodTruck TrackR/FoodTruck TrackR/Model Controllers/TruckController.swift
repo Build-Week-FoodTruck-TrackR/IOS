@@ -13,9 +13,17 @@ class TruckController {
 
 	// MARK: - Properties
     var trucks: [Truck] = []
+    
+    static let shared = TruckController()
 
-	func getTruck(with searchTerm: String, completion: @escaping (Result<Truck, NetworkError>) -> Void) {
+	func getTruck(with searchTerm: String?) -> [Truck] {
+        guard let searchTerm = searchTerm, !searchTerm.isEmpty else { return [] }
         
+        let filteredNames = trucks.filter({(item: Truck) -> Bool in
+            let stringMatch = item.truckName?.lowercased().range(of: searchTerm.lowercased())
+                return stringMatch != nil ? true : false
+        })
+        return filteredNames
     }
 
 	func createTruck(with truckName: String, location: Location, imageOfTruck: String, identifier: UUID = UUID()) {
@@ -50,14 +58,14 @@ class TruckController {
         do {
             request.httpBody = try JSONEncoder().encode(truckRep)
         } catch {
-            NSLog("Error encoding Entry: \(error)")
+            NSLog("Error encoding rruck: \(error)")
             completion(error)
             return
         }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
-                NSLog("Error PUTting Entry to server: \(error)")
+                NSLog("Error PUTting truck to server: \(error)")
                 completion(error)
                 return
             }
@@ -69,7 +77,7 @@ class TruckController {
     func deleteTruckFromServer(truck: Truck, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
         guard let identifier = truck.identifier else {
-            NSLog("Entry identifier is nil")
+            NSLog("Truck identifier is nil")
             completion(NSError())
             return
         }
@@ -80,7 +88,7 @@ class TruckController {
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
-                NSLog("Error deleting entry from server: \(error)")
+                NSLog("Error deleting truck from server: \(error)")
                 completion(error)
                 return
             }
@@ -154,7 +162,6 @@ class TruckController {
                     tempArr.append(truck)
                 }
                 
-                // Take the tasks that AREN'T in Core Data and create new ones for them.
                 for representation in trucksToCreate.values {
                     let truck = Truck(truck: representation, context: context)
                     tempArr.append(truck)
@@ -163,7 +170,7 @@ class TruckController {
                 saveToPersistentStore()
                 
             } catch {
-                NSLog("Error fetching tasks from persistent store: \(error)")
+                NSLog("Error fetching objects from persistent store: \(error)")
             }
         }
     }

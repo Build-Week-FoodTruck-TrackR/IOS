@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Consumer" representedClassName="Consumer" syncable="YES" codeGenerationType="class">
-        <attribute name="currentLocation" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="currentLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="consumer" inverseEntity="Location"/>
         <relationship name="favoriteTrucks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Truck" inverseName="consumer" inverseEntity="Truck"/>
     </entity>
     <entity name="ConsumerRating" representedClassName="ConsumerRating" syncable="YES" codeGenerationType="class">
@@ -17,6 +17,7 @@
     <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="consumer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consumer" inverseName="currentLocation" inverseEntity="Consumer"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Truck" inverseName="location" inverseEntity="Truck"/>
     </entity>
     <entity name="MenuItem" representedClassName="MenuItem" syncable="YES" codeGenerationType="class">
@@ -51,7 +52,7 @@
     <elements>
         <element name="Consumer" positionX="160" positionY="192" width="128" height="133"/>
         <element name="ConsumerRating" positionX="160" positionY="192" width="128" height="103"/>
-        <element name="Location" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="Location" positionX="160" positionY="192" width="128" height="103"/>
         <element name="MenuItem" positionX="160" positionY="192" width="128" height="133"/>
         <element name="MenuPhoto" positionX="160" positionY="192" width="128" height="73"/>
         <element name="Truck" positionX="160" positionY="192" width="128" height="163"/>
