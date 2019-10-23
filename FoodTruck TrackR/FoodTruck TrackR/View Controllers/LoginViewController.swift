@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
 	}
 
 	private func setupViews() {
-		view.backgroundColor = .background
+		view.backgroundColor = UIColor.backgroundWhite
 
 		passwordTextField.isSecureTextEntry = true
 
