@@ -7,6 +7,10 @@ target 'FoodTruck TrackR' do
 
   # Pods for FoodTruck TrackR
   pod 'SwiftLint'
+	
+ # add pods for desired Firebase products
+  pod 'Firebase' 
+	
 
   target 'FoodTruck TrackRTests' do
     inherit! :search_paths
