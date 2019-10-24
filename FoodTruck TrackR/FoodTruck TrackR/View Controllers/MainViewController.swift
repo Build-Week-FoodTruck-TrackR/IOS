@@ -1,19 +1,17 @@
 //
-//  AccountsTableViewController.swift
+//  MainViewController.swift
 //  FoodTruck TrackR
 //
-//  Created by Percy Ngan on 10/22/19.
+//  Created by Percy Ngan on 10/23/19.
 //  Copyright © 2019 FoodTruckTrackR. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class MainTableViewController: UITableViewController {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-	 var statusBarView: UIView? {
-		return value(forKey: "statusBar") as? UIView
-	}
+	@IBOutlet weak var tableView: UITableView!
 
 	let vendorController = VendorController()
 
@@ -25,7 +23,7 @@ class MainTableViewController: UITableViewController {
 		let frc = NSFetchedResultsController(fetchRequest: request,
 											 managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "username", cacheName: nil)
 
-		frc.delegate = self
+		frc.delegate = self 
 
 		do {
 			try frc.performFetch()
@@ -35,16 +33,15 @@ class MainTableViewController: UITableViewController {
 		return frc
 	}()
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-		self.clearsSelectionOnViewWillAppear = false
-		//self.navigationItem.rightBarButtonItem = self.editButtonItem
-		//setColors()
+		tableView.delegate = self
+		tableView.dataSource = self
+
+		setColors()
 		setupViews()
-		checkForBearerToken()
-	}
-
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -105,18 +102,17 @@ class MainTableViewController: UITableViewController {
 		}
 	}
 
-	override func numberOfSections(in tableView: UITableView) -> Int {
+	func numberOfSections(in tableView: UITableView) -> Int {
 
 		return fetch.sections?.count ?? 1
 	}
 
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
 		return fetch.sections?[section].numberOfObjects ?? 0
 	}
 
-
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "TruckCell", for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
 
 		//cell.vendorController = vendorController
@@ -125,18 +121,7 @@ class MainTableViewController: UITableViewController {
 		return cell
 	}
 
-
-	/*
-	// Override to support conditional editing of the table view.
-	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-	// Return false if you do not want the specified item to be editable.
-	return true
-	}
-	*/
-
-
-	// Override to support editing the table view.
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 
 
@@ -144,34 +129,20 @@ class MainTableViewController: UITableViewController {
 	}
 
 
-	/*
-	// Override to support rearranging the table view.
-	override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    /*
+    // MARK: - Navigation
 
-	}
-	*/
 
-	/*
-	// Override to support conditional rearranging of the table view.
-	override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-	// Return false if you do not want the item to be re-orderable.
-	return true
-	}
-	*/
-
-	/*
-	// MARK: - Navigation
-
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	// Get the new view controller using segue.destination.
-	// Pass the selected object to the new view controller.
-	}
-	*/
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
 
-extension MainTableViewController: NSFetchedResultsControllerDelegate {
+extension MainViewController: NSFetchedResultsControllerDelegate {
 
 	func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 		tableView.beginUpdates()
@@ -215,11 +186,3 @@ extension MainTableViewController: NSFetchedResultsControllerDelegate {
 		}
 	}
 }
-
-//extension MainTableViewController {
-//
-//	static var statusBarView: UIView? {
-//		return value(forKey: "statusBar") as? UIView
-//	}
-//}
-
