@@ -133,7 +133,7 @@
                         <viewLayoutGuide key="safeArea" id="FZc-em-zDH"/>
                     </view>
                     <navigationItem key="navigationItem" id="ERJ-73-coY">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="IAj-Hu-5HQ">
+                        <barButtonItem key="rightBarButtonItem" title="Add Truck" id="IAj-Hu-5HQ">
                             <connections>
                                 <segue destination="RxL-3T-JKf" kind="presentation" id="Yab-aN-Yfn"/>
                             </connections>
@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="3060.8695652173915" y="469.41964285714283"/>
         </scene>
-        <!--LoginAndSignup-->
+        <!--TruckDetail-->
         <scene sceneID="PVT-Sl-xdv">
             <objects>
-                <viewControllerPlaceholder storyboardName="LoginAndSignup" id="RxL-3T-JKf" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="TruckDetail" id="RxL-3T-JKf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kki-YW-g9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3628" y="470"/>
