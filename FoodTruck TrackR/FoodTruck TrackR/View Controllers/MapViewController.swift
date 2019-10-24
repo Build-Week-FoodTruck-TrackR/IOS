@@ -40,13 +40,13 @@ class MapViewController: UIViewController {
     }
     
     private func setupViews() { // Make everything pretty
-        view.backgroundColor = .background
+        view.backgroundColor = UIColor.titleBarColor
         
         foodTruckSearchBar.barTintColor = .background
         
         tabBarController?.tabBar.barStyle = .default
-        tabBarController?.tabBar.barTintColor = .background
-        tabBarController?.tabBar.tintColor = .text
+		tabBarController?.tabBar.barTintColor = UIColor.titleBarColor
+		tabBarController?.tabBar.tintColor = UIColor.textWhite
         
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
