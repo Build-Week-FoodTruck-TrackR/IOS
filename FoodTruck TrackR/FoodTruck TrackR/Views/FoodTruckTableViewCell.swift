@@ -23,6 +23,7 @@ class FoodTruckTableViewCell: UITableViewCell {
     var delegate: ShowTruckOnMap?
     
     var distanceAway: Double?
+    var address: String?
     
     @IBOutlet private weak var foodTruckImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -40,6 +41,11 @@ class FoodTruckTableViewCell: UITableViewCell {
         guard let truck = truck else { return }
         
         nameLabel.text = truck.truckName
+        if let address = address {
+            addressLabel.text = address
+        } else {
+            addressLabel.text = "Truck isn't around"
+        }
         if let distanceAway = distanceAway {
             distanceAwayLabel.text = "\(distanceAway) away"
         } else {
