@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="559" y="654"/>
         </scene>
-        <!--Main Table View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="qPt-gX-b2D">
             <objects>
-                <viewController id="vcP-aA-Yvi" customClass="MainTableViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vcP-aA-Yvi" customClass="MainViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W9Q-Ku-Jkz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="d2y-ig-wpw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TruckCell" rowHeight="100" id="d2y-ig-wpw">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d2y-ig-wpw" id="Rjv-jT-28w">
@@ -139,6 +139,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="YWg-WO-qks" id="KwI-9e-rT9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFg-sd-BZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,11 +155,11 @@
             </objects>
             <point key="canvasLocation" x="3628" y="470"/>
         </scene>
-        <!--Item-->
+        <!--Account-->
         <scene sceneID="xyy-2J-5xO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YD9-0F-wVO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="rc9-uf-gyG"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="person" catalog="system" id="rc9-uf-gyG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GBw-rX-XBJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -174,5 +177,6 @@
     </scenes>
     <resources>
         <image name="map" catalog="system" width="64" height="56"/>
+        <image name="person" catalog="system" width="64" height="58"/>
     </resources>
 </document>

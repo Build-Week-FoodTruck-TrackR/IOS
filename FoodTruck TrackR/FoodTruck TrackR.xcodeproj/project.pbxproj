@@ -47,6 +47,7 @@
 		DDBD82D4235F943800599244 /* VendorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D3235F943800599244 /* VendorController.swift */; };
 		DDBD82D6235FB74E00599244 /* VendorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */; };
 		DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D7235FC68B00599244 /* SearchController.swift */; };
+		DDF696C623612E7A00850540 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF696C523612E7A00850540 /* MainViewController.swift */; };
 		E15773D664E76D9788F2A660 /* Pods_FoodTruck_TrackR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DBB87622CBE7AB0671051B2 /* Pods_FoodTruck_TrackR.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		DDBD82D3235F943800599244 /* VendorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorController.swift; sourceTree = "<group>"; };
 		DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTableViewCell.swift; sourceTree = "<group>"; };
 		DDBD82D7235FC68B00599244 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		DDF696C523612E7A00850540 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F169B797BECC605CE867AF97 /* Pods-FoodTruck TrackRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruck TrackRTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodTruck TrackRTests/Pods-FoodTruck TrackRTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +218,7 @@
 				0E76F384235C07A7004D4306 /* LoginViewController.swift */,
 				DDBD82CD235F730700599244 /* MainTableViewController.swift */,
 				0EAC196F235F8FB400CD9345 /* SignUpViewController.swift */,
+				DDF696C523612E7A00850540 /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				DD2875BC235E4D590096E0E1 /* Vendor+Convenience.swift in Sources */,
 				0E76F355235A7DA1004D4306 /* AppDelegate.swift in Sources */,
 				0EAC194A235E75E200CD9345 /* CustomerRatingsRepresentaion.swift in Sources */,
+				DDF696C623612E7A00850540 /* MainViewController.swift in Sources */,
 				DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */,
 				0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */,
 				0E76F379235AD27E004D4306 /* Consumer+Convenience.swift in Sources */,
