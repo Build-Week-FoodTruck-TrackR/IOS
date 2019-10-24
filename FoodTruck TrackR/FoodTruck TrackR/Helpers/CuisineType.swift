@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CuisineType: String {
+enum CuisineType: String, CaseIterable, Codable {
     case breakfast = "Breakfast"
     case chinese = "Chinese"
     case waffles = "Waffles"

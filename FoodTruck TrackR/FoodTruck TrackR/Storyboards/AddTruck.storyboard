@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIp-fl-2GM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Truck View Controller-->
+        <scene sceneID="pvN-rJ-N4I">
+            <objects>
+                <viewController id="myV-zT-bHF" customClass="AddTruckViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="na4-iB-MHb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="axG-aJ-D2n">
+                                <rect key="frame" x="40" y="296" width="334" height="334"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="axG-aJ-D2n" secondAttribute="height" multiplier="1:1" id="Qkx-bb-1bA"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="EkD-Dj-OH2">
+                                <rect key="frame" x="20" y="140" width="374" height="86"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="efd-rH-9SA">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck's Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDp-XG-t12">
+                                                <rect key="frame" x="0.0" y="0.0" width="116" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ist-c9-mcp">
+                                                <rect key="frame" x="124" y="0.0" width="250" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="LoO-hX-ZxM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="VPE-nZ-Y6K">
+                                        <rect key="frame" x="0.0" y="52" width="374" height="34"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuisine:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPB-qO-uxp">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCF-FC-hXS">
+                                                <rect key="frame" x="124" y="0.0" width="250" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="NY8-oF-Yxh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nv7-xo-Eom">
+                                <rect key="frame" x="78" y="288" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73A-Yr-yTQ">
+                                <rect key="frame" x="20" y="246" width="72" height="30"/>
+                                <state key="normal" title="Add Photo"/>
+                                <connections>
+                                    <action selector="addTruckButton:" destination="myV-zT-bHF" eventType="touchUpInside" id="4bM-Gm-rLH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="73A-Yr-yTQ" firstAttribute="top" secondItem="VPE-nZ-Y6K" secondAttribute="bottom" constant="20" id="Akg-CI-mWA"/>
+                            <constraint firstItem="XI9-ge-pAa" firstAttribute="trailing" secondItem="EkD-Dj-OH2" secondAttribute="trailing" constant="20" id="MFF-cj-V8b"/>
+                            <constraint firstItem="EkD-Dj-OH2" firstAttribute="top" secondItem="XI9-ge-pAa" secondAttribute="top" id="Qfp-sY-Wcz"/>
+                            <constraint firstItem="73A-Yr-yTQ" firstAttribute="leading" secondItem="VPE-nZ-Y6K" secondAttribute="leading" id="UX9-wa-kaC"/>
+                            <constraint firstItem="EkD-Dj-OH2" firstAttribute="leading" secondItem="XI9-ge-pAa" secondAttribute="leading" constant="20" id="bvr-Vb-ElR"/>
+                            <constraint firstItem="axG-aJ-D2n" firstAttribute="leading" secondItem="XI9-ge-pAa" secondAttribute="leading" constant="40" id="foF-wh-vPI"/>
+                            <constraint firstItem="axG-aJ-D2n" firstAttribute="top" secondItem="73A-Yr-yTQ" secondAttribute="bottom" constant="20" id="lww-Cw-GSE"/>
+                            <constraint firstItem="XI9-ge-pAa" firstAttribute="trailing" secondItem="axG-aJ-D2n" secondAttribute="trailing" constant="40" id="xKB-l4-taT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XI9-ge-pAa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="P43-aJ-23f"/>
+                    <connections>
+                        <outlet property="cuisineTypeTextField" destination="fCF-FC-hXS" id="rWw-ks-gJP"/>
+                        <outlet property="truckImageView" destination="axG-aJ-D2n" id="xn9-98-lYN"/>
+                        <outlet property="truckNameTextField" destination="ist-c9-mcp" id="F9j-S2-DuK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rof-Yj-qXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="-113"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yup-CF-5Wn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WIp-fl-2GM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QDG-GE-uyw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="myV-zT-bHF" kind="relationship" relationship="rootViewController" id="Q5s-6i-iDa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FPc-h7-U7p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-352.17391304347831" y="-113.16964285714285"/>
+        </scene>
+    </scenes>
+</document>

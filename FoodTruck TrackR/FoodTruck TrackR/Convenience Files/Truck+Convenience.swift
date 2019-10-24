@@ -32,4 +32,12 @@ extension Truck {
                   imageOfTruck: truck.imageOfTruck,
                   context: context)
     }
+
+	var truckRepresentation: TruckRepresentation? {
+		guard let location = location,
+			let imageOfTruck = imageOfTruck,
+			let identifier = identifier,
+			let truckName = truckName else { return nil }
+		return TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude, latitude: location.latitude), imageOfTruck: imageOfTruck, customerAvgRating: customerAvgRating, truckName: truckName, identifier: identifier)
+	}
 }
