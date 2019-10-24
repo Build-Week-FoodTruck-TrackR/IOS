@@ -56,7 +56,7 @@ class ConsumerController {
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let response = response as? HTTPURLResponse,
-                response.statusCode != 201 {
+            response.statusCode != 201 && response.statusCode != 200 {
                 print(response.statusCode)
                 completion(.badResponse)
                 return
