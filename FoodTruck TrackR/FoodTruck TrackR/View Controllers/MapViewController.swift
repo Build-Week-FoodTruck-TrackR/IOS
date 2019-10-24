@@ -236,7 +236,10 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
         if LoginViewController.isVendor {
             guard let user = vendorController.user as? Vendor,
                 let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
+            
+//            cell.addressLabel.tex
             cell.truck = truck
+            
         } else {
             guard let user = consumerController.user as? Vendor,
                 let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
@@ -288,4 +291,14 @@ extension MapViewController: UISearchBarDelegate {
         
         self.view.endEditing(true)
     }
+}
+
+extension MapViewController: ShowTruckOnMap {
+    func truckWasSelected(_ truck: Truck) {
+        if let location = truck.location {
+            let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            getDirections(to: coordinate)
+        }
+    }
+    
 }
