@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ShowTruckOnMap {
+    func truckWasSelected(_ truck: Truck)
+}
+
 class FoodTruckTableViewCell: UITableViewCell {
     
     var truck: Truck? {
@@ -16,7 +20,10 @@ class FoodTruckTableViewCell: UITableViewCell {
         }
     }
     
+    var delegate: ShowTruckOnMap?
+    
     var distanceAway: Double?
+    var address: String?
     
     @IBOutlet private weak var foodTruckImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
@@ -34,6 +41,11 @@ class FoodTruckTableViewCell: UITableViewCell {
         guard let truck = truck else { return }
         
         nameLabel.text = truck.truckName
+        if let address = address {
+            addressLabel.text = address
+        } else {
+            addressLabel.text = "Truck isn't around"
+        }
         if let distanceAway = distanceAway {
             distanceAwayLabel.text = "\(distanceAway) away"
         } else {
@@ -43,8 +55,9 @@ class FoodTruckTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if let truck = truck {
+            delegate?.truckWasSelected(truck)
+        }
     }
     
     @IBAction func toggleFavorite(_ sender: UIButton) {
