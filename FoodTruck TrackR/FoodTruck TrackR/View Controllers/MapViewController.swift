@@ -36,10 +36,14 @@ class MapViewController: UIViewController {
         foodTruckSearchBar.delegate = self
         foodTruckSearchBar.resignFirstResponder()
         
-        checkForBearerToken()
-        
         setupTableView()
     }
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+
+		checkForBearerToken()
+	}
     
     private func setupViews() { // Make everything pretty
         view.backgroundColor = UIColor.titleBarColor
@@ -56,7 +60,7 @@ class MapViewController: UIViewController {
     }
     
     private func checkForBearerToken() {
-        if vendorController.token == nil && vendorController.token == nil {
+        if vendorController.token == nil && consumerController.token == nil {
             performSegue(withIdentifier: "ModalLoginSegue", sender: self)
         }
     }
