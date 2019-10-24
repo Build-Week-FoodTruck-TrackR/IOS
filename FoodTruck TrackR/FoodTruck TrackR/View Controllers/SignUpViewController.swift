@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
 
 	let vendorController = VendorController.shared
 	let consumerController = ConsumerController.shared
+    let apiController = APICOntroller()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
