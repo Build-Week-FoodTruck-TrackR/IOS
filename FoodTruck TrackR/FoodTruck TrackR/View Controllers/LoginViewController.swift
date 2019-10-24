@@ -9,25 +9,30 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    
+    // MARK: - Properties
 	@IBOutlet weak var loginSegmentedControl: UISegmentedControl!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
 	@IBOutlet weak var loginButton: UIButton!
 	static var isVendor: Bool = false
-
+    var userType: UserType?
 	let vendorController = VendorController.shared
 	let consumerController = ConsumerController.shared
-    let apiController = APICOntroller()
 
+
+    
+    //MARK: - lifeCycles
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
 		setupViews()
 	}
 
+    // MARK: - helper methods
 	private func setupViews() {
+        userType = .consumer
 		view.backgroundColor = UIColor.titleBarColor
 
 		passwordTextField.isSecureTextEntry = true
@@ -43,69 +48,55 @@ class LoginViewController: UIViewController {
 		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleBarColor]
 	}
 
+    //MARK: - actions
 	@IBAction func loginTapped(_ sender: UIButton) {
 		guard let username = usernameTextField.text,
 			let password = passwordTextField.text else { return }
-        
-    
-//        if LoginViewController.isVendor {
-//            vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
-//                if let error: NetworkError = error {
-//                    NSLog("Error returned when trying to log in: \(error)")
-//                    DispatchQueue.main.async {
-//                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                        self.present(alert, animated: true, completion: nil)
-//                    }
-//
-//                    return
-//                } else {
-//                    DispatchQueue.main.async {
-//                        self.dismiss(animated: true, completion: nil)
-//                    }
-//                }
-//            }
-//		} else {
-//            consumerController.logIn(user: ConsumerLogin(username: username, password: password)) { error in
-//                if let error: NetworkError = error {
-//                    NSLog("Error returned when trying to log in: \(error)")
-//
-//                    DispatchQueue.main.async {
-//                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                        self.present(alert, animated: true, completion: nil)
-//                    }
-//
-//                    return
-//                } else {
-//                    DispatchQueue.main.async {
-//                        self.dismiss(animated: true, completion: nil)
-//                    }
-//                }
-//            }
-//		}
+            guard let userType = userType else {return}
+
+        switch userType {
+            case .vendor:
+            vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
+                if let error: NetworkError = error {
+                    NSLog("Error returned when trying to log in: \(error)")
+                    DispatchQueue.main.async {
+                            UserAlert.showLoginAlert(on: self)
+                        }
+                        return
+                    } else {
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                            }
+                    }
+                }
+            case .consumer:
+            consumerController.logIn(user: ConsumerLogin(username: username, password: password)) { error in
+                if let error: NetworkError = error {
+                    NSLog("Error returned when trying to log in: \(error)")
+                        DispatchQueue.main.async {
+                                UserAlert.showLoginAlert(on: self)
+                                }
+                                return
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                        }
+        }
+
 	}
 
 	@IBAction func segControlAction(_ sender: UISegmentedControl) {
 		switch loginSegmentedControl.selectedSegmentIndex {
 		case 0:
             LoginViewController.isVendor = false
+            userType = .consumer
 		case 1:
             LoginViewController.isVendor = true
+            userType = .vendor
 		default:
 			break
 		}
 	}
-
-
-
-	/*
-	// MARK: - Navigation
-
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	// Get the new view controller using segue.destination.
-	// Pass the selected object to the new view controller.
-	}
-	*/
 }
