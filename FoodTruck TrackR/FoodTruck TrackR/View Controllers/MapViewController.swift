@@ -36,6 +36,8 @@ class MapViewController: UIViewController {
         foodTruckSearchBar.delegate = self
         foodTruckSearchBar.resignFirstResponder()
         
+        checkForBearerToken()
+        
         setupTableView()
     }
     
@@ -51,6 +53,12 @@ class MapViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
+    }
+    
+    private func checkForBearerToken() {
+        if vendorController.token == nil && vendorController.token == nil {
+            performSegue(withIdentifier: "ModalLoginSegue", sender: self)
+        }
     }
     
     private func setupTableView() { // Set up table view constaints and make it hidden
