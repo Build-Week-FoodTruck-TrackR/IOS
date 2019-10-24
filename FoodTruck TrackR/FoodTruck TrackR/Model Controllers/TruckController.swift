@@ -68,7 +68,7 @@ class TruckController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { data, _, error in
+        URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 NSLog("Error PUTting truck to server: \(error)")
                 completion(error)
@@ -91,7 +91,7 @@ class TruckController {
         var request = URLRequest(url: requestURL)
         request.httpMethod = "DELETE"
         
-        URLSession.shared.dataTask(with: request) { data, _, error in
+        URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 NSLog("Error deleting truck from server: \(error)")
                 completion(error)
