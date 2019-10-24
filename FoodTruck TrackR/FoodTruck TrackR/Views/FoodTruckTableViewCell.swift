@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ShowTruckOnMap {
+    func truckWasSelected(_ truck: Truck)
+}
+
 class FoodTruckTableViewCell: UITableViewCell {
     
     var truck: Truck? {
@@ -15,6 +19,8 @@ class FoodTruckTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    
+    var delegate: ShowTruckOnMap?
     
     var distanceAway: Double?
     
@@ -43,8 +49,9 @@ class FoodTruckTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if let truck = truck {
+            delegate?.truckWasSelected(truck)
+        }
     }
     
     @IBAction func toggleFavorite(_ sender: UIButton) {
