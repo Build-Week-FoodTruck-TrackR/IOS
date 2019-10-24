@@ -131,6 +131,9 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zfc-3M-bBm">
                                                 <rect key="frame" x="285" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="checkUserType:" destination="8Wa-UK-TTE" eventType="valueChanged" id="nn8-7X-UqL"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                     </stackView>
