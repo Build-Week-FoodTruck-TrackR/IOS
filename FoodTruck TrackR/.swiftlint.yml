@@ -16,6 +16,8 @@ disabled_rules: # rule identifiers to exclude from running
   - trailing_comma
   - vertical_parameter_alignment # does not work with tab indentation: https://github.com/realm/SwiftLint/issues/1573
   - type_name # I had to add this because it was saying my UI and Unit tests were faulty and it wasn't allowing me to build
+  - weak_delegate
+  - vertical_parameter_alignment_on_call
 
 excluded: # paths to ignore during linting.
   - Carthage

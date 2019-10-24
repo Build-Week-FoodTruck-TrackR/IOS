@@ -38,6 +38,11 @@ extension Truck {
 			let imageOfTruck = imageOfTruck,
 			let identifier = identifier,
 			let truckName = truckName else { return nil }
-		return TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude, latitude: location.latitude), imageOfTruck: imageOfTruck, customerAvgRating: customerAvgRating, truckName: truckName, identifier: identifier)
+		return TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude,
+                                                                   latitude: location.latitude),
+                                   imageOfTruck: imageOfTruck,
+                                   customerAvgRating: customerAvgRating,
+                                   truckName: truckName,
+                                   identifier: identifier)
 	}
 }

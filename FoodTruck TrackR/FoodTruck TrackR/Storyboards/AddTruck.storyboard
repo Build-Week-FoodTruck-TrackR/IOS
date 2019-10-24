@@ -92,7 +92,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XI9-ge-pAa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="P43-aJ-23f"/>
+                    <navigationItem key="navigationItem" id="P43-aJ-23f">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="uNg-eP-5Hz"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cuisineTypeTextField" destination="fCF-FC-hXS" id="rWw-ks-gJP"/>
                         <outlet property="truckImageView" destination="axG-aJ-D2n" id="xn9-98-lYN"/>
