@@ -43,7 +43,7 @@ class AddTruckViewController: UIViewController {
 		super.viewDidLoad()
 
 		setupViews()
-		// Do any additional setup after loading the view.
+
 	}
 
 	// Setup Views
@@ -52,7 +52,6 @@ class AddTruckViewController: UIViewController {
 		let navBarAppearance = UINavigationBarAppearance()
 
 		view.backgroundColor = UIColor.titleBarColor
-        //foodTruckSearchBar.barTintColor = .background
 
         tabBarController?.tabBar.barStyle = .default
 		tabBarController?.tabBar.barTintColor = UIColor.titleBarColor
@@ -61,7 +60,7 @@ class AddTruckViewController: UIViewController {
 		navBarAppearance.configureWithDefaultBackground()
 		navBarAppearance.backgroundColor = UIColor.titleBarColor
 
-		navigationItem.title = "Testing title"
+		navigationItem.title = "Add A Truck"
         navigationController?.navigationBar.barStyle = .default
 		navigationController?.navigationBar.barTintColor = UIColor.titleBarColor
 		navigationController?.navigationBar.backgroundColor = UIColor.titleBarColor

@@ -61,15 +61,20 @@ class SignUpViewController: UIViewController {
                                                                     password: password,
                                                                     email: email)) { error in
                 if let error = error {
-                    NSLog("failed to register: \(error)")
+                    NSLog("failed to register: \(error.localizedDescription)")
                     DispatchQueue.main.async {
                         UserAlert.showSignupAlert(on: self)
+                    }
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }
         case .vendor: VendorController.shared.register(user: VendorSignup(username: username, password: password, email: email)) { error in
             if let error = error {
-                NSLog("failed to register: \(error)")
+                NSLog("failed to register: \(error.localizedDescription)")
                 DispatchQueue.main.async {
                     UserAlert.showSignupAlert(on: self)
                 }
@@ -82,5 +87,6 @@ class SignUpViewController: UIViewController {
         }
         
         }
+        
 	}
 }
