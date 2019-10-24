@@ -10,15 +10,15 @@ import UIKit
 
 class VendorTableViewCell: UITableViewCell {
 
-	@IBOutlet weak var truckImageView: UIImageView!
-	@IBOutlet weak var truckNameLabel: UILabel!
-	@IBOutlet weak var cusineTypeLabel: UILabel!
-	@IBOutlet weak var customerRatingLabel: UILabel!
-	@IBOutlet weak var AvgCustomerRatingLabel: UILabel!
+	@IBOutlet private weak var truckImageView: UIImageView!
+	@IBOutlet private weak var truckNameLabel: UILabel!
+	@IBOutlet private weak var cusineTypeLabel: UILabel!
+	@IBOutlet private weak var customerRatingLabel: UILabel!
+	@IBOutlet private weak var AvgCustomerRatingLabel: UILabel!
 
 	var vendorController = VendorController.shared
 
-	var vendor: Vendor?{
+	var vendor: Vendor? {
 		didSet {
 
 		}

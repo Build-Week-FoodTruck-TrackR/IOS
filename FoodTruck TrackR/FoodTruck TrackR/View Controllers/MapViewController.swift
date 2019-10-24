@@ -12,8 +12,8 @@ import CoreLocation
 
 class MapViewController: UIViewController {
     
-    @IBOutlet weak var foodTruckSearchBar: UISearchBar!
-    @IBOutlet weak var foodTruckMapView: MKMapView!
+    @IBOutlet private weak var foodTruckSearchBar: UISearchBar!
+    @IBOutlet private weak var foodTruckMapView: MKMapView!
     
     let locationManager = CLLocationManager()
     let searchResultsTableView = UITableView()
@@ -94,7 +94,8 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func getDirections(to destination: CLLocationCoordinate2D) { // Gets directions from current location to selected destination. (Shows multiple routes)
+    private func getDirections(to destination: CLLocationCoordinate2D) {
+        // Gets directions from current location to selected destination. (Shows multiple routes)
         guard let location = locationManager.location?.coordinate else {
             let alert = UIAlertController(title: "", message: "Network error. Please check your connection", preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
@@ -113,7 +114,7 @@ class MapViewController: UIViewController {
         let directions = MKDirections(request: request)
         resetMap(withNew: directions)
         
-        directions.calculate { [unowned self] (response, error) in
+        directions.calculate { [unowned self] response, error in
             if let error = error {
                 NSLog("An error occured when getting directions: \(error)")
             }
@@ -152,7 +153,7 @@ class MapViewController: UIViewController {
     private func getAddress(_ location: CLLocation, completionHandler: @escaping (CLPlacemark?)
     -> Void ) {
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
             if let error = error {
                 NSLog("Error getting address from location: \(error)")
                 completionHandler(nil)
@@ -169,12 +170,14 @@ class MapViewController: UIViewController {
     private func checkLocationServices() { // Check to make sure Location Services are active
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
-            if (checkLocationAuthorization()) {
+            if checkLocationAuthorization() {
                 centerViewOnUser()
             }
             locationManager.startUpdatingLocation()
         } else { // Alert user if Location Services are disabled and instruct on how to fix
-            let alert = UIAlertController(title: "Location Services Disabled", message: "It looks like location services is disabled. Please enable it in settings.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Location Services Disabled",
+                                          message: "It looks like location services is disabled. Please enable it in settings.",
+                                          preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Open Settings", style: .default, handler: { _ in
                 if let url = URL(string: "App-Prefs:root=Privacy&path=LOCATION") {
                     // Open Location Services in settings if disabled
@@ -195,7 +198,9 @@ class MapViewController: UIViewController {
             foodTruckMapView.showsUserLocation = true // Only show location if user has allowed location tracking
             return true
         case .denied: // "Don't Allow"
-            let alert = UIAlertController(title: "Location Permissions Disabled", message: "It looks like location permission are disabled. Please enable them in settings.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Location Permissions Disabled",
+                                          message: "It looks like location permission are disabled. Please enable them in settings.",
+                                          preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         case .notDetermined: // User has not yet viewed location tracking prompt
@@ -206,7 +211,6 @@ class MapViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         @unknown default: // Deal with any other case
             NSLog("Location services/permission status unknown. Please update to latest version of the app!")
-            break
         }
         return false
     }
@@ -241,7 +245,8 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        guard let olay = overlay as? MKPolyline else { return MKOverlayRenderer() }
+        let renderer = MKPolylineRenderer(overlay: olay)
         renderer.strokeColor = .green
         
         return renderer
@@ -260,14 +265,15 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell", for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
+        guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell",
+                                                                    for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
         
         if LoginViewController.isVendor {
             guard let user = vendorController.user as? Vendor,
                 let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
             
             if let location = truck.location {
-                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { (placemark) in
+                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { placemark in
                     if let placemark = placemark {
                         cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
                     }
@@ -281,7 +287,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
                 let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
             
             if let location = truck.location {
-                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { (placemark) in
+                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { placemark in
                     if let placemark = placemark {
                         cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
                     }
@@ -302,7 +308,8 @@ extension MapViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text?.count == 0 {
+        guard let text = searchBar.text else { return }
+        if text.isEmpty {
             _ = searchBarShouldEndEditing(searchBar)
         }
     }

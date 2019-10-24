@@ -11,7 +11,7 @@ import CoreData
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet private weak var tableView: UITableView!
 
 	let vendorController = VendorController()
 
@@ -21,10 +21,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]
 
 		let frc = NSFetchedResultsController(fetchRequest: request,
-											 managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "username", cacheName: nil)
-
-		frc.delegate = self 
-
+											 managedObjectContext: CoreDataStack.shared.mainContext,
+                                             sectionNameKeyPath: "username",
+                                             cacheName: nil)
+        frc.delegate = self
 		do {
 			try frc.performFetch()
 		} catch {
@@ -152,28 +152,35 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
 		tableView.endUpdates()
 	}
 
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
 
 		switch type {
 		case .insert:
-			guard let newIndexPath = newIndexPath else {return}
+			guard let newIndexPath = newIndexPath else { return }
 			tableView.insertRows(at: [newIndexPath], with: .automatic)
 		case .delete:
-			guard let indexPath = indexPath else {return}
+			guard let indexPath = indexPath else { return }
 			tableView.deleteRows(at: [indexPath], with: .automatic)
 		case .move:
 			guard let newIndexPath = newIndexPath,
-				let indexPath = indexPath else {return}
+				let indexPath = indexPath else { return }
 			tableView.moveRow(at: indexPath, to: newIndexPath)
 		case .update:
-			guard let indexPath = indexPath else {return}
+			guard let indexPath = indexPath else { return }
 			tableView.reloadRows(at: [indexPath], with: .automatic)
 		@unknown default:
 			return
 		}
 	}
 
-	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
 
 		let set = IndexSet(integer: sectionIndex)
 		switch type {

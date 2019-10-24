@@ -12,12 +12,14 @@ import XCTest
 class FoodTruck_TrackRTests: XCTestCase {
 
     override func setUp() {
+        super.setUp()
         let app = XCUIApplication()
         app.launchArguments = ["UITesting"]
         app.launch()
     }
 
     func testExample() {
+        setUp()
     }
 
 }
