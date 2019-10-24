@@ -17,4 +17,5 @@ extension UIColor {
 	static let buttonColor = UIColor(red: 0.43, green: 0.65, blue: 0.28, alpha: 1.0)
 	static let otherElements = UIColor(red: 0.96, green: 0.90, blue: 0.57, alpha: 1.0)
 	static let backgroundWhite = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+	static let textWhite = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 }

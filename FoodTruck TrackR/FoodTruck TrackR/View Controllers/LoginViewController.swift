@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
 
 	let vendorController = VendorController.shared
 	let consumerController = ConsumerController.shared
+    let apiController = APICOntroller()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -27,60 +28,62 @@ class LoginViewController: UIViewController {
 	}
 
 	private func setupViews() {
-		view.backgroundColor = .background
+		view.backgroundColor = UIColor.titleBarColor
 
 		passwordTextField.isSecureTextEntry = true
 
-		loginSegmentedControl.backgroundColor = .text
+		loginSegmentedControl.backgroundColor = UIColor.highLightColor
 
-		loginButton.backgroundColor = .text
+		loginButton.backgroundColor = UIColor.textWhite
 		loginButton.setTitleColor(UIColor.background, for: .normal)
 		loginButton.layer.cornerRadius = 8
 
 		navigationController?.navigationBar.barStyle = .default
-		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
-		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
+		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleBarColor]
+		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleBarColor]
 	}
 
 	@IBAction func loginTapped(_ sender: UIButton) {
 		guard let username = usernameTextField.text,
 			let password = passwordTextField.text else { return }
-        if LoginViewController.isVendor {
-            vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
-                if let error: NetworkError = error {
-                    NSLog("Error returned when trying to log in: \(error)")
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                    
-                    return
-                } else {
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-            }
-		} else {
-            consumerController.logIn(user: ConsumerLogin(username: username, password: password)) { error in
-                if let error: NetworkError = error {
-                    NSLog("Error returned when trying to log in: \(error)")
-                    
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                    
-                    return
-                } else {
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-            }
-		}
+        
+    
+//        if LoginViewController.isVendor {
+//            vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
+//                if let error: NetworkError = error {
+//                    NSLog("Error returned when trying to log in: \(error)")
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
+//                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
+//
+//                    return
+//                } else {
+//                    DispatchQueue.main.async {
+//                        self.dismiss(animated: true, completion: nil)
+//                    }
+//                }
+//            }
+//		} else {
+//            consumerController.logIn(user: ConsumerLogin(username: username, password: password)) { error in
+//                if let error: NetworkError = error {
+//                    NSLog("Error returned when trying to log in: \(error)")
+//
+//                    DispatchQueue.main.async {
+//                        let alert = UIAlertController(title: "Unable to Log In", message: "Please check your username and password and try again", preferredStyle: .alert)
+//                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
+//
+//                    return
+//                } else {
+//                    DispatchQueue.main.async {
+//                        self.dismiss(animated: true, completion: nil)
+//                    }
+//                }
+//            }
+//		}
 	}
 
 	@IBAction func segControlAction(_ sender: UISegmentedControl) {

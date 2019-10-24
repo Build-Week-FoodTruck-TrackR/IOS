@@ -12,15 +12,30 @@ class SignUpViewController: UIViewController {
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var signUpButtonLabel: UIButton!
 	@IBOutlet weak var vendorSwitch: UISwitch!
 
 	let vendorController = VendorController.shared
 	let consumerController = ConsumerController.shared
+    let apiController = APICOntroller()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		setupViews()
 		// Do any additional setup after loading the view.
+	}
+
+	private func setupViews() {
+		view.backgroundColor = UIColor.titleBarColor
+
+		passwordTextField.isSecureTextEntry = true
+
+		signUpButtonLabel.tintColor = UIColor.textWhite
+
+		navigationController?.navigationBar.barStyle = .default
+		navigationController?.navigationBar.tintColor = UIColor.textWhite
+		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleBarColor]
+		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleBarColor]
 	}
 
 	@IBAction func signUpTapped(_ sender: UIButton) {
