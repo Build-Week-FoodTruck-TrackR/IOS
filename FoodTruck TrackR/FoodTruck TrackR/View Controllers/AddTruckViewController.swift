@@ -12,9 +12,9 @@ import CoreData
 class AddTruckViewController: UIViewController {
 
 	// MARK: - Outlets
-	@IBOutlet weak var truckNameTextField: UITextField!
-	@IBOutlet weak var cuisineTypeTextField: UITextField!
-	@IBOutlet weak var truckImageView: UIImageView!
+	@IBOutlet private weak var truckNameTextField: UITextField!
+	@IBOutlet private weak var cuisineTypeTextField: UITextField!
+	@IBOutlet private weak var truckImageView: UIImageView!
 
 	// MARK: - Properties
 	var truckController = TruckController.shared
@@ -22,9 +22,6 @@ class AddTruckViewController: UIViewController {
 	var cuisinePickerData: [CuisineType] = []
 	var cuisinePicker: UIPickerView! = UIPickerView()
 	var imagePickerController = UIImagePickerController()
-
-
-
 
 	var truck: TruckRepresentation {
 		let moc = CoreDataStack.shared.mainContext
@@ -116,7 +113,10 @@ func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent c
 
 public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
 	let cuisineData = cuisinePickerData[row]
-	let cuisine = NSAttributedString(string: cuisineData.rawValue, attributes: [NSAttributedString.Key.font:UIFont(name: "Helvetica", size: 17.0)!,NSAttributedString.Key.foregroundColor:UIColor.white])
+	let cuisine = NSAttributedString(string: cuisineData.rawValue,
+                                     attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica",
+                                                                                      size: 17.0)!,
+                                                  NSAttributedString.Key.foregroundColor: UIColor.white])
 	return cuisine
 }
 

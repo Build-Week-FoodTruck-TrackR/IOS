@@ -10,12 +10,12 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    //MARK: - properties
-	@IBOutlet weak var emailTextField: UITextField!
-	@IBOutlet weak var usernameTextField: UITextField!
-	@IBOutlet weak var passwordTextField: UITextField!
-	@IBOutlet weak var signUpButtonLabel: UIButton!
-	@IBOutlet weak var vendorSwitch: UISwitch!
+    // MARK: - Properties
+	@IBOutlet private weak var emailTextField: UITextField!
+	@IBOutlet private weak var usernameTextField: UITextField!
+	@IBOutlet private weak var passwordTextField: UITextField!
+	@IBOutlet private weak var signUpButtonLabel: UIButton!
+	@IBOutlet private weak var vendorSwitch: UISwitch!
     
 	let vendorController = VendorController.shared
 	let consumerController = ConsumerController.shared
@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController {
 		// Do any additional setup after loading the view.
 	}
 
-    //MARK: - methods
+    // MARK: - Methods
 	private func setupViews() {
         usertype = .consumer
 		view.backgroundColor = UIColor.titleBarColor
@@ -41,7 +41,7 @@ class SignUpViewController: UIViewController {
 	}
 
     
-    //MARK: - actions
+    // MARK: - Actions
     @IBAction func checkUserType(_ sender: UISwitch) {
         switch vendorSwitch.isOn {
         case true: usertype = .vendor
@@ -53,11 +53,13 @@ class SignUpViewController: UIViewController {
 		guard let username = usernameTextField.text,
 			let password = passwordTextField.text,
 			let email = emailTextField.text else { return }
-       guard let usertype = usertype else {return}
+        guard let usertype = usertype else { return }
         
         switch usertype {
         case .consumer:
-            ConsumerController.shared.register(user: ConsumerSignup(username: username, password: password, email: email)) { (error) in
+            ConsumerController.shared.register(user: ConsumerSignup(username: username,
+                                                                    password: password,
+                                                                    email: email)) { error in
                 if let error = error {
                     NSLog("failed to register: \(error.localizedDescription)")
                     DispatchQueue.main.async {
@@ -70,7 +72,7 @@ class SignUpViewController: UIViewController {
                     }
                 }
             }
-        case .vendor: VendorController.shared.register(user: VendorSignup(username: username, password: password, email: email)) { (error) in
+        case .vendor: VendorController.shared.register(user: VendorSignup(username: username, password: password, email: email)) { error in
             if let error = error {
                 NSLog("failed to register: \(error.localizedDescription)")
                 DispatchQueue.main.async {
