@@ -38,11 +38,13 @@
 		DD2875BE235E52910096E0E1 /* Truck+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875BD235E52910096E0E1 /* Truck+Convenience.swift */; };
 		DD2875C0235E52B20096E0E1 /* MenuItem+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */; };
 		DD2875C2235E52D20096E0E1 /* ConsumerRating+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */; };
+		DD5A43B22361F718001030FB /* AddTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A43B12361F718001030FB /* AddTruckViewController.swift */; };
 		DD82707C2360AA1300F66E2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAA50322360969500A4F6EE /* GoogleService-Info.plist */; };
 		DD82707D2360AA1400F66E2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAA50322360969500A4F6EE /* GoogleService-Info.plist */; };
 		DD82707E2360AA1500F66E2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAA50322360969500A4F6EE /* GoogleService-Info.plist */; };
 		DDA7C85523615371007E5EC5 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7C85423615371007E5EC5 /* UserType.swift */; };
-		DDA7C85723615434007E5EC5 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7C85623615434007E5EC5 /* APIController.swift */; };
+		DDA7C8592361E6D2007E5EC5 /* ErrorHandlingAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7C8582361E6D2007E5EC5 /* ErrorHandlingAlerts.swift */; };
+		DDA7C85B23621EB3007E5EC5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */; };
 		DDBD82CE235F730800599244 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CD235F730700599244 /* MainTableViewController.swift */; };
 		DDBD82D0235F941000599244 /* TruckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CF235F941000599244 /* TruckController.swift */; };
 		DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D1235F942400599244 /* ConsumerController.swift */; };
@@ -50,7 +52,7 @@
 		DDBD82D6235FB74E00599244 /* VendorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */; };
 		DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D7235FC68B00599244 /* SearchController.swift */; };
 		DDF696C623612E7A00850540 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF696C523612E7A00850540 /* MainViewController.swift */; };
-		DDF696C82361446A00850540 /* TruckDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF696C72361446A00850540 /* TruckDetail.storyboard */; };
+		DDF696C82361446A00850540 /* AddTruck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF696C72361446A00850540 /* AddTruck.storyboard */; };
 		E15773D664E76D9788F2A660 /* Pods_FoodTruck_TrackR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DBB87622CBE7AB0671051B2 /* Pods_FoodTruck_TrackR.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,8 +118,10 @@
 		DD2875BD235E52910096E0E1 /* Truck+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Truck+Convenience.swift"; sourceTree = "<group>"; };
 		DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItem+Convenience.swift"; sourceTree = "<group>"; };
 		DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumerRating+Convenience.swift"; sourceTree = "<group>"; };
+		DD5A43B12361F718001030FB /* AddTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTruckViewController.swift; sourceTree = "<group>"; };
 		DDA7C85423615371007E5EC5 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
-		DDA7C85623615434007E5EC5 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		DDA7C8582361E6D2007E5EC5 /* ErrorHandlingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingAlerts.swift; sourceTree = "<group>"; };
+		DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DDAA50322360969500A4F6EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDBD82CD235F730700599244 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		DDBD82CF235F941000599244 /* TruckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckController.swift; sourceTree = "<group>"; };
@@ -126,7 +130,7 @@
 		DDBD82D5235FB74E00599244 /* VendorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorTableViewCell.swift; sourceTree = "<group>"; };
 		DDBD82D7235FC68B00599244 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		DDF696C523612E7A00850540 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		DDF696C72361446A00850540 /* TruckDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TruckDetail.storyboard; sourceTree = "<group>"; };
+		DDF696C72361446A00850540 /* AddTruck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTruck.storyboard; sourceTree = "<group>"; };
 		F169B797BECC605CE867AF97 /* Pods-FoodTruck TrackRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTruck TrackRTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodTruck TrackRTests/Pods-FoodTruck TrackRTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,8 +193,8 @@
 				0E76F37A235AD283004D4306 /* Models */,
 				0E76F37B235AD28B004D4306 /* Model Controllers */,
 				0E76F36D235AAE24004D4306 /* CoreData */,
-				0E76F36E235AAE41004D4306 /* Resources */,
 				0E76F370235AAE60004D4306 /* Storyboards */,
+				0E76F36E235AAE41004D4306 /* Resources */,
 				0E76F373235AB045004D4306 /* Helpers */,
 			);
 			path = "FoodTruck TrackR";
@@ -224,7 +228,9 @@
 				0E76F384235C07A7004D4306 /* LoginViewController.swift */,
 				DDBD82CD235F730700599244 /* MainTableViewController.swift */,
 				0EAC196F235F8FB400CD9345 /* SignUpViewController.swift */,
+				DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */,
 				DDF696C523612E7A00850540 /* MainViewController.swift */,
+				DD5A43B12361F718001030FB /* AddTruckViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -236,7 +242,7 @@
 				0E76F37E235BA677004D4306 /* Map.storyboard */,
 				0E76F382235C0211004D4306 /* LoginAndSignup.storyboard */,
 				0E76F35F235A7DA5004D4306 /* LaunchScreen.storyboard */,
-				DDF696C72361446A00850540 /* TruckDetail.storyboard */,
+				DDF696C72361446A00850540 /* AddTruck.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				0E76F371235AB040004D4306 /* UIColor+Extension.swift */,
+				DDA7C8582361E6D2007E5EC5 /* ErrorHandlingAlerts.swift */,
 				0EAC1947235E731C00CD9345 /* CuisineType.swift */,
 				DDA7C85423615371007E5EC5 /* UserType.swift */,
 			);
@@ -268,7 +275,6 @@
 			children = (
 				DDBD82CF235F941000599244 /* TruckController.swift */,
 				DDBD82D1235F942400599244 /* ConsumerController.swift */,
-				DDA7C85623615434007E5EC5 /* APIController.swift */,
 				DDBD82D3235F943800599244 /* VendorController.swift */,
 				DDBD82D7235FC68B00599244 /* SearchController.swift */,
 			);
@@ -451,7 +457,7 @@
 				0E76F361235A7DA5004D4306 /* LaunchScreen.storyboard in Resources */,
 				0E76F35E235A7DA5004D4306 /* Assets.xcassets in Resources */,
 				0E76F35C235A7DA1004D4306 /* Main.storyboard in Resources */,
-				DDF696C82361446A00850540 /* TruckDetail.storyboard in Resources */,
+				DDF696C82361446A00850540 /* AddTruck.storyboard in Resources */,
 				0E76F37F235BA677004D4306 /* Map.storyboard in Resources */,
 				0E76F383235C0211004D4306 /* LoginAndSignup.storyboard in Resources */,
 				DD82707C2360AA1300F66E2C /* GoogleService-Info.plist in Resources */,
@@ -590,16 +596,18 @@
 				DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */,
 				DDBD82D4235F943800599244 /* VendorController.swift in Sources */,
 				DD2875BE235E52910096E0E1 /* Truck+Convenience.swift in Sources */,
+				DDA7C85B23621EB3007E5EC5 /* ProfileViewController.swift in Sources */,
 				0EAC1944235E6E5F00CD9345 /* LocationRepresentation.swift in Sources */,
 				0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */,
+				DD5A43B22361F718001030FB /* AddTruckViewController.swift in Sources */,
 				0E76F381235BA835004D4306 /* MapViewController.swift in Sources */,
 				0EAC1948235E731C00CD9345 /* CuisineType.swift in Sources */,
 				DD2875BC235E4D590096E0E1 /* Vendor+Convenience.swift in Sources */,
 				0E76F355235A7DA1004D4306 /* AppDelegate.swift in Sources */,
 				0EAC194A235E75E200CD9345 /* CustomerRatingsRepresentaion.swift in Sources */,
 				DDF696C623612E7A00850540 /* MainViewController.swift in Sources */,
+				DDA7C8592361E6D2007E5EC5 /* ErrorHandlingAlerts.swift in Sources */,
 				DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */,
-				DDA7C85723615434007E5EC5 /* APIController.swift in Sources */,
 				0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */,
 				0E76F379235AD27E004D4306 /* Consumer+Convenience.swift in Sources */,
 				DD2875C2235E52D20096E0E1 /* ConsumerRating+Convenience.swift in Sources */,
