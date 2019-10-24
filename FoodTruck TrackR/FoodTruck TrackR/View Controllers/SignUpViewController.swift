@@ -71,6 +71,11 @@ class SignUpViewController: UIViewController {
                 DispatchQueue.main.async {
                     UserAlert.showSignupAlert(on: self)
                 }
+                return
+            } else {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
         
