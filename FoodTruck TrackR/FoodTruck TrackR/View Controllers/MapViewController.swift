@@ -137,6 +137,23 @@ class MapViewController: UIViewController {
         directionsArray.append(directions)
     }
     
+    private func getAddress(_ location: CLLocation, completionHandler: @escaping (CLPlacemark?)
+    -> Void ) {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let error = error {
+                NSLog("Error getting address from location: \(error)")
+                completionHandler(nil)
+            } else {
+                if let placemarks = placemarks {
+                    completionHandler(placemarks[0])
+                } else {
+                    completionHandler(nil)
+                }
+            }
+        }
+    }
+    
     private func checkLocationServices() { // Check to make sure Location Services are active
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
@@ -237,12 +254,28 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             guard let user = vendorController.user as? Vendor,
                 let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
             
-//            cell.addressLabel.tex
+            if let location = truck.location {
+                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { (placemark) in
+                    if let placemark = placemark {
+                        cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
+                    }
+                }
+            }
+            
             cell.truck = truck
             
         } else {
             guard let user = consumerController.user as? Vendor,
                 let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
+            
+            if let location = truck.location {
+                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { (placemark) in
+                    if let placemark = placemark {
+                        cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
+                    }
+                }
+            }
+            
             cell.truck = truck
         }
         
