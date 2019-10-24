@@ -90,7 +90,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func getDirections(to destination: CLLocationCoordinate2D) {
+    private func getDirections(to destination: CLLocationCoordinate2D) { // Gets directions from current location to selected destination. (Shows multiple routes)
         guard let location = locationManager.location?.coordinate else {
             let alert = UIAlertController(title: "", message: "Network error. Please check your connection", preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
@@ -337,6 +337,7 @@ extension MapViewController: UISearchBarDelegate {
 extension MapViewController: ShowTruckOnMap {
     func truckWasSelected(_ truck: Truck) {
         if let location = truck.location {
+            searchBarCancelButtonClicked(foodTruckSearchBar)
             let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             getDirections(to: coordinate)
         }
