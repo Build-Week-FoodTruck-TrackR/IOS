@@ -10,15 +10,35 @@ import UIKit
 
 class FoodTruckTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var foodTruckImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var distanceAwayLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    var truck: Truck? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    var distanceAway: Double?
+    
+    @IBOutlet private weak var foodTruckImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var distanceAwayLabel: UILabel!
+    @IBOutlet private weak var favoriteButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        updateViews()
+    }
+    
+    func updateViews() {
+        guard let truck = truck else { return }
+        
+        nameLabel.text = truck.truckName
+        if let distanceAway = distanceAway {
+            distanceAwayLabel.text = "\(distanceAway) away"
+        } else {
+            distanceAwayLabel.text = "N/A away"
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

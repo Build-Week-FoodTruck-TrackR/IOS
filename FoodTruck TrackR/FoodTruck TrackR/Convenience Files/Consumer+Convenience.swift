@@ -10,7 +10,12 @@ import Foundation
 import CoreData
 
 extension Consumer {
-    convenience init(username: String, password: String, email: String, favoriteTrucks: [Truck], identifier: UUID = UUID(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    convenience init(username: String,
+                     password: String,
+                     email: String,
+                     favoriteTrucks: [Truck],
+                     identifier: UUID = UUID(),
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 		let favoriteTrucksSet = NSOrderedSet(object: favoriteTrucks)
         

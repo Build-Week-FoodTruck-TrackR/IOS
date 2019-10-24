@@ -17,11 +17,6 @@ class ConsumerRepresentation: Codable, Equatable {
         case favoriteTrucks
         case identifier
         case currentLocation
-        
-        enum LocationKeys: String, CodingKey {
-            case longitude
-            case latitude
-        }
     }
 
     var username: String
@@ -69,7 +64,7 @@ class ConsumerRepresentation: Codable, Equatable {
         self.identifier = id
     }
     
-    static func ==(lhs: ConsumerRepresentation, rhs: ConsumerRepresentation) -> Bool {
+    static func == (lhs: ConsumerRepresentation, rhs: ConsumerRepresentation) -> Bool {
         return lhs.username == rhs.username &&
             lhs.password == rhs.password &&
             lhs.email == rhs.email &&

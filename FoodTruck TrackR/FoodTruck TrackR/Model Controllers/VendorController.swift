@@ -34,7 +34,7 @@ class VendorController {
             return
         }
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
                 print(response.statusCode)
@@ -78,7 +78,7 @@ class VendorController {
 
         // request.httpBody = componentString?.data(using: .utf8)
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 && response.statusCode != 200 {
                 NSLog("Response status code is not 200 or 201. Status code: \(response.statusCode)")

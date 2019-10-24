@@ -18,6 +18,12 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     let searchResultsTableView = UITableView()
     
+    var searchResult: [Truck] = []
+    
+    let vendorController = VendorController.shared
+    let consumerController = ConsumerController.shared
+    let truckController = TruckController.shared
+    
     var directionsArray: [MKDirections] = []
     
     override func viewDidLoad() {
@@ -215,13 +221,27 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if LoginViewController.isVendor {
+            guard let user = vendorController.user as? Vendor else { return 0 }
+            return user.trucksOwned?.count ?? 0
+        } else {
+            guard let user = consumerController.user as? Vendor else { return 0 }
+            return user.trucksOwned?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell", for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
         
-        // Set up cell
+        if LoginViewController.isVendor {
+            guard let user = vendorController.user as? Vendor,
+                let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
+            cell.truck = truck
+        } else {
+            guard let user = consumerController.user as? Vendor,
+                let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
+            cell.truck = truck
+        }
         
         return cell
     }
@@ -253,7 +273,8 @@ extension MapViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(false)
-        //Send a fetch request to the back end
+        searchResult = truckController.getTruck(with: searchBar.text)
+        searchResultsTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -267,5 +288,4 @@ extension MapViewController: UISearchBarDelegate {
         
         self.view.endEditing(true)
     }
-    
 }
