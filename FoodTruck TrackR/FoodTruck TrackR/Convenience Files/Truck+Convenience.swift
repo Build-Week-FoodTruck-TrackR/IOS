@@ -7,18 +7,29 @@
 //
 
 import Foundation
-import CoreData	
+import CoreData
 
 extension Truck {
-    convenience init(customerAvgRating: Double, location: Location, imageOfTruck: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+	convenience init(truckName: String,
+                     customerAvgRating: Double,
+                     location: Location,
+                     imageOfTruck: String,
+                     identifier: UUID = UUID(),
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
+		self.truckName = truckName
         self.imageOfTruck = imageOfTruck
 		self.customerAvgRating = customerAvgRating
         self.location = location
+        self.identifier = identifier
     }
     
-    convenience init(truck: TruckRepresentation) {
-        self.init(customerAvgRating: truck.customerRatingAvg, location: Location(location: truck.location), imageOfTruck: truck.imageOfTruck)
+    convenience init(truck: TruckRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        self.init(truckName: truck.truckName,
+                  customerAvgRating: truck.customerAvgRating,
+                  location: Location(location: truck.location),
+                  imageOfTruck: truck.imageOfTruck,
+                  context: context)
     }
 }

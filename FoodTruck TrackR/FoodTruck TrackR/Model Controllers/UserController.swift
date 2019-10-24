@@ -18,4 +18,3 @@ enum HTTPMethod: String {
 class UserController {
     
 }
-

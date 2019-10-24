@@ -7,10 +7,15 @@
 //
 
 import Foundation
-import CoreData 
+import CoreData
 
 extension MenuItem {
-	convenience init(itemName: String, itemDescription: String, itemPhotos: [MenuPhoto], itemPrice: Double, consumerRating: [ConsumerRating], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+	convenience init(itemName: String,
+                     itemDescription: String,
+                     itemPhotos: [MenuPhoto],
+                     itemPrice: Double,
+                     consumerRating: [ConsumerRating],
+                     context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 
         self.itemName = itemName

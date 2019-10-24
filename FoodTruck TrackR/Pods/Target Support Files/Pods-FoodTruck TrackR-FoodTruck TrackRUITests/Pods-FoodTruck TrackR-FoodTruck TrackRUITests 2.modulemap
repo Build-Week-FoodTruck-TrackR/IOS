@@ -1,0 +1,6 @@
+framework module Pods_FoodTruck_TrackR_FoodTruck_TrackRUITests {
+  umbrella header "Pods-FoodTruck TrackR-FoodTruck TrackRUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
