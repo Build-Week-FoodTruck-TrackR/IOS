@@ -27,19 +27,19 @@ class LoginViewController: UIViewController {
 	}
 
 	private func setupViews() {
-		view.backgroundColor = UIColor.backgroundWhite
+		view.backgroundColor = UIColor.titleBarColor
 
 		passwordTextField.isSecureTextEntry = true
 
-		loginSegmentedControl.backgroundColor = .text
+		loginSegmentedControl.backgroundColor = UIColor.highLightColor
 
-		loginButton.backgroundColor = .text
+		loginButton.backgroundColor = UIColor.textWhite
 		loginButton.setTitleColor(UIColor.background, for: .normal)
 		loginButton.layer.cornerRadius = 8
 
 		navigationController?.navigationBar.barStyle = .default
-		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
-		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.text]
+		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleBarColor]
+		navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleBarColor]
 	}
 
 	@IBAction func loginTapped(_ sender: UIButton) {

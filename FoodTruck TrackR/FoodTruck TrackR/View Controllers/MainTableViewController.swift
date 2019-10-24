@@ -73,17 +73,24 @@ class MainTableViewController: UITableViewController {
 	// Make everything pretty
 	private func setupViews() {
 
-        view.backgroundColor = .white
+		let navBarAppearance = UINavigationBarAppearance()
+
+		view.backgroundColor = UIColor.titleBarColor
         //foodTruckSearchBar.barTintColor = .background
 
         tabBarController?.tabBar.barStyle = .default
 		tabBarController?.tabBar.barTintColor = UIColor.titleBarColor
 		tabBarController?.tabBar.tintColor = UIColor.textWhite
 
+		navBarAppearance.configureWithDefaultBackground()
+		navBarAppearance.backgroundColor = UIColor.titleBarColor
+
 		navigationItem.title = "Testing title"
         navigationController?.navigationBar.barStyle = .default
 		navigationController?.navigationBar.barTintColor = UIColor.titleBarColor
 		navigationController?.navigationBar.backgroundColor = UIColor.titleBarColor
+
+
 		navigationController?.navigationBar.tintColor = UIColor.textWhite
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textWhite]
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textWhite]
