@@ -53,21 +53,26 @@ class SignUpViewController: UIViewController {
 		guard let username = usernameTextField.text,
 			let password = passwordTextField.text,
 			let email = emailTextField.text else { return }
-        guard let usertype = usertype else {return}
+       guard let usertype = usertype else {return}
         
         switch usertype {
         case .consumer:
             ConsumerController.shared.register(user: ConsumerSignup(username: username, password: password, email: email)) { (error) in
                 if let error = error {
-                    NSLog("failed to register: \(error)")
+                    NSLog("failed to register: \(error.localizedDescription)")
                     DispatchQueue.main.async {
                         UserAlert.showSignupAlert(on: self)
+                    }
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }
         case .vendor: VendorController.shared.register(user: VendorSignup(username: username, password: password, email: email)) { (error) in
             if let error = error {
-                NSLog("failed to register: \(error)")
+                NSLog("failed to register: \(error.localizedDescription)")
                 DispatchQueue.main.async {
                     UserAlert.showSignupAlert(on: self)
                 }
@@ -80,5 +85,6 @@ class SignUpViewController: UIViewController {
         }
         
         }
+        
 	}
 }
