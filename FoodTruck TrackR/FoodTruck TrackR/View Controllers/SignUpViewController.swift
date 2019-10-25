@@ -44,8 +44,12 @@ class SignUpViewController: UIViewController {
     // MARK: - Actions
     @IBAction func checkUserType(_ sender: UISwitch) {
         switch vendorSwitch.isOn {
-        case true: usertype = .vendor
-        case false: usertype = .consumer
+        case true:
+            usertype = .vendor
+            LoginViewController.isVendor = true
+        case false:
+            usertype = .consumer
+            LoginViewController.isVendor = false
         }
     }
     
