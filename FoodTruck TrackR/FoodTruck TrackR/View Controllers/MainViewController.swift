@@ -43,6 +43,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		setColors()
 		setupViews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupViews()
+    }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
