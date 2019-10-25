@@ -14,11 +14,11 @@ class MapViewController: UIViewController {
     
     @IBOutlet private weak var foodTruckSearchBar: UISearchBar!
     @IBOutlet private weak var foodTruckMapView: MKMapView!
+    @IBOutlet weak var searchResultsTableView: UITableView!
     
     let locationManager = CLLocationManager()
-    let searchResultsTableView = UITableView()
     
-    var searchResult: [Truck] = []
+    var searchResult: [TruckRepresentation] = []
     
     let vendorController = VendorController.shared
     let consumerController = ConsumerController.shared
@@ -31,6 +31,8 @@ class MapViewController: UIViewController {
 
         setupViews()
         checkLocationServices()
+        
+        truckController.refreshTrucksFromServer()
         
         foodTruckSearchBar.showsCancelButton = false
         foodTruckSearchBar.delegate = self
@@ -70,14 +72,6 @@ class MapViewController: UIViewController {
         searchResultsTableView.dataSource = self
         
         searchResultsTableView.isHidden = true
-        
-        view.addSubview(searchResultsTableView)
-        searchResultsTableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        searchResultsTableView.topAnchor.constraint(equalTo: foodTruckSearchBar.bottomAnchor).isActive = true
-        searchResultsTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        searchResultsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        searchResultsTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
     private func setupLocationManager() { // Housekeeping
@@ -129,6 +123,18 @@ class MapViewController: UIViewController {
                 self.foodTruckMapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height:CGFloat = CGFloat()
+        if indexPath.row == 0 {
+            height = 100
+        }
+        else if indexPath.row == 1 {
+            height = self.view.frame.size.height - 44 - 64 // 44 is a tab bar height and 64 is navigationbar height.
+            print(height)
+        }
+        return height
     }
     
     private func createRequest(start: MKPlacemark, end: MKPlacemark) -> MKDirections.Request {
@@ -215,7 +221,6 @@ class MapViewController: UIViewController {
         return false
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -255,51 +260,23 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if LoginViewController.isVendor {
-            guard let user = vendorController.user as? Vendor else { return 0 }
-            return user.trucksOwned?.count ?? 0
-        } else {
-            guard let user = consumerController.user as? Vendor else { return 0 }
-            return user.trucksOwned?.count ?? 0
-        }
+        return searchResult.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell",
                                                                     for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
         
-        if LoginViewController.isVendor {
-            guard let user = vendorController.user as? Vendor,
-                let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
-            
-            if let location = truck.location {
-                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { placemark in
-                    if let placemark = placemark {
-                        cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
-                    }
-                }
+        let truck = searchResult[indexPath.row]
+        cell.truck = truck
+        getAddress(CLLocation(latitude: truck.location.latitude, longitude: truck.location.longitute)) { placemark in
+            if let placemark = placemark {
+                cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
             }
-            
-            cell.truck = truck
-            
-        } else {
-            guard let user = consumerController.user as? Vendor,
-                let truck = user.trucksOwned?[indexPath.row] as? Truck else { return UITableViewCell() }
-            
-            if let location = truck.location {
-                getAddress(CLLocation(latitude: location.latitude, longitude: location.longitude)) { placemark in
-                    if let placemark = placemark {
-                        cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
-                    }
-                }
-            }
-            
-            cell.truck = truck
         }
         
         return cell
     }
-    
 }
 
 extension MapViewController: UISearchBarDelegate {
@@ -328,7 +305,7 @@ extension MapViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(false)
-        searchResult = truckController.getTruck(with: searchBar.text)
+        searchResult = truckController.getTrucks(with: searchBar.text)
         searchResultsTableView.reloadData()
     }
     
@@ -346,12 +323,10 @@ extension MapViewController: UISearchBarDelegate {
 }
 
 extension MapViewController: ShowTruckOnMap {
-    func truckWasSelected(_ truck: Truck) {
-        if let location = truck.location {
-            searchBarCancelButtonClicked(foodTruckSearchBar)
-            let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-            getDirections(to: coordinate)
-        }
+    func truckWasSelected(_ truck: TruckRepresentation) {
+        searchBarCancelButtonClicked(foodTruckSearchBar)
+        let coordinate = CLLocationCoordinate2D(latitude: truck.location.latitude, longitude: truck.location.longitute)
+        getDirections(to: coordinate)
     }
     
 }

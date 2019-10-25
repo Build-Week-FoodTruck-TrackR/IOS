@@ -12,15 +12,15 @@ import CoreData
 class TruckController {
 
 	// MARK: - Properties
-    var trucks: [Truck] = []
+    var trucks: [TruckRepresentation] = []
     
     static let shared = TruckController()
 
-	func getTruck(with searchTerm: String?) -> [Truck] {
+	func getTrucks(with searchTerm: String?) -> [TruckRepresentation] {
         guard let searchTerm = searchTerm, !searchTerm.isEmpty else { return [] }
         
-        let filteredNames = trucks.filter({(item: Truck) -> Bool in
-            let stringMatch = item.truckName?.lowercased().range(of: searchTerm.lowercased())
+        let filteredNames = trucks.filter({(item: TruckRepresentation) -> Bool in
+            let stringMatch = item.truckName.lowercased().range(of: searchTerm.lowercased())
                 return stringMatch != nil ? true : false
         })
         return filteredNames
@@ -102,7 +102,7 @@ class TruckController {
         }.resume()
     }
     
-    func fetchTrucksFromServer(completion: @escaping (([TruckRepresentation]?, Error?) -> Void) = { _, _ in }) {
+    func fetchTrucksFromServer(completion: @escaping ((Error?) -> Void) = { _ in }) {
         
         let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathExtension("json")
         
@@ -110,35 +110,34 @@ class TruckController {
             
             if let error = error {
                 NSLog("Error fetching entries from server: \(error)")
-                completion(nil, error)
+                completion(error)
                 return
             }
             
             guard let data = data else {
                 NSLog("No data returned from data task")
-                completion(nil, NSError())
+                completion(NSError())
                 return
             }
 
             do {
                 let truckReps = try JSONDecoder().decode([String: TruckRepresentation].self, from: data).map({ $0.value })
-                completion(truckReps, nil)
+                self.trucks = truckReps
             } catch {
                 NSLog("Error decoding JSON data: \(error)")
-                completion(nil, error)
+                completion(error)
                 return
             }
         }.resume()
     }
     
     func refreshTrucksFromServer() {
-        fetchTrucksFromServer { representations, error in
+        fetchTrucksFromServer { error in
             if error != nil {
                 return
             }
-            guard let representations = representations else { return }
             let moc = CoreDataStack.shared.container.newBackgroundContext()
-            self.updateTrucks(with: representations, in: moc)
+            self.updateTrucks(with: self.trucks, in: moc)
         }
     }
     
@@ -154,7 +153,7 @@ class TruckController {
                 fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
 
                 let existingTrucks = try context.fetch(fetchRequest)
-                var tempArr: [Truck] = []
+                var tempArr: [TruckRepresentation] = []
                 for truck in existingTrucks {
                     guard let identifier = truck.identifier,
                         let representation = representationsByID[identifier] else { continue }
@@ -166,12 +165,12 @@ class TruckController {
                     
                     trucksToCreate.removeValue(forKey: identifier)
                     
-                    tempArr.append(truck)
+                    tempArr.append(representation)
                 }
                 
                 for representation in trucksToCreate.values {
-                    let truck = Truck(truck: representation, context: context)
-                    tempArr.append(truck)
+                    _ = Truck(truck: representation, context: context)
+                    tempArr.append(representation)
                 }
                 trucks = tempArr
                 saveToPersistentStore()
