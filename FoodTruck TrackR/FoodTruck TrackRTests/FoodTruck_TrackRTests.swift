@@ -11,15 +11,36 @@ import XCTest
 
 class FoodTruck_TrackRTests: XCTestCase {
 
-    override func setUp() {
+    func testAddNewTruck() {
         super.setUp()
-        let app = XCUIApplication()
-        app.launchArguments = ["UITesting"]
-        app.launch()
+        var count = 0
+        TruckController.shared.fetchTrucksFromServer { error in
+            if let error = error {
+                print(error)
+            } else {
+                count = TruckController.shared.trucks.count
+            }
+        }
+        
+        TruckController.shared.createTruck(with: "Test truck", location: Location(longitude: 100, latitude: 100), imageOfTruck: "")
+        XCTAssertEqual(count, TruckController.shared.trucks.count)
     }
-
-    func testExample() {
-        super.setUp()
+    
+    func testDeleteTruck() {
+        var count = 0
+        TruckController.shared.fetchTrucksFromServer { error in
+            if let error = error {
+                print(error)
+            } else {
+                count = TruckController.shared.trucks.count
+                TruckController.shared.deleteTruckFromServer(truck: TruckController.shared.trucks[TruckController.shared.trucks.count - 1])
+                
+                XCTAssertEqual(count, TruckController.shared.trucks.count)
+            }
+        }
     }
-
+    
+    func testSignUp() {
+        
+    }
 }

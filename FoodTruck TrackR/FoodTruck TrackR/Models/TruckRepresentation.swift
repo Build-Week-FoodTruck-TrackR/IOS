@@ -14,17 +14,20 @@ struct TruckRepresentation: Codable {
     var customerAvgRating: Double
 	var truckName: String
     var identifier: UUID
+    var cuisineType: String?
 
 	init(location: LocationRepresentaion = LocationRepresentaion(longitute: 0.0, latitude: 0.0),
          imageOfTruck: String = "",
          customerAvgRating: Double = 0.0,
          truckName: String = "",
+         cuisineType: String? = nil,
          identifier: UUID = UUID()) {
 
 		self.location = location
 		self.imageOfTruck = imageOfTruck
 		self.customerAvgRating = customerAvgRating
 		self.truckName = truckName
+        self.cuisineType = cuisineType
 		self.identifier = identifier
 	}
 }
