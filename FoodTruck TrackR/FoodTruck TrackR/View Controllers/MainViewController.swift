@@ -12,7 +12,7 @@ import CoreData
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 	@IBOutlet private weak var tableView: UITableView!
-    @IBOutlet weak var addTruckBarButtonItem: UIBarButtonItem!
+    @IBOutlet private weak var addTruckBarButtonItem: UIBarButtonItem!
     
     let vendorController = VendorController()
 
@@ -42,6 +42,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 		setColors()
 		setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupViews()
     }
 
 	override func didReceiveMemoryWarning() {

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddTruckViewController: UIViewController {
+class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 	// MARK: - Outlets
 	@IBOutlet private weak var truckNameTextField: UITextField!
@@ -19,11 +19,12 @@ class AddTruckViewController: UIViewController {
 	// MARK: - Properties
 	var truckController = TruckController.shared
 	var cuisine: CuisineType?
+    var imageURLString: String?
 	var cuisinePickerData: [CuisineType] = []
 	var cuisinePicker: UIPickerView! = UIPickerView()
 	var imagePickerController = UIImagePickerController()
 
-	var truck: TruckRepresentation {
+	var truckRep: TruckRepresentation {
 		let moc = CoreDataStack.shared.mainContext
 		let request: NSFetchRequest<Truck> = Truck.fetchRequest()
 
@@ -76,23 +77,44 @@ class AddTruckViewController: UIViewController {
             !truckName.isEmpty,
             let cuisine = cuisineTypeTextField.text,
             !cuisine.isEmpty else { return }
-
-        truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: "")
+         guard let image = imageURLString else { return }
+        print(image)
+        truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: image)
+        dismiss(animated: true, completion: nil)
 	}
     
     @IBAction func addPhotoButton(_ sender: UIButton) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+               let imagePicker = UIImagePickerController()
+               imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+               imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
+           }
     }
     
-	/*
-	// MARK: - Navigation
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let truckImageUrl = info[.imageURL] as? URL else { return }
+        imageURLString  = truckImageUrl.absoluteString
+    
+        do {
+        let truckImageData = try Data(contentsOf: truckImageUrl)
+            truckImageView.image = UIImage(data: truckImageData)
+            dismiss(animated: true, completion: nil)
+        } catch {
+            NSLog("failed to get image")
+        }
+    }
 
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-	// Get the new view controller using segue.destination.
-	// Pass the selected object to the new view controller.
-	}
-	*/
-
+//    func convertUrloString(url: URL) {
+//        do {
+//            imageURLString  = url.absoluteString
+//        } catch {
+//            NSLog("failed to convert url to string")
+//        }
+//
+//}
 }
 
 extension AddTruckViewController: UITextFieldDelegate {
