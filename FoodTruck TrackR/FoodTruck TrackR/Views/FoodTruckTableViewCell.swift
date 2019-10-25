@@ -52,7 +52,9 @@ class FoodTruckTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = "Truck isn't around"
         }
-        if let distanceAway = distanceAway, let distance = numberFormatter.string(from: NSNumber(floatLiteral: distanceAway)) {
+        if let distanceAway = distanceAway,
+            let num = distanceAway as? NSNumber,
+            let distance = numberFormatter.string(from: num) {
             distanceAwayLabel.text = "\(distance) mi"
         } else {
             distanceAwayLabel.text = "N/A away"
