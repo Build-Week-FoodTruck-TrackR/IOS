@@ -130,7 +130,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zs9-Qb-NYo"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="sED-TL-Lor"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="sED-TL-Lor"/>
                     <connections>
                         <outlet property="emailTextfield" destination="jtd-ZH-nxX" id="M6e-rV-LTB"/>
                         <outlet property="nameTextfield" destination="bDg-lf-1hw" id="4wc-uG-Yqq"/>
@@ -291,6 +291,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" catalog="system" width="64" height="60"/>
         <image name="map" catalog="system" width="64" height="58"/>
         <image name="person" catalog="system" width="64" height="60"/>
     </resources>
