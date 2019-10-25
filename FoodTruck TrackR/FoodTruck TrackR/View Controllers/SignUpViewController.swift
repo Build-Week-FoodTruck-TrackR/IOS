@@ -50,11 +50,14 @@ class SignUpViewController: UIViewController {
     }
     
 	@IBAction func signUpTapped(_ sender: UIButton) {
-		guard let username = usernameTextField.text,
-			let password = passwordTextField.text,
-			let email = emailTextField.text else { return }
+        guard let username = usernameTextField.text,
+            let password = passwordTextField.text,!password.isEmpty,
+        let email = emailTextField.text, !email.isEmpty else { return }
         guard let usertype = usertype else { return }
         
+        if username.isEmpty {
+            UserAlert.showSignupAlert(on: self)
+        }
         switch usertype {
         case .consumer:
             ConsumerController.shared.register(user: ConsumerSignup(username: username,
