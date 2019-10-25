@@ -10,11 +10,16 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextfield: UITextField!
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var nameTextfield: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
-
+    @IBAction func signoutButton(_ sender: UIButton) {
+    }
+    
 
 }

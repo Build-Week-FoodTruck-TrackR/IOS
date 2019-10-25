@@ -51,6 +51,9 @@
                                 <state key="normal" title="Sign out">
                                     <color key="titleColor" red="0.91980725526809692" green="0.073027203143792019" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="signoutButton:" destination="GSS-fN-fZW" eventType="touchUpInside" id="6DK-qX-GTW"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMc-FP-qUx">
                                 <rect key="frame" x="20" y="117" width="141.5" height="48"/>
@@ -125,6 +128,11 @@
                         <viewLayoutGuide key="safeArea" id="Zs9-Qb-NYo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" id="sED-TL-Lor"/>
+                    <connections>
+                        <outlet property="emailTextfield" destination="jtd-ZH-nxX" id="M6e-rV-LTB"/>
+                        <outlet property="nameTextfield" destination="bDg-lf-1hw" id="4wc-uG-Yqq"/>
+                        <outlet property="usernameTextfield" destination="YWf-Pm-QKp" id="kB8-Ke-cot"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHH-kC-kgV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
