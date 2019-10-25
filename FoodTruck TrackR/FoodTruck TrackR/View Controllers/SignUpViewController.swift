@@ -55,8 +55,9 @@ class SignUpViewController: UIViewController {
     
 	@IBAction func signUpTapped(_ sender: UIButton) {
         guard let username = usernameTextField.text,
-            let password = passwordTextField.text,!password.isEmpty,
-        let email = emailTextField.text, !email.isEmpty else { return }
+            let password = passwordTextField.text,
+            !password.isEmpty,
+            let email = emailTextField.text, !email.isEmpty else { return }
         guard let usertype = usertype else { return }
         
         if username.isEmpty {

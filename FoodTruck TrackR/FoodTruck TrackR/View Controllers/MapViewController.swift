@@ -14,7 +14,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet private weak var foodTruckSearchBar: UISearchBar!
     @IBOutlet private weak var foodTruckMapView: MKMapView!
-    @IBOutlet weak var searchResultsTableView: UITableView!
+    @IBOutlet private weak var searchResultsTableView: UITableView!
     
     let locationManager = CLLocationManager()
     
@@ -25,6 +25,8 @@ class MapViewController: UIViewController {
     let truckController = TruckController.shared
     
     var directionsArray: [MKDirections] = []
+    
+    var userLocation: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +72,6 @@ class MapViewController: UIViewController {
     private func setupTableView() { // Set up table view constaints and make it hidden
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
-        
         searchResultsTableView.isHidden = true
     }
     
@@ -83,6 +84,9 @@ class MapViewController: UIViewController {
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion(center: location, latitudinalMeters: 10_000, longitudinalMeters: 10_000)
             foodTruckMapView.setRegion(region, animated: true)
+            
+            userLocation = location
+            
         } else {
             NSLog("User appears to not have connection.")
         }
@@ -126,14 +130,7 @@ class MapViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height:CGFloat = CGFloat()
-        if indexPath.row == 0 {
-            height = 100
-        }
-        else if indexPath.row == 1 {
-            height = self.view.frame.size.height - 44 - 64 // 44 is a tab bar height and 64 is navigationbar height.
-            print(height)
-        }
+        let height: CGFloat = 100
         return height
     }
     
@@ -274,7 +271,13 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.address = placemark.locality // This may just show the city? There wasn't adiquate documentation
             }
         }
-        
+
+        if let userLocation = userLocation {
+            let location = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+            let destination = CLLocation(latitude: truck.location.latitude, longitude: truck.location.longitute)
+            let distance: CLLocationDistance = location.distance(from: destination)
+            cell.distanceAway = Double(distance) / 1609.344
+        }
         return cell
     }
 }

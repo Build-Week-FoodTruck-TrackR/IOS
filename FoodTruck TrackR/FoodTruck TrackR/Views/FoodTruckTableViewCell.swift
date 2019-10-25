@@ -25,6 +25,12 @@ class FoodTruckTableViewCell: UITableViewCell {
     var distanceAway: Double?
     var address: String?
     
+    var numberFormatter: NumberFormatter {
+        let nf = NumberFormatter()
+        nf.maximumFractionDigits = 2
+        return nf
+    }
+    
     @IBOutlet private weak var foodTruckImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
@@ -46,8 +52,10 @@ class FoodTruckTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = "Truck isn't around"
         }
-        if let distanceAway = distanceAway {
-            distanceAwayLabel.text = "\(distanceAway) away"
+        if let distanceAway = distanceAway,
+            let num = distanceAway as? NSNumber,
+            let distance = numberFormatter.string(from: num) {
+            distanceAwayLabel.text = "\(distance) mi"
         } else {
             distanceAwayLabel.text = "N/A away"
         }
