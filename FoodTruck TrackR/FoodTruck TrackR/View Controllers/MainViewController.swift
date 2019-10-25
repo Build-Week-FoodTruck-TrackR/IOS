@@ -12,8 +12,9 @@ import CoreData
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 	@IBOutlet private weak var tableView: UITableView!
-
-	let vendorController = VendorController()
+    @IBOutlet weak var addTruckBarButtonItem: UIBarButtonItem!
+    
+    let vendorController = VendorController()
 
 	lazy var fetch: NSFetchedResultsController<Vendor> = {
 
@@ -69,7 +70,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 	// Make everything pretty
 	private func setupViews() {
-
+        if LoginViewController.isVendor {
+            navigationItem.title = "My Trucks"
+            addTruckBarButtonItem.isEnabled = true
+            addTruckBarButtonItem.tintColor = .systemBlue
+        } else {
+            navigationItem.title = "Favorite Trucks"
+            addTruckBarButtonItem.isEnabled = false
+            addTruckBarButtonItem.tintColor = .clear
+        }
+        
 		let navBarAppearance = UINavigationBarAppearance()
 
 		view.backgroundColor = UIColor.titleBarColor
@@ -82,7 +92,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		navBarAppearance.configureWithDefaultBackground()
 		navBarAppearance.backgroundColor = UIColor.titleBarColor
 
-		navigationItem.title = "Testing title"
         navigationController?.navigationBar.barStyle = .default
 		navigationController?.navigationBar.barTintColor = UIColor.titleBarColor
 		navigationController?.navigationBar.backgroundColor = UIColor.titleBarColor
