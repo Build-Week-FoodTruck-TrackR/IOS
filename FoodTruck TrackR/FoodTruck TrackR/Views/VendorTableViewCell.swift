@@ -29,10 +29,19 @@ class VendorTableViewCell: UITableViewCell {
         
     }
 
+	private func updateViews() {
+		guard let vendor = vendor else { return }
+
+		truckNameLabel.text = vendor.
+
+	}
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+
+
 
 }
