@@ -47,7 +47,7 @@ class TruckController {
     private func put(truck: Truck, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
         let identifier = truck.identifier?.uuidString ?? UUID().uuidString
-        let requestURL = baseURL.appendingPathComponent(identifier).appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
         
@@ -87,7 +87,7 @@ class TruckController {
             return
         }
         
-        let requestURL = baseURL.appendingPathComponent(identifier.uuidString).appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier.uuidString).appendingPathExtension("json")
         var request = URLRequest(url: requestURL)
         request.httpMethod = "DELETE"
         
@@ -104,7 +104,7 @@ class TruckController {
     
     func fetchTrucksFromServer(completion: @escaping (([TruckRepresentation]?, Error?) -> Void) = { _, _ in }) {
         
-        let requestURL = baseURL.appendingPathExtension("json")
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathExtension("json")
         
         URLSession.shared.dataTask(with: requestURL) { data, _, error in
             

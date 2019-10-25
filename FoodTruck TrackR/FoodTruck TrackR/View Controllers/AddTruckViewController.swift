@@ -71,19 +71,18 @@ class AddTruckViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textWhite]
     }
 
-	private func addTruck() {
-		guard let truckName = truckNameTextField.text,
-			!truckName.isEmpty,
-			let cuisine = cuisineTypeTextField.text,
-			!cuisine.isEmpty else { return }
+	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
+        guard let truckName = truckNameTextField.text,
+            !truckName.isEmpty,
+            let cuisine = cuisineTypeTextField.text,
+            !cuisine.isEmpty else { return }
 
-		truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: "")
+        truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: "")
 	}
-
-	@IBAction func addTruckButton(_ sender: Any) {
-
-	}
-
+    
+    @IBAction func addPhotoButton(_ sender: UIButton) {
+    }
+    
 	/*
 	// MARK: - Navigation
 
