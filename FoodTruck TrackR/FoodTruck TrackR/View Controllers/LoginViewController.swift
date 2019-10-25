@@ -28,8 +28,14 @@ class LoginViewController: UIViewController {
         setupViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupViews()
+    }
+    
     // MARK: - helper methods
     private func setupViews() {
+        LoginViewController.isVendor = false
         userType = .consumer
         view.backgroundColor = UIColor.titleBarColor
         

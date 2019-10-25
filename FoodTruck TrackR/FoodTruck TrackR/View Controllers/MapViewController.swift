@@ -129,11 +129,6 @@ class MapViewController: UIViewController {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height: CGFloat = 100
-        return height
-    }
-    
     private func createRequest(start: MKPlacemark, end: MKPlacemark) -> MKDirections.Request {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: start)
@@ -279,6 +274,11 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
             cell.distanceAway = Double(distance) / 1609.344
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height: CGFloat = 100
+        return height
     }
 }
 

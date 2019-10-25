@@ -102,6 +102,23 @@ class TruckController {
         }.resume()
     }
     
+    func deleteTruckFromServer(truck: TruckRepresentation, completion: @escaping ((Error?) -> Void) = { _ in }) {
+        
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(truck.identifier.uuidString).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            if let error = error {
+                NSLog("Error deleting truck from server: \(error)")
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
     func fetchTrucksFromServer(completion: @escaping ((Error?) -> Void) = { _ in }) {
         
         let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathExtension("json")
