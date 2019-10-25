@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIp-fl-2GM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIp-fl-2GM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,24 +43,36 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="VPE-nZ-Y6K">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VPE-nZ-Y6K">
                                         <rect key="frame" x="0.0" y="52" width="374" height="34"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuisine:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPB-qO-uxp">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCF-FC-hXS">
-                                                <rect key="frame" x="124" y="0.0" width="250" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LyQ-3D-odN">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="250" id="NY8-oF-Yxh"/>
+                                                    <constraint firstAttribute="width" constant="120" id="cuq-Dc-Ukz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <state key="normal" title="Choose Cuisine:">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="SCk-uJ-3LA" kind="popoverPresentation" popoverAnchorView="LyQ-3D-odN" id="Wx2-gb-9Iy">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                                                    </segue>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DU2-YG-L8I">
+                                                <rect key="frame" x="128" y="0.0" width="246" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="240" id="hQJ-NR-DXq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="LyQ-3D-odN" firstAttribute="leading" secondItem="VPE-nZ-Y6K" secondAttribute="leading" id="CIS-zL-00c"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -75,7 +87,7 @@
                                 <rect key="frame" x="20" y="246" width="72" height="30"/>
                                 <state key="normal" title="Add Photo"/>
                                 <connections>
-                                    <action selector="addTruckButton:" destination="myV-zT-bHF" eventType="touchUpInside" id="4bM-Gm-rLH"/>
+                                    <action selector="addPhotoButton:" destination="myV-zT-bHF" eventType="touchUpInside" id="K5S-Kg-q4Z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -93,17 +105,51 @@
                         <viewLayoutGuide key="safeArea" id="XI9-ge-pAa"/>
                     </view>
                     <navigationItem key="navigationItem" id="P43-aJ-23f">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="uNg-eP-5Hz"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="uNg-eP-5Hz">
+                            <connections>
+                                <action selector="addTruckButton:" destination="myV-zT-bHF" id="lQ9-6z-QZh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cuisineTypeTextField" destination="fCF-FC-hXS" id="rWw-ks-gJP"/>
+                        <outlet property="cuisineTypeTextField" destination="DU2-YG-L8I" id="CFF-fH-7tx"/>
                         <outlet property="truckImageView" destination="axG-aJ-D2n" id="xn9-98-lYN"/>
                         <outlet property="truckNameTextField" destination="ist-c9-mcp" id="F9j-S2-DuK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rof-Yj-qXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="494" y="-113"/>
+            <point key="canvasLocation" x="483" y="-113"/>
+        </scene>
+        <!--Cuisine Picker View Controller-->
+        <scene sceneID="IkB-CT-v7Z">
+            <objects>
+                <viewController id="SCk-uJ-3LA" customClass="CuisinePickerViewController" customModule="FoodTruck_TrackR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Iwg-Wk-teg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="286"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF6-t5-OeA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="242"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BF6-t5-OeA" firstAttribute="top" secondItem="GRY-FD-Gga" secondAttribute="top" id="7oh-Qz-UiM"/>
+                            <constraint firstItem="BF6-t5-OeA" firstAttribute="trailing" secondItem="GRY-FD-Gga" secondAttribute="trailing" id="P68-b2-07s"/>
+                            <constraint firstItem="BF6-t5-OeA" firstAttribute="leading" secondItem="GRY-FD-Gga" secondAttribute="leading" id="Yfq-wx-0Li"/>
+                            <constraint firstItem="GRY-FD-Gga" firstAttribute="bottom" secondItem="BF6-t5-OeA" secondAttribute="bottom" id="oCu-im-6uC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GRY-FD-Gga"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="286"/>
+                    <connections>
+                        <outlet property="cuisinePicker" destination="BF6-t5-OeA" id="qj9-Ia-iXn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOU-lg-Rsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1319" y="-113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yup-CF-5Wn">

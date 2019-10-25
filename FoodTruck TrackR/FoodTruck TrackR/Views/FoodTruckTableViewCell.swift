@@ -9,12 +9,12 @@
 import UIKit
 
 protocol ShowTruckOnMap {
-    func truckWasSelected(_ truck: Truck)
+    func truckWasSelected(_ truck: TruckRepresentation)
 }
 
 class FoodTruckTableViewCell: UITableViewCell {
     
-    var truck: Truck? {
+    var truck: TruckRepresentation? {
         didSet {
             updateViews()
         }

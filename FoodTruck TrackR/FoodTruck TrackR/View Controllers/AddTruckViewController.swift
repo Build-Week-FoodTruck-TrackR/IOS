@@ -43,7 +43,7 @@ class AddTruckViewController: UIViewController {
 		super.viewDidLoad()
 
 		setupViews()
-
+		//setupPicker()
 	}
 
 	// Setup Views
@@ -71,19 +71,18 @@ class AddTruckViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.textWhite]
     }
 
-	private func addTruck() {
-		guard let truckName = truckNameTextField.text,
-			!truckName.isEmpty,
-			let cuisine = cuisineTypeTextField.text,
-			!cuisine.isEmpty else { return }
+	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
+        guard let truckName = truckNameTextField.text,
+            !truckName.isEmpty,
+            let cuisine = cuisineTypeTextField.text,
+            !cuisine.isEmpty else { return }
 
-		truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: "")
+        truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: "")
 	}
-
-	@IBAction func addTruckButton(_ sender: Any) {
-
-	}
-
+    
+    @IBAction func addPhotoButton(_ sender: UIButton) {
+    }
+    
 	/*
 	// MARK: - Navigation
 
@@ -96,31 +95,35 @@ class AddTruckViewController: UIViewController {
 
 }
 
-extension AddTruckViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension AddTruckViewController: UITextFieldDelegate {
 
-func numberOfComponents(in pickerView: UIPickerView) -> Int {
-	return 1
-}
-
-func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-	return cuisinePickerData.count
-}
-
-func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-	return cuisinePickerData[row].rawValue
-}
-
-public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-	let cuisineData = cuisinePickerData[row]
-	let cuisine = NSAttributedString(string: cuisineData.rawValue,
-                                     attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica",
-                                                                                      size: 17.0)!,
-                                                  NSAttributedString.Key.foregroundColor: UIColor.white])
-	return cuisine
-}
+//func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//	return 1
+//}
+//
+//func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//	return cuisinePickerData.count
+//}
+//
+//func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//	return cuisinePickerData[row].rawValue
+//}
+//
+//public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+//	let cuisineData = cuisinePickerData[row]
+//	let cuisine = NSAttributedString(string: cuisineData.rawValue,
+//                                     attributes: [NSAttributedString.Key.font: UIFont(name: "Helvetica",
+//                                                                                      size: 17.0)!,
+//                                                  NSAttributedString.Key.foregroundColor: UIColor.white])
+//	return cuisine
+//}
 
 	private func setupPicker() {
 
+		//cuisinePicker.delegate = self as UIPickerViewDelegate
+		//cuisinePicker.dataSource = self as UIPickerViewDataSource
+		self.view.addSubview(cuisinePicker)
+		cuisinePicker.center = self.view.center
 		// Sets Cuisine Picker View
 		cuisinePicker.backgroundColor = UIColor.textWhite
 
@@ -132,6 +135,12 @@ public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: In
 		cuisineTypeTextField.inputView = cuisinePicker
 		for cuisine in CuisineType.allCases {
 			cuisinePickerData.append(cuisine)
+		}
+	}
+
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		if textField == cuisineTypeTextField {
+			performSegue(withIdentifier: "CuisinePickerSegue", sender: self)
 		}
 	}
 }

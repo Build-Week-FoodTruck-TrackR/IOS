@@ -39,13 +39,14 @@
 		DD2875C0235E52B20096E0E1 /* MenuItem+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */; };
 		DD2875C2235E52D20096E0E1 /* ConsumerRating+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */; };
 		DD5A43B22361F718001030FB /* AddTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A43B12361F718001030FB /* AddTruckViewController.swift */; };
+		DD5A43B423625310001030FB /* CuisinePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5A43B323625310001030FB /* CuisinePickerViewController.swift */; };
 		DD82707C2360AA1300F66E2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAA50322360969500A4F6EE /* GoogleService-Info.plist */; };
 		DD82707D2360AA1400F66E2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAA50322360969500A4F6EE /* GoogleService-Info.plist */; };
 		DD82707E2360AA1500F66E2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDAA50322360969500A4F6EE /* GoogleService-Info.plist */; };
 		DDA7C85523615371007E5EC5 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7C85423615371007E5EC5 /* UserType.swift */; };
 		DDA7C8592361E6D2007E5EC5 /* ErrorHandlingAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7C8582361E6D2007E5EC5 /* ErrorHandlingAlerts.swift */; };
 		DDA7C85B23621EB3007E5EC5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */; };
-		DDBD82CE235F730800599244 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CD235F730700599244 /* MainTableViewController.swift */; };
+		DDBD82CE235F730800599244 /* InactiveMainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CD235F730700599244 /* InactiveMainTableViewController.swift */; };
 		DDBD82D0235F941000599244 /* TruckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82CF235F941000599244 /* TruckController.swift */; };
 		DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D1235F942400599244 /* ConsumerController.swift */; };
 		DDBD82D4235F943800599244 /* VendorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD82D3235F943800599244 /* VendorController.swift */; };
@@ -119,11 +120,12 @@
 		DD2875BF235E52B20096E0E1 /* MenuItem+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItem+Convenience.swift"; sourceTree = "<group>"; };
 		DD2875C1235E52D20096E0E1 /* ConsumerRating+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConsumerRating+Convenience.swift"; sourceTree = "<group>"; };
 		DD5A43B12361F718001030FB /* AddTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTruckViewController.swift; sourceTree = "<group>"; };
+		DD5A43B323625310001030FB /* CuisinePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinePickerViewController.swift; sourceTree = "<group>"; };
 		DDA7C85423615371007E5EC5 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		DDA7C8582361E6D2007E5EC5 /* ErrorHandlingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingAlerts.swift; sourceTree = "<group>"; };
 		DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DDAA50322360969500A4F6EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DDBD82CD235F730700599244 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		DDBD82CD235F730700599244 /* InactiveMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveMainTableViewController.swift; sourceTree = "<group>"; };
 		DDBD82CF235F941000599244 /* TruckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckController.swift; sourceTree = "<group>"; };
 		DDBD82D1235F942400599244 /* ConsumerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumerController.swift; sourceTree = "<group>"; };
 		DDBD82D3235F943800599244 /* VendorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorController.swift; sourceTree = "<group>"; };
@@ -226,11 +228,12 @@
 			children = (
 				0E76F380235BA835004D4306 /* MapViewController.swift */,
 				0E76F384235C07A7004D4306 /* LoginViewController.swift */,
-				DDBD82CD235F730700599244 /* MainTableViewController.swift */,
+				DDBD82CD235F730700599244 /* InactiveMainTableViewController.swift */,
 				0EAC196F235F8FB400CD9345 /* SignUpViewController.swift */,
 				DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */,
 				DDF696C523612E7A00850540 /* MainViewController.swift */,
 				DD5A43B12361F718001030FB /* AddTruckViewController.swift */,
+				DD5A43B323625310001030FB /* CuisinePickerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -499,7 +502,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		4AFC926B3A3D2781D38FC33D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -609,12 +612,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EAC1940235E669C00CD9345 /* Location+Convenience.swift in Sources */,
-				DDBD82CE235F730800599244 /* MainTableViewController.swift in Sources */,
+				DDBD82CE235F730800599244 /* InactiveMainTableViewController.swift in Sources */,
 				0E76F37D235AD2C9004D4306 /* ConsumerRepresentation.swift in Sources */,
 				DDBD82D8235FC68B00599244 /* SearchController.swift in Sources */,
 				DDBD82D4235F943800599244 /* VendorController.swift in Sources */,
 				DD2875BE235E52910096E0E1 /* Truck+Convenience.swift in Sources */,
 				DDA7C85B23621EB3007E5EC5 /* ProfileViewController.swift in Sources */,
+				DD5A43B423625310001030FB /* CuisinePickerViewController.swift in Sources */,
 				0EAC1944235E6E5F00CD9345 /* LocationRepresentation.swift in Sources */,
 				0E76F36C235AAD92004D4306 /* CoreDataStack.swift in Sources */,
 				DD5A43B22361F718001030FB /* AddTruckViewController.swift in Sources */,
@@ -821,7 +825,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lambdaschool.FoodTruck-TrackR";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lambdaschool.FoodTruck-Track";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -840,7 +844,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lambdaschool.FoodTruck-TrackR";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lambdaschool.FoodTruck-Track";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
