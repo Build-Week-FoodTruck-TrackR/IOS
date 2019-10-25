@@ -14,7 +14,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet private weak var foodTruckSearchBar: UISearchBar!
     @IBOutlet private weak var foodTruckMapView: MKMapView!
-    @IBOutlet weak var searchResultsTableView: UITableView!
+    @IBOutlet private weak var searchResultsTableView: UITableView!
     
     let locationManager = CLLocationManager()
     
@@ -130,14 +130,7 @@ class MapViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height:CGFloat = CGFloat()
-        if indexPath.row == 0 {
-            height = 100
-        }
-        else if indexPath.row == 1 {
-            height = self.view.frame.size.height - 44 - 64 // 44 is a tab bar height and 64 is navigationbar height.
-            print(height)
-        }
+        let height: CGFloat = 100
         return height
     }
     
