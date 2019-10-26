@@ -8,8 +8,13 @@
 
 import UIKit
 import CoreData
+import FirebaseStorage
 
-class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+protocol TruckCreated {
+    func truckWasMade(truck: TruckRepresentation)
+}
+
+class AddTruckViewController: UIViewController, UINavigationControllerDelegate {
 
 	// MARK: - Outlets
 	@IBOutlet private weak var truckNameTextField: UITextField!
@@ -23,6 +28,8 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 	var cuisinePickerData: [CuisineType] = []
 	var cuisinePicker: UIPickerView! = UIPickerView()
 	var imagePickerController = UIImagePickerController()
+    
+    var imagePicker: ImagePicker!
 
 	var truckRep: TruckRepresentation {
 		let moc = CoreDataStack.shared.mainContext
@@ -42,7 +49,9 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
 	// MARK: - View Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
 		setupViews()
 		//setupPicker()
 	}
@@ -73,24 +82,37 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
 	@IBAction func addTruckButton(_ sender: UIBarButtonItem) {
+        if truckImageView.image == nil {
+            addPhotoButton(UIButton())
+        }
+        var imageURL = ""
         guard let truckName = truckNameTextField.text,
-            !truckName.isEmpty,
-            let cuisine = cuisineTypeTextField.text,
-            !cuisine.isEmpty else { return }
-         guard let image = imageURLString else { return }
-        print(image)
-        truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: image)
+            !truckName.isEmpty else { return }
+        let storage = Storage.storage()
+        let data = truckImageView.image!.pngData()!
+        let storageRef = storage.reference()
+        let imageRef = storageRef.child("images/\(truckName).png")
+        imageRef.putData(data, metadata: nil, completion: { _, error in
+            if let error = error {
+                NSLog("There was an error saving photo: \(error)")
+                return
+            }
+            imageRef.downloadURL { url, error in
+                if let error = error {
+                    NSLog("There was an error getting the image URL: \(error)")
+                } else {
+                    guard let url = url else { return }
+                    imageURL = url.absoluteString
+                    self.truckController.createTruck(with: truckName, location: Location(longitude: 0.0, latitude: 0.0), imageOfTruck: imageURL, cuisineType: self.cuisineTypeTextField.text)
+                    
+                }
+            }
+        })
         dismiss(animated: true, completion: nil)
 	}
     
     @IBAction func addPhotoButton(_ sender: UIButton) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-               let imagePicker = UIImagePickerController()
-               imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-               imagePicker.allowsEditing = false
-            present(imagePicker, animated: true, completion: nil)
-           }
+        self.imagePicker.present(from: sender)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
@@ -164,4 +186,10 @@ extension AddTruckViewController: UITextFieldDelegate {
 			performSegue(withIdentifier: "CuisinePickerSegue", sender: self)
 		}
 	}
+}
+
+extension AddTruckViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        self.truckImageView.image = image
+    }
 }

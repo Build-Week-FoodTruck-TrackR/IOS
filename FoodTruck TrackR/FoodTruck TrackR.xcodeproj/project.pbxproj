@@ -22,6 +22,7 @@
 		0E76F383235C0211004D4306 /* LoginAndSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76F382235C0211004D4306 /* LoginAndSignup.storyboard */; };
 		0E76F385235C07A7004D4306 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F384235C07A7004D4306 /* LoginViewController.swift */; };
 		0E76F387235C26E8004D4306 /* FoodTruckTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */; };
+		0EA5FEF12364CB6400A2DD00 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5FEF02364CB6400A2DD00 /* ImagePicker.swift */; };
 		0EAC193E235E664D00CD9345 /* MenuPhoto+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC193D235E664D00CD9345 /* MenuPhoto+Convenience.swift */; };
 		0EAC1940235E669C00CD9345 /* Location+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC193F235E669C00CD9345 /* Location+Convenience.swift */; };
 		0EAC1942235E6DB800CD9345 /* VendorRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAC1941235E6DB800CD9345 /* VendorRepresentation.swift */; };
@@ -92,6 +93,7 @@
 		0E76F382235C0211004D4306 /* LoginAndSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndSignup.storyboard; sourceTree = "<group>"; };
 		0E76F384235C07A7004D4306 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E76F386235C26E8004D4306 /* FoodTruckTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTruckTableViewCell.swift; sourceTree = "<group>"; };
+		0EA5FEF02364CB6400A2DD00 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		0EAC193D235E664D00CD9345 /* MenuPhoto+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuPhoto+Convenience.swift"; sourceTree = "<group>"; };
 		0EAC193F235E669C00CD9345 /* Location+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Convenience.swift"; sourceTree = "<group>"; };
 		0EAC1941235E6DB800CD9345 /* VendorRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorRepresentation.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				DDA7C8582361E6D2007E5EC5 /* ErrorHandlingAlerts.swift */,
 				0EAC1947235E731C00CD9345 /* CuisineType.swift */,
 				DDA7C85423615371007E5EC5 /* UserType.swift */,
+				0EA5FEF02364CB6400A2DD00 /* ImagePicker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -502,7 +505,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# \"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		4AFC926B3A3D2781D38FC33D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -628,6 +631,7 @@
 				0E76F355235A7DA1004D4306 /* AppDelegate.swift in Sources */,
 				0EAC194A235E75E200CD9345 /* CustomerRatingsRepresentaion.swift in Sources */,
 				DDF696C623612E7A00850540 /* MainViewController.swift in Sources */,
+				0EA5FEF12364CB6400A2DD00 /* ImagePicker.swift in Sources */,
 				DDA7C8592361E6D2007E5EC5 /* ErrorHandlingAlerts.swift in Sources */,
 				DDBD82D2235F942400599244 /* ConsumerController.swift in Sources */,
 				0E76F372235AB040004D4306 /* UIColor+Extension.swift in Sources */,

@@ -14,8 +14,6 @@ class VendorTableViewCell: UITableViewCell {
 	@IBOutlet private weak var truckNameLabel: UILabel!
 	@IBOutlet private weak var cusineTypeLabel: UILabel!
     @IBOutlet private weak var AvgRatingLabel: UILabel!
-    
-	var vendorController = VendorController.shared
 
 	var truck: TruckRepresentation? {
 		didSet {

@@ -14,6 +14,7 @@ extension Truck {
                      customerAvgRating: Double,
                      location: Location,
                      imageOfTruck: String,
+                     cuisineType: String? = nil,
                      identifier: UUID = UUID(),
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
@@ -22,6 +23,7 @@ extension Truck {
         self.imageOfTruck = imageOfTruck
 		self.customerAvgRating = customerAvgRating
         self.location = location
+        self.cuisine = cuisineType
         self.identifier = identifier
     }
     

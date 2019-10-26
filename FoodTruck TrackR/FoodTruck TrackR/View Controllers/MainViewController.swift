@@ -14,9 +14,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	@IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addTruckBarButtonItem: UIBarButtonItem!
     
-    let vendorController = VendorController()
+    let vendorController = VendorController.shared
+    let consumerController = ConsumerController.shared
 
-	lazy var fetch: NSFetchedResultsController<Vendor> = {
+	lazy var fetchVendor: NSFetchedResultsController<Vendor> = {
 
 		let request: NSFetchRequest<Vendor> = Vendor.fetchRequest()
 		request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]
@@ -33,6 +34,24 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		}
 		return frc
 	}()
+    
+    lazy var fetchConsumer: NSFetchedResultsController<Consumer> = {
+
+        let request: NSFetchRequest<Consumer> = Consumer.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]
+
+        let frc = NSFetchedResultsController(fetchRequest: request,
+                                             managedObjectContext: CoreDataStack.shared.mainContext,
+                                             sectionNameKeyPath: "username",
+                                             cacheName: nil)
+        frc.delegate = self
+        do {
+            try frc.performFetch()
+        } catch {
+            fatalError("Error performing fetch for frc: \(error)")
+        }
+        return frc
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +65,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.reloadData()
         setupViews()
     }
 

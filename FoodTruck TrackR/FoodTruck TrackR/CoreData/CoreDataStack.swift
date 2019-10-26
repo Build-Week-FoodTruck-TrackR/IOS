@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class CoreDataStack { // The simplest and smallest CoreDataStack I could find
+class CoreDataStack {
     
     static let shared = CoreDataStack()
     
