@@ -9,181 +9,223 @@
 import Foundation
 import CoreData
 
-//class TruckController {
-//
-//	// MARK: - Properties
-//
-//	private let apiKey = "4cc920dab8b729a619647ccc4d191d5e"
-//	private let baseURL = URL(string: "https://api.themoviedb.org/3/search/movie")!
-//	private let firebaseBaseURL = URL(string: "https://mymovies-c6c11.firebaseio.com/")!
-//
-//
-//	func searchForMovie(with searchTerm: String, completion: @escaping (Error?) -> Void) {
-//
-//		var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-//
-//		let queryParameters = ["query": searchTerm,
-//							   "api_key": apiKey]
-//
-//		components?.queryItems = queryParameters.map({URLQueryItem(name: $0.key, value: $0.value)})
-//
-//		guard let requestURL = components?.url else {
-//			completion(NSError())
-//			return
-//		}
-//
-//		URLSession.shared.dataTask(with: requestURL) { (data, _, error) in
-//
-//			if let error = error {
-//				NSLog("Error searching for movie with search term \(searchTerm): \(error)")
-//				completion(error)
-//				return
-//			}
-//
-//			guard let data = data else {
-//				NSLog("No data returned from data task")
-//				completion(NSError())
-//				return
-//			}
-//
-//			do {
-//				let movieRepresentations = try JSONDecoder().decode(MovieRepresentations.self, from: data).results
-//				self.searchedMovies = movieRepresentations
-//				completion(nil)
-//			} catch {
-//				NSLog("Error decoding JSON data: \(error)")
-//				completion(error)
-//			}
-//		}.resume()
-//	}
-//
-//	func put(movie: Movie, completion: @escaping () -> Void = { }) {
-//
-//		let base = URL(string: "https://mymovies-c6c11.firebaseio.com/")!
-//
-//		let identifier = movie.identifier ?? UUID().uuidString
-//		movie.identifier = identifier
-//
-//		let requestURL = base
-//			.appendingPathComponent(identifier)
-//			.appendingPathExtension("json")
-//
-//		var request = URLRequest(url: requestURL)
-//		request.httpMethod = HTTPMethod.put.rawValue
-//
-//		guard let movieRepresentative = movie.movieRepresentation else {
-//			NSLog("Representative is nil")
-//			completion()
-//			return
-//		}
-//
-//		do {
-//			request.httpBody = try JSONEncoder().encode(movieRepresentative)
-//		} catch {
-//			NSLog("Error encoding task representation: \(error)")
-//			completion()
-//			return
-//		}
-//
-//		URLSession.shared.dataTask(with: request) { (_, _, error) in
-//
-//			if let error = error {
-//				NSLog("Error putting task: \(error)")
-//				completion()
-//				return
-//			}
-//			completion()
-//		}.resume()
-//	}
-//
-//	func updateMovie(with representations: [MovieRepresentation]) {
-//
-//		let identifiersToFetch = representations.compactMap({ $0.identifier?.uuidString})
-//
-//		let representaionsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
-//
-//		var tasksToCreate = representaionsByID
-//
-//		let context = CoreDataStack.shared.backgroundContext
-//
-//		context.performAndWait {
-//
-//			do {
-//
-//				let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
-//
-//				fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
-//
-//				let existingTasks = try context.fetch(fetchRequest)
-//
-//				for movie in existingTasks {
-//					guard let identifier = movie.identifier,
-//						let representation = representaionsByID[identifier] else { continue }
-//
-//					movie.title = representation.title
-//					movie.identifier = representation.identifier?.uuidString
-//					movie.hasWatched = representation.hasWatched!
-//
-//					tasksToCreate.removeValue(forKey: identifier)
-//				}
-//
-//				for representation in tasksToCreate.values {
-//					Movie(representation, context: context)
-//				}
-//
-//				CoreDataStack.shared.save(context: context)
-//
-//			} catch {
-//				NSLog("Error fetching tasks from persistent store: \(error)")
-//			}
-//		}
-//	}
-//
-//	func deleteEntryFromServer(movie: Movie, completion: @escaping (Error?) -> Void) {
-//
-//		guard let identifier = movie.identifier else { return }
-//
-//		let requestURL = firebaseBaseURL
-//			.appendingPathComponent(identifier)
-//			.appendingPathExtension("json")
-//
-//		var request = URLRequest(url: requestURL)
-//		request.httpMethod = HTTPMethod.delete.rawValue
-//
-//		URLSession.shared.dataTask(with: request) { (_, _, error) in
-//			if let error = error {
-//				NSLog("Error deleting task: \(error)")
-//				completion(error)
-//			}
-//		}.resume()
-//	}
-//
-//	func createMovie(with title: String) {
-//
-//		let movie = Movie(title: title)
-//		CoreDataStack.shared.save()
-//		put(movie: movie!)
-//
-//	}
-//
-//	func updateMovie(movie: Movie, hasWatched: Bool) {
-//
-//		movie.hasWatched = hasWatched
-//		CoreDataStack.shared.save()
-//		put(movie: movie)
-//
-//	}
-//
-//	func delete(movie: Movie) {
-//
-//		let context = CoreDataStack.shared.mainContext
-//
-//		context.performAndWait {
-//			deleteEntryFromServer(movie: movie) { (error) in
-//				NSLog("Error deleting journal")
-//			}
-//			context.delete(movie)
-//			CoreDataStack.shared.save()
-//		}
-//	}
-//}
+class TruckController {
+
+	// MARK: - Properties
+    var trucks: [TruckRepresentation] = []
+    
+    static let shared = TruckController()
+
+	func getTrucks(with searchTerm: String?) -> [TruckRepresentation] {
+        guard let searchTerm = searchTerm, !searchTerm.isEmpty else { return [] }
+        
+        let filteredNames = trucks.filter({(item: TruckRepresentation) -> Bool in
+            let stringMatch = item.truckName.lowercased().range(of: searchTerm.lowercased())
+                return stringMatch != nil ? true : false
+        })
+        return filteredNames
+    }
+
+	func createTruck(with truckName: String, location: Location, imageOfTruck: String, identifier: UUID = UUID()) {
+        let truck = Truck(truckName: truckName, customerAvgRating: 0, location: Location(longitude: 0, latitude: 0), imageOfTruck: "")
+        put(truck: truck)
+        saveToPersistentStore()
+    }
+    
+    func updateLocation(truck: Truck, location: Location) {
+        truck.location = location
+        put(truck: truck)
+        saveToPersistentStore()
+    }
+    
+    func delete(truck: Truck) {
+        CoreDataStack.shared.mainContext.delete(truck)
+        deleteTruckFromServer(truck: truck)
+        saveToPersistentStore()
+    }
+    
+    private func put(truck: Truck, completion: @escaping ((Error?) -> Void) = { _ in }) {
+        
+        let identifier = truck.identifier?.uuidString ?? UUID().uuidString
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "PUT"
+        
+        guard let location = truck.location, let imageOfTruck = truck.imageOfTruck, let name = truck.truckName, let id = truck.identifier else { return }
+        
+        let truckRep = TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude,
+                                                                           latitude: location.latitude),
+                                           imageOfTruck: imageOfTruck,
+                                           customerAvgRating: truck.customerAvgRating,
+                                           truckName: name,
+                                           identifier: id)
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(truckRep)
+        } catch {
+            NSLog("Error encoding rruck: \(error)")
+            completion(error)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            if let error = error {
+                NSLog("Error PUTting truck to server: \(error)")
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
+    func deleteTruckFromServer(truck: Truck, completion: @escaping ((Error?) -> Void) = { _ in }) {
+        
+        guard let identifier = truck.identifier else {
+            NSLog("Truck identifier is nil")
+            completion(NSError())
+            return
+        }
+        
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier.uuidString).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            if let error = error {
+                NSLog("Error deleting truck from server: \(error)")
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
+    func deleteTruckFromServer(truck: TruckRepresentation, completion: @escaping ((Error?) -> Void) = { _ in }) {
+        
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(truck.identifier.uuidString).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            if let error = error {
+                NSLog("Error deleting truck from server: \(error)")
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
+    func fetchTrucksFromServer(completion: @escaping ((Error?) -> Void) = { _ in }) {
+        
+        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathExtension("json")
+        
+        URLSession.shared.dataTask(with: requestURL) { data, _, error in
+            
+            if let error = error {
+                NSLog("Error fetching entries from server: \(error)")
+                completion(error)
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from data task")
+                completion(NSError())
+                return
+            }
+
+            do {
+                let truckReps = try JSONDecoder().decode([String: TruckRepresentation].self, from: data).map({ $0.value })
+                self.trucks = truckReps
+            } catch {
+                NSLog("Error decoding JSON data: \(error)")
+                completion(error)
+                return
+            }
+        }.resume()
+    }
+    
+    func refreshTrucksFromServer() {
+        fetchTrucksFromServer { error in
+            if error != nil {
+                return
+            }
+            let moc = CoreDataStack.shared.container.newBackgroundContext()
+            self.updateTrucks(with: self.trucks, in: moc)
+        }
+    }
+    
+    func updateTrucks(with representations: [TruckRepresentation], in context: NSManagedObjectContext) {
+        let identifiersToFetch = representations.compactMap({ $0.identifier })
+        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
+        var trucksToCreate = representationsByID
+        
+        context.performAndWait {
+            do {
+                let fetchRequest: NSFetchRequest<Truck> = Truck.fetchRequest()
+
+                fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
+
+                let existingTrucks = try context.fetch(fetchRequest)
+                var tempArr: [TruckRepresentation] = []
+                for truck in existingTrucks {
+                    guard let identifier = truck.identifier,
+                        let representation = representationsByID[identifier] else { continue }
+                    
+                    truck.truckName = representation.truckName
+                    truck.location = Location(longitude: representation.location.longitute, latitude: representation.location.latitude)
+                    truck.customerAvgRating = representation.customerAvgRating
+                    truck.imageOfTruck = representation.imageOfTruck
+                    
+                    trucksToCreate.removeValue(forKey: identifier)
+                    
+                    tempArr.append(representation)
+                }
+                
+                for representation in trucksToCreate.values {
+                    _ = Truck(truck: representation, context: context)
+                    tempArr.append(representation)
+                }
+                trucks = tempArr
+                saveToPersistentStore()
+                
+            } catch {
+                NSLog("Error fetching objects from persistent store: \(error)")
+            }
+        }
+    }
+    
+    func fetchSingleTruckFromPersistentStore(identifier: UUID, context: NSManagedObjectContext) -> Truck? {
+        var tempTruck: Truck?
+        
+        let fetchRequest: NSFetchRequest<Truck> = Truck.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier.uuidString)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "identifier", ascending: true)]
+        
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                             managedObjectContext: CoreDataStack.shared.mainContext,
+                                             sectionNameKeyPath: "identifier",
+                                             cacheName: nil)
+        
+        do {
+            try frc.performFetch()
+            
+            tempTruck = frc.object(at: IndexPath(row: 0, section: 0))
+        } catch {
+            NSLog("Error performing fetch for frc: \(error)")
+        }
+        
+        return tempTruck
+    }
+    
+    func saveToPersistentStore() {
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            NSLog("Error saving managed object context: \(error)")
+        }
+    }
+}

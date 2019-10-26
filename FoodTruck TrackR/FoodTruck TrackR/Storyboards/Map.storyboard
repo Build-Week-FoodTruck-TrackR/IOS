@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YIC-p9-u7B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YIC-p9-u7B">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,75 +21,37 @@
                                     <outlet property="delegate" destination="sRR-vq-1VH" id="XjX-LX-GsW"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" placeholder="Search Food Trucks" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-fZ-W8r">
-                                <rect key="frame" x="0.0" y="140" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="leading" secondItem="DM0-yY-4UO" secondAttribute="leading" id="RS0-bs-VgL"/>
-                            <constraint firstItem="DM0-yY-4UO" firstAttribute="trailing" secondItem="5Bi-Yc-UO8" secondAttribute="trailing" id="VNI-hs-ZR3"/>
-                            <constraint firstItem="5Bi-Yc-UO8" firstAttribute="top" secondItem="K8k-fZ-W8r" secondAttribute="bottom" id="ZVS-Di-gyT"/>
-                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="top" secondItem="DM0-yY-4UO" secondAttribute="top" id="f55-ol-m1q"/>
-                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="trailing" secondItem="DM0-yY-4UO" secondAttribute="trailing" id="fdQ-UI-H8Z"/>
-                            <constraint firstAttribute="bottom" secondItem="5Bi-Yc-UO8" secondAttribute="bottom" id="isu-aI-3tb"/>
-                            <constraint firstItem="5Bi-Yc-UO8" firstAttribute="leading" secondItem="DM0-yY-4UO" secondAttribute="leading" id="k1K-aJ-DUU"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="DM0-yY-4UO"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Find Food Trucks" id="NAt-a9-CSB"/>
-                    <connections>
-                        <outlet property="foodTruckMapView" destination="5Bi-Yc-UO8" id="rpA-NP-Is9"/>
-                        <outlet property="foodTruckSearchBar" destination="K8k-fZ-W8r" id="sPv-rE-AEK"/>
-                        <segue destination="Peq-0Q-cGr" kind="popoverPresentation" identifier="UnusedSegue" popoverAnchorView="5Bi-Yc-UO8" id="Ebi-Ow-E0i">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6hV-uH-bVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="870" y="131"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="1a0-1e-l4p">
-            <objects>
-                <viewController id="Peq-0Q-cGr" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nsx-aH-8k1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pwR-cJ-4Na">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CIm-3P-KNb">
+                                <rect key="frame" x="0.0" y="196" width="414" height="700"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodTruckCell" rowHeight="100" id="cXA-LS-fuj" customClass="FoodTruckTableViewCell" customModule="FoodTruck_TrackR" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodTruckCell" rowHeight="100" id="gwC-LI-xiS" customClass="FoodTruckTableViewCell" customModule="FoodTruck_TrackR" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cXA-LS-fuj" id="FrK-qw-9KF">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gwC-LI-xiS" id="8ei-fC-AwI">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qq9-Tl-E3z">
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eBW-5k-say">
                                                     <rect key="frame" x="20" y="12.5" width="206.5" height="75"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FoodTruck_Square" translatesAutoresizingMaskIntoConstraints="NO" id="qE3-AC-mct">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FoodTruck_Square" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-7f-9bu">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="75" id="GIV-Wq-1Ac"/>
-                                                                <constraint firstAttribute="width" secondItem="qE3-AC-mct" secondAttribute="height" multiplier="1:1" id="VZC-jW-Qay"/>
+                                                                <constraint firstAttribute="height" constant="75" id="UfY-em-xLi"/>
+                                                                <constraint firstAttribute="width" secondItem="Ucc-7f-9bu" secondAttribute="height" multiplier="1:1" id="yGR-aa-O9K"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bGP-Yg-s6g">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GCm-GE-Bds">
                                                             <rect key="frame" x="83" y="0.0" width="123.5" height="75"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKo-82-zPT">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Truck Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSe-c2-lyK">
                                                                     <rect key="frame" x="0.0" y="0.0" width="123.5" height="33.5"/>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is at: Current Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab0-yy-82f">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is at: Current Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy7-fJ-XSZ">
                                                                     <rect key="frame" x="0.0" y="41.5" width="123.5" height="33.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <nil key="textColor"/>
@@ -99,48 +61,92 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR4-LE-RYK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZC-FS-QwY">
                                                     <rect key="frame" x="294" y="20" width="100" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGw-gW-mvj">
-                                                    <rect key="frame" x="372" y="59.5" width="22" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4a-dO-EhW">
+                                                    <rect key="frame" x="371.5" y="59.5" width="22.5" height="22"/>
                                                     <state key="normal" image="star" catalog="system"/>
                                                     <connections>
-                                                        <action selector="toggleFavorite:" destination="cXA-LS-fuj" eventType="touchUpInside" id="7N0-LZ-6Vk"/>
+                                                        <action selector="toggleFavorite:" destination="gwC-LI-xiS" eventType="touchUpInside" id="sk3-s1-LeR"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xGw-gW-mvj" firstAttribute="centerY" secondItem="ab0-yy-82f" secondAttribute="centerY" id="B1r-3m-LwF"/>
-                                                <constraint firstItem="xGw-gW-mvj" firstAttribute="trailing" secondItem="FrK-qw-9KF" secondAttribute="trailingMargin" id="Hry-ev-2dt"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="nR4-LE-RYK" secondAttribute="trailing" id="MuF-Gd-Enb"/>
-                                                <constraint firstItem="Qq9-Tl-E3z" firstAttribute="centerY" secondItem="FrK-qw-9KF" secondAttribute="centerY" id="cGK-FE-Bva"/>
-                                                <constraint firstItem="nR4-LE-RYK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qq9-Tl-E3z" secondAttribute="trailing" constant="8" id="cac-5v-ogv"/>
-                                                <constraint firstItem="nR4-LE-RYK" firstAttribute="centerY" secondItem="kKo-82-zPT" secondAttribute="centerY" id="kFA-Xf-jev"/>
-                                                <constraint firstItem="Qq9-Tl-E3z" firstAttribute="leading" secondItem="FrK-qw-9KF" secondAttribute="leadingMargin" id="kSD-HB-gvl"/>
+                                                <constraint firstItem="j4a-dO-EhW" firstAttribute="centerY" secondItem="xy7-fJ-XSZ" secondAttribute="centerY" id="0Cu-cd-RKU"/>
+                                                <constraint firstItem="eBW-5k-say" firstAttribute="leading" secondItem="8ei-fC-AwI" secondAttribute="leadingMargin" id="Bin-7J-anP"/>
+                                                <constraint firstItem="eBW-5k-say" firstAttribute="centerY" secondItem="8ei-fC-AwI" secondAttribute="centerY" id="GoR-Qe-Hxo"/>
+                                                <constraint firstItem="fZC-FS-QwY" firstAttribute="centerY" secondItem="iSe-c2-lyK" secondAttribute="centerY" id="I1Z-WC-DHs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fZC-FS-QwY" secondAttribute="trailing" id="OIm-LI-sbG"/>
+                                                <constraint firstItem="fZC-FS-QwY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eBW-5k-say" secondAttribute="trailing" constant="8" id="oGO-dQ-dfU"/>
+                                                <constraint firstItem="j4a-dO-EhW" firstAttribute="trailing" secondItem="8ei-fC-AwI" secondAttribute="trailingMargin" id="xCS-4z-fbq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addressLabel" destination="ab0-yy-82f" id="Sjl-Ab-qo1"/>
-                                            <outlet property="distanceAwayLabel" destination="nR4-LE-RYK" id="FEZ-xx-Pbe"/>
-                                            <outlet property="favoriteButton" destination="xGw-gW-mvj" id="6Xq-Yt-1VV"/>
-                                            <outlet property="foodTruckImageView" destination="qE3-AC-mct" id="SZe-im-ycZ"/>
-                                            <outlet property="nameLabel" destination="kKo-82-zPT" id="wLo-XL-Wcm"/>
+                                            <outlet property="addressLabel" destination="xy7-fJ-XSZ" id="zj6-E3-4bS"/>
+                                            <outlet property="distanceAwayLabel" destination="fZC-FS-QwY" id="Gog-06-ZBC"/>
+                                            <outlet property="favoriteButton" destination="j4a-dO-EhW" id="WTT-yU-4rb"/>
+                                            <outlet property="foodTruckImageView" destination="Ucc-7f-9bu" id="q3O-ED-wef"/>
+                                            <outlet property="nameLabel" destination="iSe-c2-lyK" id="QOD-xc-lvf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search Food Trucks" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-fZ-W8r">
+                                <rect key="frame" x="0.0" y="140" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="pwR-cJ-4Na" firstAttribute="top" secondItem="E0P-OH-O5b" secondAttribute="top" id="CD0-kD-p1A"/>
-                            <constraint firstItem="E0P-OH-O5b" firstAttribute="trailing" secondItem="pwR-cJ-4Na" secondAttribute="trailing" id="HEm-M6-BSu"/>
-                            <constraint firstItem="pwR-cJ-4Na" firstAttribute="leading" secondItem="E0P-OH-O5b" secondAttribute="leading" id="Y7f-fI-1gw"/>
-                            <constraint firstItem="E0P-OH-O5b" firstAttribute="bottom" secondItem="pwR-cJ-4Na" secondAttribute="bottom" id="YVb-I5-hnE"/>
+                            <constraint firstItem="CIm-3P-KNb" firstAttribute="top" secondItem="K8k-fZ-W8r" secondAttribute="bottom" id="IY8-v2-h9C"/>
+                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="leading" secondItem="DM0-yY-4UO" secondAttribute="leading" id="RS0-bs-VgL"/>
+                            <constraint firstItem="DM0-yY-4UO" firstAttribute="trailing" secondItem="5Bi-Yc-UO8" secondAttribute="trailing" id="VNI-hs-ZR3"/>
+                            <constraint firstAttribute="trailing" secondItem="CIm-3P-KNb" secondAttribute="trailing" id="YtI-pO-a6k"/>
+                            <constraint firstItem="5Bi-Yc-UO8" firstAttribute="top" secondItem="K8k-fZ-W8r" secondAttribute="bottom" id="ZVS-Di-gyT"/>
+                            <constraint firstAttribute="bottom" secondItem="CIm-3P-KNb" secondAttribute="bottom" id="Zj0-iF-FD7"/>
+                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="top" secondItem="DM0-yY-4UO" secondAttribute="top" id="f55-ol-m1q"/>
+                            <constraint firstItem="K8k-fZ-W8r" firstAttribute="trailing" secondItem="DM0-yY-4UO" secondAttribute="trailing" id="fdQ-UI-H8Z"/>
+                            <constraint firstAttribute="bottom" secondItem="5Bi-Yc-UO8" secondAttribute="bottom" id="isu-aI-3tb"/>
+                            <constraint firstItem="CIm-3P-KNb" firstAttribute="leading" secondItem="DM0-yY-4UO" secondAttribute="leading" id="joy-Yy-5bH"/>
+                            <constraint firstItem="5Bi-Yc-UO8" firstAttribute="leading" secondItem="DM0-yY-4UO" secondAttribute="leading" id="k1K-aJ-DUU"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="DM0-yY-4UO"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find Food Trucks" id="NAt-a9-CSB"/>
+                    <connections>
+                        <outlet property="foodTruckMapView" destination="5Bi-Yc-UO8" id="rpA-NP-Is9"/>
+                        <outlet property="foodTruckSearchBar" destination="K8k-fZ-W8r" id="sPv-rE-AEK"/>
+                        <outlet property="searchResultsTableView" destination="CIm-3P-KNb" id="zS2-ML-i7d"/>
+                        <segue destination="Peq-0Q-cGr" kind="popoverPresentation" identifier="UnusedSegue" popoverAnchorView="5Bi-Yc-UO8" id="Ebi-Ow-E0i">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="MYf-CM-ACo" kind="presentation" identifier="ModalLoginSegue" id="q4e-5e-XWq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hV-uH-bVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="131"/>
+        </scene>
+        <!--LoginAndSignup-->
+        <scene sceneID="jtS-sp-6rn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginAndSignup" id="MYf-CM-ACo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JSE-hH-dOK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870" y="625"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1a0-1e-l4p">
+            <objects>
+                <viewController id="Peq-0Q-cGr" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nsx-aH-8k1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="E0P-OH-O5b"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -168,12 +174,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZmY-Bm-usO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="44.927536231884062" y="130.58035714285714"/>
+            <point key="canvasLocation" x="30" y="131"/>
         </scene>
     </scenes>
     <resources>
-        <image name="FoodTruck_Square" width="3071" height="3073"/>
-        <image name="map" catalog="system" width="64" height="56"/>
+        <image name="FoodTruck_Square" width="3133" height="3132"/>
+        <image name="map" catalog="system" width="64" height="58"/>
         <image name="star" catalog="system" width="64" height="58"/>
     </resources>
 </document>

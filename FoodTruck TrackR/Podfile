@@ -10,6 +10,7 @@ target 'FoodTruck TrackR' do
 	
  # add pods for desired Firebase products
   pod 'Firebase' 
+  pod 'Firebase/Storage'
 	
 
   target 'FoodTruck TrackRTests' do
