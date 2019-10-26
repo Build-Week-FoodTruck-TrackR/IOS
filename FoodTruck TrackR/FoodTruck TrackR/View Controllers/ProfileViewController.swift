@@ -78,10 +78,8 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func signoutButton(_ sender: UIButton) {
-        VendorController.shared.token = nil
-        VendorController.shared.user = nil
-        ConsumerController.shared.token = nil
-        ConsumerController.shared.user = nil
+        VendorController.shared.logOut()
+        ConsumerController.shared.logOut()
         
         tabBarController?.selectedIndex = 0
     }

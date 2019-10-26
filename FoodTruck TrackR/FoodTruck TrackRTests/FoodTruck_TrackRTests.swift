@@ -116,4 +116,34 @@ class FoodTruck_TrackRTests: XCTestCase {
             }
         }
     }
+    
+    func testSearch() {
+        var trucks = [TruckRepresentation]()
+        
+        TruckController.shared.fetchTrucksFromServer { error in
+            if let error = error {
+                print(error)
+            } else {
+                trucks = TruckController.shared.getTrucks(with: "Ice")
+                XCTAssertFalse(trucks.isEmpty)
+            }
+        }
+    }
+    
+    func testSignOut() {
+        let user = ConsumerLogin(username: "jordan", password: "pass")
+        ConsumerController.shared.logIn(user: user) { error in
+            if let error = error {
+                print(error)
+            } else {
+                XCTAssertNotNil(ConsumerController.shared.user)
+                XCTAssertEqual(ConsumerController.shared.user?.password, user.password)
+                
+                VendorController.shared.logOut()
+                ConsumerController.shared.logOut()
+                
+                XCTAssertNil(ConsumerController.shared.user)
+            }
+        }
+    }
 }

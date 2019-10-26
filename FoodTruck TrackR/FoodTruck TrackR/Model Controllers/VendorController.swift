@@ -64,6 +64,11 @@ class VendorController {
             }
         }.resume()
     }
+    
+    func logOut() {
+        user = nil
+        token = nil
+    }
 
     func logIn(user: VendorLogin, completion: @escaping(NetworkError?) -> Void) {
 

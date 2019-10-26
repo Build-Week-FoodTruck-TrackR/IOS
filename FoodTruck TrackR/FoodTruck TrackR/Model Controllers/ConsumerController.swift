@@ -84,6 +84,11 @@ class ConsumerController {
             }
         }.resume()
     }
+    
+    func logOut() {
+        user = nil
+        token = nil
+    }
 
     func logIn(user: ConsumerLogin, completion: @escaping(NetworkError?) -> Void) {
 
