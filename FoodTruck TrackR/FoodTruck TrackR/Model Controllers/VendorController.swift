@@ -10,7 +10,7 @@ import Foundation
 
 class VendorController {
 
-    var user: Any?
+    var user: VendorRepresentation?
     var token: String?
 
     static let shared = VendorController()

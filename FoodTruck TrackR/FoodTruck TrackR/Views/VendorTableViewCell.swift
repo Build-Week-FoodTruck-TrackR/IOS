@@ -28,13 +28,6 @@ class VendorTableViewCell: UITableViewCell {
         updateViews()
     }
 
-	private func updateViews() {
-		guard let vendor = vendor else { return }
-
-		truckNameLabel.text = vendor.
-
-	}
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -48,7 +41,4 @@ class VendorTableViewCell: UITableViewCell {
         cusineTypeLabel.text = truck.cuisineType
         AvgRatingLabel.text = "\(truck.customerAvgRating)/5 Stars"
     }
-
-
-
 }

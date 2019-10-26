@@ -94,9 +94,9 @@ class AddTruckViewController: UIViewController, UIImagePickerControllerDelegate,
            }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let truckImageUrl = info[.imageURL] as? URL else { return }
-        imageURLString  = truckImageUrl.absoluteString
+        imageURLString = truckImageUrl.absoluteString
     
         do {
         let truckImageData = try Data(contentsOf: truckImageUrl)
