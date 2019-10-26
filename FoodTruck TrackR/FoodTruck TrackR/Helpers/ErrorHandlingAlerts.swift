@@ -20,7 +20,7 @@ enum UserAlert {
     }
     
     static func showSignupAlert(on viewController: UIViewController) {
-          let alert = UIAlertController(title: "sign up error", message: "unable to signup at this moment please try again", preferredStyle: .alert)
+          let alert = UIAlertController(title: "Sign Up Error", message: "Unable to signup at this moment please try again", preferredStyle: .alert)
           alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
           DispatchQueue.main.async {
               viewController.present(alert, animated: true, completion: nil)
