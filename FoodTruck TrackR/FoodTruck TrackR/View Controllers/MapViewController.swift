@@ -45,7 +45,9 @@ class MapViewController: UIViewController {
 
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-
+        
+        searchResultsTableView.accessibilityIdentifier = "searchResultsTable"
+        
 		checkForBearerToken()
 	}
     
@@ -258,6 +260,7 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = searchResultsTableView.dequeueReusableCell(withIdentifier: "FoodTruckCell",
                                                                     for: indexPath) as? FoodTruckTableViewCell else { return UITableViewCell() }
+        cell.accessibilityIdentifier = "FoodTruckCell\(indexPath.row)"
         
         let truck = searchResult[indexPath.row]
         cell.truck = truck

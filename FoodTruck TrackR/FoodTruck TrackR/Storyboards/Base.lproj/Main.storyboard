@@ -256,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFg-sd-BZT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3025" y="142"/>
+            <point key="canvasLocation" x="2874" y="142"/>
         </scene>
         <!--AddTruck-->
         <scene sceneID="PVT-Sl-xdv">
@@ -264,7 +264,7 @@
                 <viewControllerPlaceholder storyboardName="AddTruck" id="RxL-3T-JKf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kki-YW-g9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3689" y="142"/>
+            <point key="canvasLocation" x="3537" y="142"/>
         </scene>
         <!--Account-->
         <scene sceneID="xyy-2J-5xO">
@@ -283,7 +283,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZuU-xv-kNO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2123" y="142"/>
+            <point key="canvasLocation" x="1971" y="142"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ROh-f1-xa9">
