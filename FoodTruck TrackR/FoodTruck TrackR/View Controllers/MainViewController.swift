@@ -137,7 +137,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
-            trucks.remove(at: indexPath.row)
+            
 
 		}
 	}

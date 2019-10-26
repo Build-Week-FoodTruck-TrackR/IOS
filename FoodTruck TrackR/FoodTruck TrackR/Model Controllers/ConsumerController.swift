@@ -29,7 +29,7 @@ let baseURL = URL(string: "https://foodtruck-2271c.firebaseio.com/")!
 
 class ConsumerController {
 
-    var user: Any?
+    var user: ConsumerRepresentation?
     var token: String?
 
     static let shared = ConsumerController()

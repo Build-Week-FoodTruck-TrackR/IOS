@@ -41,5 +41,4 @@ class VendorTableViewCell: UITableViewCell {
         cusineTypeLabel.text = truck.cuisineType
         AvgRatingLabel.text = "\(truck.customerAvgRating)/5 Stars"
     }
-
 }
