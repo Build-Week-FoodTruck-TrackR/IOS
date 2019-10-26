@@ -107,4 +107,24 @@ class FoodTruck_TrackRUITests: XCTestCase {
         let firstCell = app.tables["searchResultsTable"].cells["FoodTruckCell0"]
         XCTAssertTrue(firstCell.exists)
     }
+    
+    func testBadLogin() {
+        let usernameTextField = app.textFields["Username"]
+        let passwordTextField = app.secureTextFields["Password"]
+        
+        usernameTextField.tap()
+        usernameTextField.typeText("randomUsername")
+        
+        passwordTextField.tap()
+        passwordTextField.typeText("randomPassword")
+        
+        app.buttons["Log In"].tap()
+        
+        
+        let alert = addUIInterruptionMonitor(withDescription: "System Dialog") { alert -> Bool in
+            let okButton = alert.buttons["OK"]
+            XCTAssertTrue(okButton.exists)
+            return true
+        }
+    }
 }
