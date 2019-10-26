@@ -69,7 +69,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func viewHidePassword(_ sender: Any) {
-        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        passwordTextField.isSecureTextEntry.toggle()
         if passwordTextField.isSecureTextEntry {
             eyeButton.setImage(UIImage(systemName: "eye"), for: .normal)
         } else {
