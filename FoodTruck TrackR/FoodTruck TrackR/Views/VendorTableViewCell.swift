@@ -23,6 +23,7 @@ class VendorTableViewCell: UITableViewCell {
 		}
 	}
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         updateViews()

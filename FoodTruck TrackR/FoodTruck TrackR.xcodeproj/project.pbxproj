@@ -124,6 +124,7 @@
 		DDA7C85423615371007E5EC5 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		DDA7C8582361E6D2007E5EC5 /* ErrorHandlingAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingAlerts.swift; sourceTree = "<group>"; };
 		DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DDA7C85C2363680C007E5EC5 /* trucksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trucksTableViewController.swift; sourceTree = "<group>"; };
 		DDAA50322360969500A4F6EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDBD82CD235F730700599244 /* InactiveMainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactiveMainTableViewController.swift; sourceTree = "<group>"; };
 		DDBD82CF235F941000599244 /* TruckController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckController.swift; sourceTree = "<group>"; };
@@ -214,10 +215,10 @@
 		0E76F36E235AAE41004D4306 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0E76F35D235A7DA5004D4306 /* Assets.xcassets */,
 				DDAA50322360969500A4F6EE /* GoogleService-Info.plist */,
 				0E76F354235A7DA1004D4306 /* AppDelegate.swift */,
 				0E76F356235A7DA1004D4306 /* SceneDelegate.swift */,
-				0E76F35D235A7DA5004D4306 /* Assets.xcassets */,
 				0E76F362235A7DA5004D4306 /* Info.plist */,
 			);
 			path = Resources;
@@ -232,6 +233,7 @@
 				0EAC196F235F8FB400CD9345 /* SignUpViewController.swift */,
 				DDA7C85A23621EB3007E5EC5 /* ProfileViewController.swift */,
 				DDF696C523612E7A00850540 /* MainViewController.swift */,
+				DDA7C85C2363680C007E5EC5 /* trucksTableViewController.swift */,
 				DD5A43B12361F718001030FB /* AddTruckViewController.swift */,
 				DD5A43B323625310001030FB /* CuisinePickerViewController.swift */,
 			);
@@ -502,7 +504,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		4AFC926B3A3D2781D38FC33D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
