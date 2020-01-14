@@ -137,13 +137,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 
 	func numberOfSections(in tableView: UITableView) -> Int {
-
-		return fetch.sections?.count ?? 1
+		return fetchVendor.sections?.count ?? 1
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-		return fetch.sections?[section].numberOfObjects ?? 0
+		return fetchVendor.sections?[section].numberOfObjects ?? 0
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

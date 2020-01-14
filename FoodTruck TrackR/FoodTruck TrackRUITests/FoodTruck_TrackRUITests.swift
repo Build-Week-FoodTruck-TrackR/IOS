@@ -121,7 +121,7 @@ class FoodTruck_TrackRUITests: XCTestCase {
         app.buttons["Log In"].tap()
         
         
-        let alert = addUIInterruptionMonitor(withDescription: "System Dialog") { alert -> Bool in
+        let _ = addUIInterruptionMonitor(withDescription: "System Dialog") { alert -> Bool in
             let okButton = alert.buttons["OK"]
             XCTAssertTrue(okButton.exists)
             return true
