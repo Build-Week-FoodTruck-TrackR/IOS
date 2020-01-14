@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3K3-OB-aem">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3K3-OB-aem">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -103,7 +103,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="GHe-nD-fO8">
-                                <rect key="frame" x="40" y="160" width="334" height="187"/>
+                                <rect key="frame" x="40" y="160" width="334" height="291"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="86b-c8-KsY">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
@@ -120,8 +120,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Eg-af-9d5">
+                                        <rect key="frame" x="0.0" y="156" width="334" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5w-Ro-gLc">
+                                        <rect key="frame" x="0.0" y="208" width="334" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wGJ-RN-qNd">
-                                        <rect key="frame" x="0.0" y="156" width="334" height="31"/>
+                                        <rect key="frame" x="0.0" y="260" width="334" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am a food vendor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4x-Du-MEn">
                                                 <rect key="frame" x="0.0" y="0.0" width="277" height="31"/>
@@ -140,12 +150,12 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSH-pi-1Lm">
-                                <rect key="frame" x="132" y="397" width="150" height="36"/>
+                                <rect key="frame" x="132" y="501" width="150" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="LZy-2K-zbj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="Sign Up Here"/>
+                                <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="loginTapped:" destination="60I-QE-HL6" eventType="touchUpInside" id="WYv-gQ-NEZ"/>
                                     <action selector="signUpTapped:" destination="8Wa-UK-TTE" eventType="touchUpInside" id="mn4-So-5Fj"/>
@@ -165,6 +175,8 @@
                     <navigationItem key="navigationItem" title="Sign Up" id="wg5-5U-SbW"/>
                     <connections>
                         <outlet property="emailTextField" destination="86b-c8-KsY" id="j2Q-QA-yH5"/>
+                        <outlet property="firstNameTextField" destination="7Eg-af-9d5" id="ii2-TV-jHV"/>
+                        <outlet property="lastNameTextField" destination="s5w-Ro-gLc" id="BW4-2T-AYj"/>
                         <outlet property="passwordTextField" destination="F0I-nQ-6lk" id="a0P-hQ-7EF"/>
                         <outlet property="signUpButtonLabel" destination="eSH-pi-1Lm" id="Oe6-2A-tb2"/>
                         <outlet property="usernameTextField" destination="IZS-H5-epb" id="n0x-D9-J1d"/>

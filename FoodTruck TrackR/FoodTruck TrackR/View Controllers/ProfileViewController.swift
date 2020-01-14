@@ -29,12 +29,10 @@ class ProfileViewController: UIViewController {
             let vendor: VendorRepresentation? = VendorController.shared.user
             usernameTextfield.text = vendor?.username
             emailTextfield.text = vendor?.email
-            passwordTextField.text = vendor?.password
         } else {
             let consumer: ConsumerRepresentation? = ConsumerController.shared.user
             usernameTextfield.text = consumer?.username
             emailTextfield.text = consumer?.email
-            passwordTextField.text = consumer?.password
         }
     }
     

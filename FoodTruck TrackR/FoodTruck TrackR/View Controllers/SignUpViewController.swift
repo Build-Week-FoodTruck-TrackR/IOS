@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
@@ -14,7 +15,9 @@ class SignUpViewController: UIViewController {
 	@IBOutlet private weak var emailTextField: UITextField!
 	@IBOutlet private weak var usernameTextField: UITextField!
 	@IBOutlet private weak var passwordTextField: UITextField!
-	@IBOutlet private weak var signUpButtonLabel: UIButton!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet private weak var signUpButtonLabel: UIButton!
 	@IBOutlet private weak var vendorSwitch: UISwitch!
     
 	let vendorController = VendorController.shared
@@ -53,11 +56,25 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    func isPasswordValid(_ password : String) -> Bool{
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
+    
 	@IBAction func signUpTapped(_ sender: UIButton) {
         guard let username = usernameTextField.text,
             let password = passwordTextField.text,
             !password.isEmpty,
-            let email = emailTextField.text, !email.isEmpty else { return }
+            let email = emailTextField.text, !email.isEmpty,
+            let firstName = firstNameTextField.text, !firstName.isEmpty,
+            let lastName = lastNameTextField.text, !lastName.isEmpty else { return }
+        if !isPasswordValid(password) {
+            let alert = UIAlertController(title: "Password isn't valid", message: "Password must contain at least one special character: \"?=.[$@$#!%?&]\"\nPassword must be at least 8 characters\nPassword must contain at least one letter", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         guard let usertype = usertype else { return }
         
         if username.isEmpty {
@@ -65,9 +82,7 @@ class SignUpViewController: UIViewController {
         }
         switch usertype {
         case .consumer:
-            ConsumerController.shared.register(user: ConsumerSignup(username: username,
-                                                                    password: password,
-                                                                    email: email)) { error in
+            ConsumerController.shared.register(username: username, password: password, email: email, firstName: firstName, lastName: lastName) { error in
                 if let error = error {
                     NSLog("failed to register: \(error.localizedDescription)")
                     DispatchQueue.main.async {
@@ -80,7 +95,8 @@ class SignUpViewController: UIViewController {
                     }
                 }
             }
-        case .vendor: VendorController.shared.register(user: VendorSignup(username: username, password: password, email: email)) { error in
+        case .vendor:
+            VendorController.shared.register(username: username, password: password, email: email, firstName: firstName, lastName: lastName) { error in
             if let error = error {
                 NSLog("failed to register: \(error.localizedDescription)")
                 DispatchQueue.main.async {

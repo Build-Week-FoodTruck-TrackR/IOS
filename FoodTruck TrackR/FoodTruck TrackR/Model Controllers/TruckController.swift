@@ -46,106 +46,106 @@ class TruckController {
     
     private func put(truck: Truck, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
-        let identifier = truck.identifier?.uuidString ?? UUID().uuidString
-        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier).appendingPathExtension("json")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "PUT"
-        
-        guard let location = truck.location, let imageOfTruck = truck.imageOfTruck, let name = truck.truckName, let id = truck.identifier else { return }
-        
-        let truckRep = TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude,
-                                                                           latitude: location.latitude),
-                                           imageOfTruck: imageOfTruck,
-                                           customerAvgRating: truck.customerAvgRating,
-                                           truckName: name,
-                                           identifier: id)
-        
-        do {
-            request.httpBody = try JSONEncoder().encode(truckRep)
-        } catch {
-            NSLog("Error encoding rruck: \(error)")
-            completion(error)
-            return
-        }
-        
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                NSLog("Error PUTting truck to server: \(error)")
-                completion(error)
-                return
-            }
-            
-            completion(nil)
-        }.resume()
+//        let identifier = truck.identifier?.uuidString ?? UUID().uuidString
+//        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier).appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = "PUT"
+//
+//        guard let location = truck.location, let imageOfTruck = truck.imageOfTruck, let name = truck.truckName, let id = truck.identifier else { return }
+//
+//        let truckRep = TruckRepresentation(location: LocationRepresentaion(longitute: location.longitude,
+//                                                                           latitude: location.latitude),
+//                                           imageOfTruck: imageOfTruck,
+//                                           customerAvgRating: truck.customerAvgRating,
+//                                           truckName: name,
+//                                           identifier: id)
+//
+//        do {
+//            request.httpBody = try JSONEncoder().encode(truckRep)
+//        } catch {
+//            NSLog("Error encoding rruck: \(error)")
+//            completion(error)
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: request) { _, _, error in
+//            if let error = error {
+//                NSLog("Error PUTting truck to server: \(error)")
+//                completion(error)
+//                return
+//            }
+//
+//            completion(nil)
+//        }.resume()
     }
     
     func deleteTruckFromServer(truck: Truck, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
-        guard let identifier = truck.identifier else {
-            NSLog("Truck identifier is nil")
-            completion(NSError())
-            return
-        }
-        
-        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier.uuidString).appendingPathExtension("json")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "DELETE"
-        
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                NSLog("Error deleting truck from server: \(error)")
-                completion(error)
-                return
-            }
-            
-            completion(nil)
-        }.resume()
+//        guard let identifier = truck.identifier else {
+//            NSLog("Truck identifier is nil")
+//            completion(NSError())
+//            return
+//        }
+//
+//        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(identifier.uuidString).appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = "DELETE"
+//
+//        URLSession.shared.dataTask(with: request) { _, _, error in
+//            if let error = error {
+//                NSLog("Error deleting truck from server: \(error)")
+//                completion(error)
+//                return
+//            }
+//
+//            completion(nil)
+//        }.resume()
     }
     
     func deleteTruckFromServer(truck: TruckRepresentation, completion: @escaping ((Error?) -> Void) = { _ in }) {
         
-        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(truck.identifier.uuidString).appendingPathExtension("json")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "DELETE"
-        
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                NSLog("Error deleting truck from server: \(error)")
-                completion(error)
-                return
-            }
-            
-            completion(nil)
-        }.resume()
+//        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathComponent(truck.identifier.uuidString).appendingPathExtension("json")
+//        var request = URLRequest(url: requestURL)
+//        request.httpMethod = "DELETE"
+//
+//        URLSession.shared.dataTask(with: request) { _, _, error in
+//            if let error = error {
+//                NSLog("Error deleting truck from server: \(error)")
+//                completion(error)
+//                return
+//            }
+//
+//            completion(nil)
+//        }.resume()
     }
     
     func fetchTrucksFromServer(completion: @escaping ((Error?) -> Void) = { _ in }) {
         
-        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathExtension("json")
-        
-        URLSession.shared.dataTask(with: requestURL) { data, _, error in
-            
-            if let error = error {
-                NSLog("Error fetching entries from server: \(error)")
-                completion(error)
-                return
-            }
-            
-            guard let data = data else {
-                NSLog("No data returned from data task")
-                completion(NSError())
-                return
-            }
-
-            do {
-                let truckReps = try JSONDecoder().decode([String: TruckRepresentation].self, from: data).map({ $0.value })
-                self.trucks = truckReps
-            } catch {
-                NSLog("Error decoding JSON data: \(error)")
-                completion(error)
-                return
-            }
-        }.resume()
+//        let requestURL = baseURL.appendingPathComponent("Trucks").appendingPathExtension("json")
+//
+//        URLSession.shared.dataTask(with: requestURL) { data, _, error in
+//
+//            if let error = error {
+//                NSLog("Error fetching entries from server: \(error)")
+//                completion(error)
+//                return
+//            }
+//
+//            guard let data = data else {
+//                NSLog("No data returned from data task")
+//                completion(NSError())
+//                return
+//            }
+//
+//            do {
+//                let truckReps = try JSONDecoder().decode([String: TruckRepresentation].self, from: data).map({ $0.value })
+//                self.trucks = truckReps
+//            } catch {
+//                NSLog("Error decoding JSON data: \(error)")
+//                completion(error)
+//                return
+//            }
+//        }.resume()
     }
     
     func refreshTrucksFromServer() {

@@ -34,24 +34,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		}
 		return frc
 	}()
-    
-    lazy var fetchConsumer: NSFetchedResultsController<Consumer> = {
-
-        let request: NSFetchRequest<Consumer> = Consumer.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "username", ascending: true)]
-
-        let frc = NSFetchedResultsController(fetchRequest: request,
-                                             managedObjectContext: CoreDataStack.shared.mainContext,
-                                             sectionNameKeyPath: "username",
-                                             cacheName: nil)
-        frc.delegate = self
-        do {
-            try frc.performFetch()
-        } catch {
-            fatalError("Error performing fetch for frc: \(error)")
-        }
-        return frc
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

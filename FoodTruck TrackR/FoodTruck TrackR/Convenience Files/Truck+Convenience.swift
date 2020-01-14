@@ -15,7 +15,7 @@ extension Truck {
                      location: Location,
                      imageOfTruck: String,
                      cuisineType: String? = nil,
-                     identifier: UUID = UUID(),
+                     identifier: String? = nil,
                      context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
 

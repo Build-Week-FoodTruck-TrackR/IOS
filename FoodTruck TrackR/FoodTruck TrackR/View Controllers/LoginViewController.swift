@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
         
         switch userType {
         case .vendor:
-            vendorController.logIn(user: VendorLogin(username: username, password: password)) { error in
+            vendorController.logIn(username: username, password: password) { error in
                 if let error: NetworkError = error {
                     NSLog("Error returned when trying to log in: \(error)")
                     DispatchQueue.main.async {
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
                 }
             }
         case .consumer:
-            consumerController.logIn(user: ConsumerLogin(username: username, password: password)) { error in
+            consumerController.logIn(username: username, password: password) { error in
                 if let error: NetworkError = error {
                     NSLog("Error returned when trying to log in: \(error)")
                     DispatchQueue.main.async {

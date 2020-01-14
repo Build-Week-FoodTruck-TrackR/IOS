@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Consumer" representedClassName="Consumer" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="currentLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="consumer" inverseEntity="Location"/>
         <relationship name="favoriteTrucks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Truck" inverseName="consumer" inverseEntity="Truck"/>
@@ -35,7 +34,7 @@
     <entity name="Truck" representedClassName="Truck" syncable="YES" codeGenerationType="class">
         <attribute name="cuisine" optional="YES" attributeType="String"/>
         <attribute name="customerAvgRating" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="imageOfTruck" optional="YES" attributeType="String"/>
         <attribute name="truckName" optional="YES" attributeType="String"/>
         <relationship name="consumer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consumer" inverseName="favoriteTrucks" inverseEntity="Consumer"/>
@@ -45,18 +44,17 @@
     </entity>
     <entity name="Vendor" representedClassName="Vendor" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="trucksOwned" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Truck" inverseName="vendor" inverseEntity="Truck"/>
     </entity>
     <elements>
-        <element name="Consumer" positionX="160" positionY="192" width="128" height="133"/>
+        <element name="Consumer" positionX="160" positionY="192" width="128" height="118"/>
         <element name="ConsumerRating" positionX="160" positionY="192" width="128" height="103"/>
         <element name="Location" positionX="160" positionY="192" width="128" height="103"/>
         <element name="MenuItem" positionX="160" positionY="192" width="128" height="133"/>
         <element name="MenuPhoto" positionX="160" positionY="192" width="128" height="73"/>
         <element name="Truck" positionX="160" positionY="192" width="128" height="178"/>
-        <element name="Vendor" positionX="160" positionY="192" width="128" height="118"/>
+        <element name="Vendor" positionX="160" positionY="192" width="128" height="103"/>
     </elements>
 </model>
